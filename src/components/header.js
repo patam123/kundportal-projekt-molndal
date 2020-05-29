@@ -1,14 +1,15 @@
 import React from 'react';
+import '../App.css';
 
-
-export function head(text)
+//verkar funka
+function header(text)
 {
 
     return (
         
         <div className="header-layout">{text}</div>
-        
-        )
 
+        )
 }
 
+export default header;

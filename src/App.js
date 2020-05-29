@@ -1,22 +1,24 @@
 
 import React from 'react';
-import {} from './nav.js';
-import {section} from './section.js';
-import {head} from './header.js';
-import {nav} from './nav.js'
+import {} from './components/nav.js';
+import {section} from './components/section.js';
+import {header} from './components/header.js';
+import {navigate} from './components/nav.js'
+import Profile from "./components/profile";
+import Home from "./components/home";
 
 import './App.css';
 
 function App() {
 
-  console.log("Hello");
+  
   return (
     <div className="App">
-    {head("hello")}
-    {nav("1","2","3")}
+    <Home title="Home"/>
+    {navigate("1","2","3")}
     {section}
     {section}
-
+    <Profile />
     </div>
   );
 }

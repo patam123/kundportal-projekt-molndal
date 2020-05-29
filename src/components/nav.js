@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export function navigate(first,second,third)
+function navigate(first,second,third)
 {
     
     return (
@@ -12,3 +12,5 @@ export function navigate(first,second,third)
         </ul>
         )
 };
+
+export {navigate}
