@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import User from  './user'
+import User from  './user';
+import Home from '../design/home.css'
+
 
 class Userdata extends Component {
     constructor(props){
-        super(props);
-    
+        super(props);   
         this.state = {
           fname: this.props.user.fname,
           lname: this.props.user.lname,
@@ -20,12 +21,12 @@ class Userdata extends Component {
     render() {
         return (
 
-            <div>
-                <p><span>Telefon:</span>{this.state.telNum}</p>
-                <p><span>Email:</span>{this.state.email}</p>
-                <p><span>Address:</span>{this.state.address}</p>
-                <p><span>Postnummer:</span>{this.state.postCode}</p>
-                <p><span>Postord:</span>{this.state.postArea}</p>
+            <div id="contact-style">
+                <p><span className="span-style">Telefon:</span>{this.state.telNum}</p>
+                <p><span className="span-style">Email:</span><span>{this.state.email}</span></p>
+                <p><span className="span-style">Address:</span>{this.state.address}</p>
+                <p><span className="span-style">Postnummer:</span>{this.state.postCode}</p>
+                <p><span className="span-style">Postord:</span>{this.state.postArea}</p>
             </div>
         );
     }
