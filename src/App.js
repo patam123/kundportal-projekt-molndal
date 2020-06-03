@@ -7,20 +7,16 @@ import {navigate} from './components/nav.js'
 import Profile from "./components/profile";
 import Home from "./components/home";
 import Card from "./components/card"
+import User from "./components/user"
 
 import './App.css';
 
 function App() {
 
-  
+ 
   return (
     <div className="App">
     <Home title="Home"/>
-    {navigate("1","2","3")}
-    <Card/>
-    {section}
-    {section}
-    <Profile />
     </div>
   );
 }
