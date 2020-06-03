@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+
 class User extends Component{
     constructor(fname, lname, perNum, email, telNum, address, postCode, postArea ){
         super();
@@ -11,6 +12,7 @@ class User extends Component{
         this.address = address;
         this.postCode = postCode;
         this.postArea = postArea;
+        this.shares = [];
     }
 
 }

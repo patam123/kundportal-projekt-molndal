@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
+import Header from './header';
+import CardSection from './cardsection';
 
-class card extends Component {
+class Card extends Component {
     render() {
         return (
             <div>
-                <div id="cardHeader">Header</div>
-                <div id="cardSection"> Section</div>
+             
+                <Header headText={this.props.headText} btnText={this.props.btnText} handleBtnClick="{}" />
+                <CardSection content={this.props.firstSection} />
+                
             </div>
         );
     }
 }
 
-export default card;
+export default Card;
