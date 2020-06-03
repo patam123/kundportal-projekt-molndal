@@ -1,16 +1,16 @@
 import React from "react";
 import "../App.css";
 import ButtonComponent from "./button";
+import HomeCSS from "../design/home.css";
 
 //verkar funka
 class Header extends React.Component {
-
   render() {
     return (
-      <div className="header-layout">
-        <h3>{this.props.headText}</h3>
+      <div id="header-layout">
+        <p>{this.props.headText}</p>
         <ButtonComponent
-            className="header-button"
+          cssValue="header-button"
           isClicked={this.props.handleBtnClick}
           btnText={this.props.btnText}
         />
