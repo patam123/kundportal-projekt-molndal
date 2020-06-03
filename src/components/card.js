@@ -5,7 +5,7 @@ class card extends Component {
         return (
             <div>
                 <div id="cardHeader">Header</div>
-                <div id="cardSection"> section</div>
+                <div id="cardSection"> Section</div>
             </div>
         );
     }
