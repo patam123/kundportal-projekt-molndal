@@ -5,6 +5,7 @@ import Section from './section.js'
 // Home station var min profil och mitt innehav ska anropas här
 class Home extends React.Component
 {
+    //konstruktorn behövs kanske inte?
     constructor(title)
     {   super();
         this.title=title;
@@ -14,7 +15,7 @@ class Home extends React.Component
     {             
         return (            
             <div>
-            {Header(this.props.title)}
+            <Header headText={this.props.title} btnText="tryck på mig" />
             </div>
         )
     }
