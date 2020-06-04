@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import User from  './user';
-import Home from '../design/home.css'
+import Home from '../../design/home.css'
 
 
 class Userdata extends Component {
