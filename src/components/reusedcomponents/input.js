@@ -1,13 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Input extends Component{
-
-
-    render(){
-        return(
-            <div></div>
-        )
-    }
+function input({ inputtype, inputname, inputvalue, labelname }) {
+  return (
+    <div>
+      <div>
+        <label style={{color: "#A1A8C3"}}>{labelname}</label>
+        <br></br>
+        <input type={inputtype} name={inputname} value={inputvalue}></input>
+      </div>
+    </div>
+  );
 }
 
-export default Input;
+export default input;
