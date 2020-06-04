@@ -1,14 +1,12 @@
 import React from "react";
-import Share from "../homecomponents/possessioncomponent/share";
 import Portfoliorow from "./portfolio-row";
-import User from "../usercomponents/user";
 
 class Portfolio extends React.Component {
   constructor(props) {
     super(props);
     this.portfolioContent = this.props.user.shares.map((share) => {
       return (
-        <Portfoliorow
+        <Portfoliorow key={`${share.companyName}PortfolioRow`}
           companyName={share.companyName}
           amount={share.amount}
           type={share.type}
@@ -23,7 +21,7 @@ class Portfolio extends React.Component {
   render(){
     return (
         <div>
-          <table>
+          <table key="portfolioTable">
             <tbody key="tablebody">
               <tr key="tablehead">
                 <th key="tableheadCo">Företag</th>
