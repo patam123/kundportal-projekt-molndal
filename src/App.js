@@ -2,18 +2,16 @@
 import React from 'react';
 import Home from "./components/homecomponents/home";
 import Setting from "./components/settingcomponents/setting"
+import DashBoard from "./main/dashboard"
 
 
 import './App.css';
 
 function App() {
  
- 
   return (
-    <div className="App">
-    <div id="nav-style"></div>
-    
-    <Setting/>
+    <div>
+      <DashBoard/>
     </div>
   );
 }
