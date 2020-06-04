@@ -1,26 +1,19 @@
 
 import React from 'react';
-import {} from './components/nav.js';
-import {section} from './components/section.js';
-import {header} from './components/header.js';
-import {navigate} from './components/nav.js'
-import Profile from "./components/profile";
-import Home from "./components/home";
-import Card from "./components/card"
+import Home from "./components/homecomponents/home";
+import Setting from "./components/settingcomponents/setting"
+
 
 import './App.css';
 
 function App() {
-
-  
+ 
+ 
   return (
     <div className="App">
-    <Home title="Home"/>
-    {navigate("1","2","3")}
-    <Card/>
-    {section}
-    {section}
-    <Profile />
+    <div id="nav-style"></div>
+    
+    <Setting/>
     </div>
   );
 }

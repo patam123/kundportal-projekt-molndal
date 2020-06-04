@@ -7,14 +7,25 @@
 
 .App {
   text-align: center;
-  min-height: 100vh;
-  background-color: red;
+  min-height: 90vh;  
+  background: #F6FAFB 0% 0% no-repeat padding-box
 }
 
 .header-layout
 {
 color:white;
 background-color: black;
+}
+
+.profile-picture{
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  float: left;
+}
+
+.label-text{
+  font-size: 10px;
 }
 
 
