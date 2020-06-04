@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import User from "./user";
-import ButtonComponent from "./button";
-import Card from "./card";
 import Userdata from "./userdata";
+import Photo from "./profile-photo";
 
 class Profile extends Component {
   render() {
@@ -18,7 +17,11 @@ class Profile extends Component {
     );
 
     return (
-      <div>     
+      <div>
+        <Photo user={user} />
+        <p>{`${user.fname} ${user.lname}`}</p>
+        <p className="label-text">Person Nr/Organisations Nr</p>
+        <p>{`${user.perNum}`}</p>    
         <Userdata user={user}/>  
       </div>
     );
