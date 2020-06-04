@@ -6,7 +6,6 @@ import HomeStyle from "../../design/home.css"
 // Home station var min profil och mitt innehav ska anropas här
 const Home =()=>{
   
-
     return (
       <div id="homeContainer">
       <div id="profile-style">

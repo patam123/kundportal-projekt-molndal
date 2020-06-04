@@ -7,7 +7,7 @@ import Setting from "./components/settingcomponents/setting"
 import './App.css';
 
 function App() {
-
+ 
  
   return (
     <div className="App">

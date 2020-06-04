@@ -25,7 +25,7 @@ const Possession = () => {
   );
   const shares = [share1, share2];
 
-  let sum = shares.reduce((tot, share) => tot + share.amountPos, 0);
+  let sum = shares.reduce((tot, share) => tot + share.amount, 0);
   const getDate = () => {
     const date = new Date();
 
@@ -48,7 +48,7 @@ const Possession = () => {
       <div className="label-text">{getDate()}</div>
       <div>
         {shares.map((element) => (
-          <li>{element.industry}</li>
+          <li key={element.industry}>{element.industry}</li>
         ))}
       </div>
     </div>
