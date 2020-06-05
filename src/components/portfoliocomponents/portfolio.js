@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Portfoliorow from "./portfolio-row";
 import HeadTitle from "../reusedcomponents/headtitle";
 import ButtonComponent from "../reusedcomponents/button";
@@ -23,6 +23,9 @@ const Portfolio = ({ user }) => {
       />
     );
   });
+
+
+  //kan man lösa det genom att sätta sizes till fasta värden på 10/50/100, lägga dessa i en array som man sedan tar in i usestate istället för 0?
   const [content, setContent] = useState(portfolioContent);
   const [size, setTableSize] = useState(0);
 
@@ -30,25 +33,54 @@ const Portfolio = ({ user }) => {
   const changeSize = (value) =>{
       setTableSize(parseInt(value));
       console.log(size);
+      
   }
+//   useEffect(() => {
+      
+
+//   })
 
   const tableSize = (value) =>{
-    //0 ska ersättas med ett startvärde som också ska hämtas från ett state och slutvärdet i slicen ska vara startvärdet + size.
-    // i if-satsen ska portfolioContent.length > startvärde + size
-    const size = parseInt(value)
+    //0 ska ersättas med ett startvärde som också ska hämtas från ett state och slutvärdet i slicen ska vara startvärdet + newSize.
+    // i if-satsen ska portfolioContent.length > startvärde + newSize
+    const newSize = parseInt(value)
 
-      if(portfolioContent.length > size ){
-        setContent(portfolioContent.slice(0, size));
+      if(portfolioContent.length > newSize ){
+        setContent(portfolioContent.slice(0, newSize));
       } else{
-          //else if(portfolioContent.length > size && portfolioContent.length < startvärde+size)
-              //portfolioContent.slice((portfolioContent.length - 1) - size, portfolioContent.length - 1)
+          //else if(portfolioContent.length > newSize && portfolioContent.length < startvärde+size)
+              //portfolioContent.slice((portfolioContent.length - 1) - newSize, portfolioContent.length - 1)
           setContent(portfolioContent);
       }
-        // if(portfolioContent.length < size){
+        // if(portfolioContent.length < newSize){
         //  setContent(portfolioContent)
         //}
 
   };
+
+
+  //hur skriver jag metoden för att kunna sätta content utan att få "too many render"-felmeddelande?
+  const show = (a, b) =>{
+      if(a < b){
+
+          setContent(portfolioContent.slice(a, b));
+      }
+  }
+  //byt ut 10 mot ett dynamiskt värde(size), lägg till funktionalitet i knapparna. eventuellt använda states?
+  //eventuell if-sats för det inte ska bli för många knappar med siffror. istället ... och generera sidor framöver.
+  //för backToStart ska size in för 1, för forwardToEnd ska initial värde in för 1.
+  const generateButtons = () => {
+      const buttonArray = [];
+      buttonArray.push(<ButtonComponent key="backToStart" btnText="<<" isClicked={() => show(0,1)} />);
+      buttonArray.push(<ButtonComponent key="backOnePage" btnText="<" isClicked={() => show(/*sparat initialt värde - size-1, sparat initialt värde -1 */)} />)
+      for(let i = 0; i < Math.ceil(portfolioContent.length / 10); i++){
+          buttonArray.push(<ButtonComponent key={i+1} btnText={i+1} />)
+      }
+      buttonArray.push(<ButtonComponent key="forwardOnePage" btnText=">" isClicked={show(/*sparat initialt värde + size+1, sparat initialvärde + (size*2+1) */)} />)
+      buttonArray.push(<ButtonComponent key="forwardToEnd" btnText=">>" isClicked={() => show(1,portfolioContent.length)} />)
+
+      return buttonArray;
+  }
 
   const getDate = () => {
     const date = new Date();
@@ -87,7 +119,7 @@ const Portfolio = ({ user }) => {
         </thead>
         <tbody>{content}</tbody>
       </table>
-      <ButtonComponent isClicked={tableSize} btnText="Do something" />
+      {generateButtons()}
       <select onChange={e => tableSize(e.target.value)}>
       <option value="1">1</option>
       <option value="50">50</option>
