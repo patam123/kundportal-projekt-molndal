@@ -6,7 +6,8 @@ class Portfolio extends React.Component {
     super(props);
     this.portfolioContent = this.props.user.shares.map((share) => {
       return (
-        <Portfoliorow key={`${share.companyName}PortfolioRow`}
+        <Portfoliorow
+          key={`${share.companyName}PortfolioRow`}
           companyName={share.companyName}
           amount={share.amount}
           type={share.type}
@@ -18,25 +19,25 @@ class Portfolio extends React.Component {
       );
     });
   }
-  render(){
+  render() {
     return (
-        <div>
-          <table key="portfolioTable">
-            <tbody key="tablebody">
-              <tr key="tablehead">
-                <th key="tableheadCo">Företag</th>
-                <th key="tableheadAmount">Innehav</th>
-                <th key="tableheadType">Aktietyp</th>
-                <th key="tableheadNrOfShare">Antal aktier</th>
-                <th key="tableheadShareNr">Aktienummer</th>
-                <th key="tableheadSharePct">Ägarandel</th>
-                <th key="tableheadVotePwr">Röstvärde</th>
-              </tr>
-              {this.portfolioContent}
-            </tbody>
-          </table>
-        </div>
-      );
+      <div>
+        <table key="portfolioTable">
+          <thead key="tablebody">
+            <tr key="tablehead">
+              <th key="tableheadCo">Företag</th>
+              <th key="tableheadAmount">Innehav</th>
+              <th key="tableheadType">Aktietyp</th>
+              <th key="tableheadNrOfShare">Antal aktier</th>
+              <th key="tableheadShareNr">Aktienummer</th>
+              <th key="tableheadSharePct">Ägarandel</th>
+              <th key="tableheadVotePwr">Röstvärde</th>
+            </tr>
+          </thead>
+          <tbody>{this.portfolioContent}</tbody>
+        </table>
+      </div>
+    );
   }
 }
 
