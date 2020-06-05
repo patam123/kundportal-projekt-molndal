@@ -1,18 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
 #homeContainer {
-  display: flex;
-  margin-left: 50vh;
+  display: block;
+  margin-left: 10px;
  
+}
+#profileContainer{
+  display: flex;
+  justify-content: left;
+  align-items: center;
 }
 #header-layout {
   display: flex;
   justify-content: space-between;
   background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: 0px 1px 15px #45414e14;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   
 }
 #header-button {
@@ -28,10 +29,9 @@
 #profile-style,
 #possession-style {
   border: 0.2px solid gray;
-  margin-top: 70px;
-  width: 400px;
-  margin-left: 30px;
-  min-height: 80vh;
+  width: 370px;
+  margin-right: 20px;
+  min-height: 82vh;
   padding: 5px;
   background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: 0px 1px 15px #45414e14;
