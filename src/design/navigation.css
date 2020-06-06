@@ -1,0 +1,85 @@
+#logo {
+  background: transparent url("../images/Image\ 2.png") 0% 0% no-repeat
+    padding-box;
+  width: 200px;
+  height: 100px;
+  margin-top: 10px;
+  margin: auto;
+}
+#img-link-container {
+  margin-top: 3vw;
+}
+
+#home-Logo,
+#port-Logo,
+#setting-Logo {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5vw;
+}
+#home-Logo {
+  background: transparent url("../images/home.svg") 0% 0% no-repeat padding-box;
+}
+#port-Logo {
+  background: transparent url("../images/home.svg") 0% 0% no-repeat padding-box;
+}
+#setting-Logo {
+  background: transparent url("../images/cog.svg") 0% 0% no-repeat padding-box;
+}
+
+.inactive {
+  text-decoration: none;
+  font-size: 20px;
+  color: #fdcc6b;
+  display: flex;
+  align-items: center;
+  padding: 14px;
+  font-size: 20px;
+  opacity: 0.5;
+  background-color: #363636;
+}
+
+.active {
+  text-decoration: none;
+  font-size: 1vw;
+  color: #fdcc6b;
+  display: flex;
+  align-items: center;
+  padding: 14px;
+  font-size: 20px;
+  background-color: #292928;
+  opacity: 1;
+}
+.inactive:hover {
+  color: #fdcc6b;
+  background-color: #292928;
+  opacity: 1;
+}
+
+#sidebarfoot {
+  margin-top: 45vh;
+}
+#logout-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+#login-img {
+  background: transparent url("../images/logout.svg") 0% 0% no-repeat
+    padding-box;
+  padding: 20px;
+  opacity: 1;
+}
+#slash {
+  width: 8vw;
+  height: 1px;
+  margin: auto;
+
+  background-color: #fdcc6b;
+}
+#login-text {
+  color: #fdcc6b;
+  opacity: 0.7;
+  text-align: center;
+  cursor: pointer;
+}
