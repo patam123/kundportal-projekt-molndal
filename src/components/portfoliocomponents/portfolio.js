@@ -1,13 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import Portfoliorow from "./portfolio-row";
 import HeadTitle from "../reusedcomponents/headtitle";
 import ButtonComponent from "../reusedcomponents/button";
 
 const Portfolio = ({ user }) => {
-  const portfolioButtons = [];
-
-  
-
 
   const portfolioContent = user.shares.map((share) => {
     return (
@@ -26,24 +22,22 @@ const Portfolio = ({ user }) => {
 
 
   //kan man lösa det genom att sätta sizes till fasta värden på 10/50/100, lägga dessa i en array som man sedan tar in i usestate istället för 0?
+  //använda localStorage för att spara undan size.
   const [content, setContent] = useState(portfolioContent);
-  const [size, setTableSize] = useState(0);
+  const [size, setTableSize] = useState(1);
+  const [pageIndex, setIndex] = useState(0);
+  const latestIndex = useRef(pageIndex);
 
-  //nedan funkar som är tänkt
-  const changeSize = (value) =>{
-      setTableSize(parseInt(value));
-      console.log(size);
-      
-  }
-//   useEffect(() => {
-      
+  useEffect(() => {
+      latestIndex.current = pageIndex;
 
-//   })
+  })
 
   const tableSize = (value) =>{
     //0 ska ersättas med ett startvärde som också ska hämtas från ett state och slutvärdet i slicen ska vara startvärdet + newSize.
     // i if-satsen ska portfolioContent.length > startvärde + newSize
     const newSize = parseInt(value)
+    setTableSize(newSize);
 
       if(portfolioContent.length > newSize ){
         setContent(portfolioContent.slice(0, newSize));
@@ -60,7 +54,26 @@ const Portfolio = ({ user }) => {
 
 
   //hur skriver jag metoden för att kunna sätta content utan att få "too many render"-felmeddelande?
-  const show = (a, b) =>{
+  const show = (e, a, b) =>{
+    const currentIndex = e.target.id;
+    if(currentIndex === "backToStart"){
+      setIndex(0);
+      latestIndex.current = 0;
+    } else if(currentIndex === "backOnePage" && pageIndex > 0){
+      setIndex(pageIndex - 1);
+      latestIndex.current = pageIndex -1;
+    } else if (currentIndex === "forwardOnePage" && ((pageIndex* size) <= portfolioContent.length)){ //annan lösning på längd
+      setIndex(pageIndex + 1);
+      latestIndex.current = pageIndex +1;
+    } else if(currentIndex === "forwardToEnd"){
+      setIndex(Math.ceil(portfolioContent.length / size))
+      latestIndex.current = Math.ceil(portfolioContent.length / size);
+    } else{
+      setIndex(currentIndex -1);
+      latestIndex.current = currentIndex -1;
+    }
+    console.log(latestIndex.current)
+
       if(a < b){
 
           setContent(portfolioContent.slice(a, b));
@@ -71,13 +84,13 @@ const Portfolio = ({ user }) => {
   //för backToStart ska size in för 1, för forwardToEnd ska initial värde in för 1.
   const generateButtons = () => {
       const buttonArray = [];
-      buttonArray.push(<ButtonComponent key="backToStart" btnText="<<" isClicked={() => show(0,1)} />);
-      buttonArray.push(<ButtonComponent key="backOnePage" btnText="<" isClicked={() => show(/*sparat initialt värde - size-1, sparat initialt värde -1 */)} />)
-      for(let i = 0; i < Math.ceil(portfolioContent.length / 10); i++){
-          buttonArray.push(<ButtonComponent key={i+1} btnText={i+1} />)
+      buttonArray.push(<ButtonComponent cssValue="backToStart" key="backToStart" btnText="<<" isClicked={(e) => show(e, 0,size)} />);
+      buttonArray.push(<ButtonComponent cssValue="backOnePage" key="backOnePage" btnText="<" isClicked={(e) => show(e, latestIndex.current * size, latestIndex.current * size + size)} />)
+      for(let i = 0; i < Math.ceil(portfolioContent.length / size); i++){
+          buttonArray.push(<ButtonComponent cssValue={i+1} key={i+1} btnText={i+1} isClicked={(e) => show(e, size * i, size * (i+1))} />)
       }
-      buttonArray.push(<ButtonComponent key="forwardOnePage" btnText=">" isClicked={show(/*sparat initialt värde + size+1, sparat initialvärde + (size*2+1) */)} />)
-      buttonArray.push(<ButtonComponent key="forwardToEnd" btnText=">>" isClicked={() => show(1,portfolioContent.length)} />)
+      buttonArray.push(<ButtonComponent cssValue="forwardOnePage" key="forwardOnePage" btnText=">" isClicked={(e) => show(e, latestIndex.current * size, latestIndex.current * size + size)} />) //behövs annan lösning
+      buttonArray.push(<ButtonComponent cssValue="forwardToEnd" key="forwardToEnd" btnText=">>" isClicked={(e) => show(e,1,portfolioContent.length)} />)
 
       return buttonArray;
   }
