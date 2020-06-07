@@ -1,0 +1,25 @@
+#settingStyle {
+  background-color: white;
+  border: 1px solid red;
+}
+
+#container {
+  border-bottom: #45414e14 1px solid;
+  display: flex;
+  padding: 10px;
+}
+
+
+.active-setting {
+  margin-right: 15px;
+  color: #fdcc6b;
+  border-bottom:#fdcc6b 1px solid;
+  padding: 10px;
+}
+.inactive-setting {
+  color: #a1a8c3;
+  margin-right: 15px;
+  padding: 10px;
+ 
+  
+}

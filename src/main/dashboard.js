@@ -6,7 +6,7 @@ import Navigation from "../components/navigationcomponents/nav";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavCss from "../components/../design/navigation.css";
 import DashboardStyling from "../design/dashboard.css";
-import RoutePath from "../components/navigationcomponents/routepath";
+
 
 function Dashboard() {
   const arr = [

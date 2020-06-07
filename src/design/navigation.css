@@ -29,24 +29,20 @@
 
 .inactive {
   text-decoration: none;
-  font-size: 20px;
   color: #fdcc6b;
   display: flex;
   align-items: center;
   padding: 14px;
-  font-size: 20px;
   opacity: 0.5;
   background-color: #363636;
 }
 
 .active {
   text-decoration: none;
-  font-size: 1vw;
   color: #fdcc6b;
   display: flex;
   align-items: center;
   padding: 14px;
-  font-size: 20px;
   background-color: #292928;
   opacity: 1;
 }

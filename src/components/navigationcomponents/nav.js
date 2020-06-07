@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 
 function navigation({ path, name, navstyle, icon, handleMouseOver,handleMouseLeave,handleClick, keyId }) {
   const linkStyle = {
-    fontSize: "1vw",
+    fontSize: "1.3vw",
     fontFamily: "Arial",
+    textDecoration:"none"
     
   };
   
