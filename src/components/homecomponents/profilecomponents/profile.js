@@ -20,6 +20,7 @@ const Profile = () => {
   return (
     <div>
       <Photo user={user} />
+      
       <p>{`${user.fname} ${user.lname}`}</p>
       <p className="label-text">Person Nr/Organisations Nr</p>
       <p>{`${user.perNum}`}</p>    

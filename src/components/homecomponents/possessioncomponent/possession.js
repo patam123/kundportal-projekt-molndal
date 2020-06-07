@@ -43,12 +43,11 @@ const Possession = () => {
   };
 
   return (
-    <div>
-      <div>{sum}</div>
-      <div className="label-text">{getDate()}</div>
+    <div className="possession">
+      <div><span className="possession-amount">{`${sum} SEK` }</span><span className="label-text">{getDate()}</span></div>
       <div>
-        {shares.map((element) => (
-          <li key={element.industry}>{element.industry}</li>
+        {shares.map((element, index) => (
+          <li key={index}>{element.industry}</li>
         ))}
       </div>
     </div>
