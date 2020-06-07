@@ -67,13 +67,10 @@ function Dashboard() {
               })}
             </div>
 
-            <div id="sidebarfoot" >
-             <div id="slash"></div>
-              <div id="logout-container">
-                <div id="login-img"></div>
-                <span id="login-text">Logga ut</span>
-              </div>
-            </div>
+            <div id="sidebarfoot">
+              <div id="slash"></div>            
+                <button id="logout"><img src="/logout.svg" alt="img"/> Logga ut</button>           
+            </div>  
           </div>
         </div>
         <div id="page-style">

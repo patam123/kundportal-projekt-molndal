@@ -59,27 +59,29 @@
 #sidebarfoot {
   margin-top: 45vh;
 }
-#logout-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-}
-#login-img {
-  background: transparent url("../images/logout.svg") 0% 0% no-repeat
-    padding-box;
-  padding: 20px;
-  opacity: 1;
-}
-#slash {
-  width: 8vw;
-  height: 1px;
-  margin: auto;
 
+#slash {
+  width: 6.9vw;
+  height: 1px;
   background-color: #fdcc6b;
+  margin: auto;
+  opacity: 0.5;
 }
-#login-text {
+
+#logout {
+  background-color: #3c3c3b;
+  border: none;
+  outline: none;
   color: #fdcc6b;
-  opacity: 0.7;
-  text-align: center;
-  cursor: pointer;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  padding: 10px;
+  opacity: 0.5;
+}
+
+#logout:hover {
+  opacity: 1;
+  transition: ease-out 0.2s;
 }
