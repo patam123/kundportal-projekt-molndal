@@ -1,99 +1,80 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, { useState, useEffect} from "react";
 import Portfoliorow from "./portfolio-row";
 import HeadTitle from "../reusedcomponents/headtitle";
 import ButtonComponent from "../reusedcomponents/button";
 
 const Portfolio = ({ user }) => {
-
-  const portfolioContent = user.shares.map((share) => {
-    return (
-      <Portfoliorow
-        key={`${share.companyName}PortfolioRow`}
-        companyName={share.companyName}
-        amount={share.amount}
-        type={share.type}
-        nrOfShares={share.nrOfShares}
-        shareNr={share.shareNr}
-        sharePct={share.sharePct}
-        votePwr={share.votePwr}
-      />
-    );
-  });
-
-
-  //kan man lösa det genom att sätta sizes till fasta värden på 10/50/100, lägga dessa i en array som man sedan tar in i usestate istället för 0?
-  //använda localStorage för att spara undan size.
-  const [content, setContent] = useState(portfolioContent);
+  //använda localStorage.setItem för att spara undan size i useEffect.
+  //localStorage.getItem för att hämta i useState.  (kanske lagra dessa värden i databas som någon slags config)
   const [size, setTableSize] = useState(1);
   const [pageIndex, setIndex] = useState(0);
-  const latestIndex = useRef(pageIndex);
 
+  const [content, setContent] = useState(user.shares);
   useEffect(() => {
-      latestIndex.current = pageIndex;
+    //setTableSize funkar enligt loggen.
+    setTableSize(size);
+    setIndex(pageIndex);
+    setContent(
+      pageIndex * size < user.shares.length
+        ? user.shares.slice(pageIndex, (pageIndex + 1) * size)
+        : user.shares.slice(pageIndex - 1, (pageIndex + 1) * size)
+    ); 
+    console.log(size);
+    console.log(pageIndex);
+  }, [pageIndex, size]);
 
-  })
+  //funktionalitet för att lägga till ...-knappen behövs.
 
-  const tableSize = (value) =>{
-    //0 ska ersättas med ett startvärde som också ska hämtas från ett state och slutvärdet i slicen ska vara startvärdet + newSize.
-    // i if-satsen ska portfolioContent.length > startvärde + newSize
-    const newSize = parseInt(value)
-    setTableSize(newSize);
-
-      if(portfolioContent.length > newSize ){
-        setContent(portfolioContent.slice(0, newSize));
-      } else{
-          //else if(portfolioContent.length > newSize && portfolioContent.length < startvärde+size)
-              //portfolioContent.slice((portfolioContent.length - 1) - newSize, portfolioContent.length - 1)
-          setContent(portfolioContent);
-      }
-        // if(portfolioContent.length < newSize){
-        //  setContent(portfolioContent)
-        //}
-
-  };
-
-
-  //hur skriver jag metoden för att kunna sätta content utan att få "too many render"-felmeddelande?
-  const show = (e, a, b) =>{
-    const currentIndex = e.target.id;
-    if(currentIndex === "backToStart"){
-      setIndex(0);
-      latestIndex.current = 0;
-    } else if(currentIndex === "backOnePage" && pageIndex > 0){
-      setIndex(pageIndex - 1);
-      latestIndex.current = pageIndex -1;
-    } else if (currentIndex === "forwardOnePage" && ((pageIndex* size) <= portfolioContent.length)){ //annan lösning på längd
-      setIndex(pageIndex + 1);
-      latestIndex.current = pageIndex +1;
-    } else if(currentIndex === "forwardToEnd"){
-      setIndex(Math.ceil(portfolioContent.length / size))
-      latestIndex.current = Math.ceil(portfolioContent.length / size);
-    } else{
-      setIndex(currentIndex -1);
-      latestIndex.current = currentIndex -1;
-    }
-    console.log(latestIndex.current)
-
-      if(a < b){
-
-          setContent(portfolioContent.slice(a, b));
-      }
-  }
-  //byt ut 10 mot ett dynamiskt värde(size), lägg till funktionalitet i knapparna. eventuellt använda states?
-  //eventuell if-sats för det inte ska bli för många knappar med siffror. istället ... och generera sidor framöver.
-  //för backToStart ska size in för 1, för forwardToEnd ska initial värde in för 1.
   const generateButtons = () => {
-      const buttonArray = [];
-      buttonArray.push(<ButtonComponent cssValue="backToStart" key="backToStart" btnText="<<" isClicked={(e) => show(e, 0,size)} />);
-      buttonArray.push(<ButtonComponent cssValue="backOnePage" key="backOnePage" btnText="<" isClicked={(e) => show(e, latestIndex.current * size, latestIndex.current * size + size)} />)
-      for(let i = 0; i < Math.ceil(portfolioContent.length / size); i++){
-          buttonArray.push(<ButtonComponent cssValue={i+1} key={i+1} btnText={i+1} isClicked={(e) => show(e, size * i, size * (i+1))} />)
+    const buttonArray = [];
+    if (user.shares.length / size > 1) {
+      buttonArray.push(
+        <ButtonComponent
+          cssValue="backToStart"
+          key="backToStart"
+          btnText="<<"
+          isClicked={() => setIndex(0)}
+        />
+      );
+      buttonArray.push(
+        <ButtonComponent
+          cssValue="backOnePage"
+          key="backOnePage"
+          btnText="<"
+          isClicked={() => pageIndex > 0 && setIndex(pageIndex - 1)}
+        />
+      );
+      for (let i = 0; i < Math.ceil(user.shares.length / size); i++) {
+        buttonArray.push(
+          <ButtonComponent
+            cssValue={i + 1}
+            key={i + 1}
+            btnText={i + 1}
+            isClicked={() => setIndex(i)}
+          />
+        );
       }
-      buttonArray.push(<ButtonComponent cssValue="forwardOnePage" key="forwardOnePage" btnText=">" isClicked={(e) => show(e, latestIndex.current * size, latestIndex.current * size + size)} />) //behövs annan lösning
-      buttonArray.push(<ButtonComponent cssValue="forwardToEnd" key="forwardToEnd" btnText=">>" isClicked={(e) => show(e,1,portfolioContent.length)} />)
-
-      return buttonArray;
-  }
+      buttonArray.push(
+        <ButtonComponent
+          cssValue="forwardOnePage"
+          key="forwardOnePage"
+          btnText=">"
+          isClicked={() =>
+            pageIndex * size < user.shares.length - 1 && setIndex(pageIndex + 1)
+          }
+        />
+      );
+      buttonArray.push(
+        <ButtonComponent
+          cssValue="forwardToEnd"
+          key="forwardToEnd"
+          btnText=">>"
+          isClicked={() => setIndex(Math.ceil(user.shares.length / size) - 1)}
+        />
+      );
+    }
+    return buttonArray;
+  };
 
   const getDate = () => {
     const date = new Date();
@@ -130,13 +111,28 @@ const Portfolio = ({ user }) => {
             <th key="tableheadVotePwr">Röstvärde</th>
           </tr>
         </thead>
-        <tbody>{content}</tbody>
+        <tbody>
+          {content.map((share) => {
+            return (
+              <Portfoliorow
+                key={`${share.companyName}PortfolioRow`}
+                companyName={share.companyName}
+                amount={share.amount}
+                type={share.type}
+                nrOfShares={share.nrOfShares}
+                shareNr={share.shareNr}
+                sharePct={share.sharePct}
+                votePwr={share.votePwr}
+              />
+            );
+          })}
+        </tbody>
       </table>
       {generateButtons()}
-      <select onChange={e => tableSize(e.target.value)}>
-      <option value="1">1</option>
-      <option value="50">50</option>
-      <option value="100">100</option>
+      <select onChange={(e) => setTableSize(parseInt(e.target.value))}>
+        <option value="1">1</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
       </select>
     </div>
   );
