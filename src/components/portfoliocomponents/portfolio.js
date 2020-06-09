@@ -2,6 +2,7 @@ import React, { useState, useEffect} from "react";
 import Portfoliorow from "./portfolio-row";
 import HeadTitle from "../reusedcomponents/headtitle";
 import ButtonComponent from "../reusedcomponents/button";
+import "../../design/portfolio.css"
 
 const Portfolio = ({ user }) => {
   //använda localStorage.setItem för att spara undan size i useEffect.
@@ -30,6 +31,7 @@ const Portfolio = ({ user }) => {
     if (user.shares.length / size > 1) {
       buttonArray.push(
         <ButtonComponent
+        className="portfolio-button"
           cssValue="backToStart"
           key="backToStart"
           btnText="<<"
@@ -38,6 +40,7 @@ const Portfolio = ({ user }) => {
       );
       buttonArray.push(
         <ButtonComponent
+        className="portfolio-button"
           cssValue="backOnePage"
           key="backOnePage"
           btnText="<"
@@ -47,6 +50,7 @@ const Portfolio = ({ user }) => {
       for (let i = 0; i < Math.ceil(user.shares.length / size); i++) {
         buttonArray.push(
           <ButtonComponent
+          className="portfolio-button"
             cssValue={i + 1}
             key={i + 1}
             btnText={i + 1}
@@ -56,6 +60,7 @@ const Portfolio = ({ user }) => {
       }
       buttonArray.push(
         <ButtonComponent
+        className="portfolio-button"
           cssValue="forwardOnePage"
           key="forwardOnePage"
           btnText=">"
@@ -66,6 +71,7 @@ const Portfolio = ({ user }) => {
       );
       buttonArray.push(
         <ButtonComponent
+        className="portfolio-button"
           cssValue="forwardToEnd"
           key="forwardToEnd"
           btnText=">>"
@@ -96,12 +102,12 @@ const Portfolio = ({ user }) => {
     <div>
       <div>
         <HeadTitle title="Min Portfölj" />
-        <span>{getDate()}</span>
+        <span className="portfolio-head">{getDate()}</span>
       </div>
-
+    <div id="portfolio">
       <table key="portfolioTable">
-        <thead key="tablebody">
-          <tr key="tablehead">
+        <thead key="tableheadelement">
+          <tr className="portfolio-head" key="tablehead">
             <th key="tableheadCo">Företag</th>
             <th key="tableheadAmount">Innehav</th>
             <th key="tableheadType">Aktietyp</th>
@@ -111,7 +117,7 @@ const Portfolio = ({ user }) => {
             <th key="tableheadVotePwr">Röstvärde</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody key="tablebody">
           {content.map((share) => {
             return (
               <Portfoliorow
@@ -129,11 +135,15 @@ const Portfolio = ({ user }) => {
         </tbody>
       </table>
       {generateButtons()}
-      <select onChange={(e) => setTableSize(parseInt(e.target.value))}>
+      <div className="portfolio-div">
+      <select className="portfolio-select" onChange={(e) => setTableSize(parseInt(e.target.value))}>
         <option value="1">1</option>
         <option value="50">50</option>
         <option value="100">100</option>
       </select>
+      <p>{user.shares.length > size ? size > 1 ? `Visar ${pageIndex * size + 1} - ${(pageIndex + 1) * size} av ${user.shares.length}`: `Visar ${pageIndex * size + 1} av ${user.shares.length}`  : `Visar ${user.shares.length} av ${user.shares.length}` }</p>
+      </div>
+      </div>
     </div>
   );
 };

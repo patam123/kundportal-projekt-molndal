@@ -6,7 +6,16 @@ import Navigation from "../components/navigationcomponents/nav";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavCss from "../components/../design/navigation.css";
 import DashboardStyling from "../design/dashboard.css";
+import User from "../components/usercomponents/user"
 
+const user = new User("Example",
+"Person",
+"19800505-5555",
+"example.person@gmail.com",
+"0700000000",
+"Landsvägen 1",
+"40010",
+"Göteborg")
 
 function Dashboard() {
   const arr = [
@@ -79,7 +88,7 @@ function Dashboard() {
               <Home />
             </Route>
             <Route path="/portfolio" exact>
-              <Portfolio />
+              <Portfolio user={user}/>
             </Route>
             <Route path="/setting">
               <Setting />
