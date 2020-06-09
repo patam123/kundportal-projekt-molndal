@@ -8,6 +8,7 @@ import NavCss from "../components/../design/navigation.css";
 import DashboardStyling from "../design/dashboard.css";
 
 
+
 function Dashboard() {
   const arr = [
     {
@@ -75,10 +76,10 @@ function Dashboard() {
         </div>
         <div id="page-style">
           <Switch>
-            <Route path="/" exact>
+            <Route exact path="/">
               <Home />
             </Route>
-            <Route path="/portfolio" exact>
+            <Route path="/portfolio">
               <Portfolio />
             </Route>
             <Route path="/setting">

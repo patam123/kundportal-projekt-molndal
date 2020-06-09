@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ProfileSetting from "./profilesetting";
 import ChangePassword from "./changepassword";
 import SettingPreferenser from "./settingpreferenser";
 import Navigation from "../navigationcomponents/nav";
-import {BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import RoutePath from "../navigationcomponents/routepath";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HeadTitl from "../reusedcomponents/headtitle";
 import SettingCSS from "../../design/setting.css";
+import Header from "../reusedcomponents/header";
 
-const Setting = () => {
+function SettingPages(props) {
   const arrsetting = [
     {
-      path: "/setting",
+      path: "/profilesetting",
       name: "Profil",
       style: "active-setting",
     },
@@ -42,9 +44,9 @@ const Setting = () => {
   }
   return (
     <Router>
-      <div id="settingStyle">
-        <HeadTitl title="Inställningar" />
-        <div id="container">
+    <div id="settingStyle">
+      <HeadTitl title="Inställningar" />
+      <div id="container">        
           {obj.map((element, index) => (
             <Navigation
               path={element.path}
@@ -53,22 +55,23 @@ const Setting = () => {
               handleClick={makeClick}
               keyId={index}
             />
-          ))}
-        </div>
-        <Switch>
-          <Route exact path="/setting">
-            <ProfileSetting />
-          </Route>
-          <Route path="/changepassword">
-            <ChangePassword />
-          </Route>
-          <Route path="/settingpreferenser">
-            <SettingPreferenser />
-          </Route>
-        </Switch>
+          ))}      
       </div>
-    </Router>
-  );
-};
+      <Switch>
+        <Route path="/profilesetting" exact>
+          <ProfileSetting />
+        </Route>
+        <Route path="/changepassword">
+          <ChangePassword />
+        </Route>
+        <Route path="/settingpreferenser">
+          <SettingPreferenser />
+        </Route>
+      </Switch>
+    </div>
+  </Router>
 
-export default Setting;
+  )
+}
+
+export default SettingPages;
