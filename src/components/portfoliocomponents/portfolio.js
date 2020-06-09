@@ -7,7 +7,8 @@ import "../../design/portfolio.css"
 const Portfolio = ({ user }) => {
   //använda localStorage.setItem för att spara undan size i useEffect.
   //localStorage.getItem för att hämta i useState.  (kanske lagra dessa värden i databas som någon slags config)
-  const [size, setTableSize] = useState(1);
+  const savedSize = localStorage.getItem("size")
+  const [size, setTableSize] = useState(savedSize ? JSON.parse(savedSize) : 1);
   const [pageIndex, setIndex] = useState(0);
 
   const [content, setContent] = useState(user.shares);
@@ -20,8 +21,8 @@ const Portfolio = ({ user }) => {
         ? user.shares.slice(pageIndex, (pageIndex + 1) * size)
         : user.shares.slice(pageIndex - 1, (pageIndex + 1) * size)
     ); 
-    console.log(size);
-    console.log(pageIndex);
+
+    localStorage.setItem("size", JSON.stringify(size));
   }, [pageIndex, size]);
 
   //funktionalitet för att lägga till ...-knappen behövs.
@@ -134,12 +135,12 @@ const Portfolio = ({ user }) => {
           })}
         </tbody>
       </table>
-      {generateButtons()}
+      <div className="portfolio-buttons">{generateButtons()}</div>
       <div className="portfolio-div">
       <select className="portfolio-select" onChange={(e) => setTableSize(parseInt(e.target.value))}>
-        <option value="1">1</option>
-        <option value="50">50</option>
-        <option value="100">100</option>
+        <option value="1" selected={size === 1}>1</option>
+        <option value="50" selected={size === 50}>50</option>
+        <option value="100" selected={size === 100}>100</option>
       </select>
       <p>{user.shares.length > size ? size > 1 ? `Visar ${pageIndex * size + 1} - ${(pageIndex + 1) * size} av ${user.shares.length}`: `Visar ${pageIndex * size + 1} av ${user.shares.length}`  : `Visar ${user.shares.length} av ${user.shares.length}` }</p>
       </div>
