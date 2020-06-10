@@ -2,7 +2,7 @@ import React from 'react';
 import Input from '../reusedcomponents/input';
 import Button from '../reusedcomponents/button'
 
-const changePassword=()=> {
+const ChangePassword=()=> {
     return (
         <div>
         <Input inputtype="text" inputName="Peter" inputvalue="Peter" labelname="Nuvarande lösenord"/>
@@ -14,4 +14,4 @@ const changePassword=()=> {
     );
 }
 
-export default changePassword;
+export default ChangePassword;
