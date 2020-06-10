@@ -1,17 +1,36 @@
-import React from 'react';
-import Input from '../reusedcomponents/input';
-import Button from '../reusedcomponents/button'
+import React from "react";
+import Input from "../reusedcomponents/input";
+import Button from "../reusedcomponents/button";
+import ButtonCSS from "../../design/settingbutton.css";
 
-const ChangePassword=()=> {
-    return (
-        <div>
-        <Input inputtype="text" inputName="Peter" inputvalue="Peter" labelname="Nuvarande lösenord"/>
-        <Input inputtype="text" inputName="Peter" inputvalue="Peter" labelname="Nytt lösenord"/>
-        <Input inputtype="text" inputName="Peter" inputvalue="Peter" labelname="Bekräfta nytt lösenord"/> 
-        <Button btnText="Spara"/>
-
-        </div>
-    );
-}
+const ChangePassword = () => {
+  return (
+      <div>
+    <div id="settingStyle">
+      <div id="input-Container-Style">
+        <Input
+          inputStyle="inputStyle"
+          inputtype="text"
+          labelname="Nuvarande lösenord"
+        />
+        <Input
+          inputStyle="inputStyle"
+          inputtype="text"
+          labelname="Nytt lösenord"
+        />
+        <Input
+          inputStyle="inputStyle"
+          inputtype="text"
+          labelname="Bekräfta nytt lösenord"
+        />
+      </div>
+     
+    </div>
+    <div className="bottom-style">
+    <Button cssValue="btnSettingStyle" btnText="Spara" />
+  </div>
+    </div>
+  );
+};
 
 export default ChangePassword;

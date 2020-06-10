@@ -3,7 +3,8 @@ import Input from "../reusedcomponents/input";
 import Button from "../reusedcomponents/button";
 import ProfilePhoto from "../reusedcomponents/profile-photo";
 import User from "../usercomponents/user";
-import SettingProfileStyle from "../../design/settingprofileStyle.css"
+import SettingProfileStyle from "../../design/settingprofileStyle.css";
+import ButtonCSS from "../../design/settingbutton.css";
 
 function profileSetting() {
   const user = new User(
@@ -17,65 +18,70 @@ function profileSetting() {
     "Göteborg"
   );
   return (
-    <div id="settingProfileStyle">
-    <div id="photo-style">{<ProfilePhoto user={user} />}</div>
-      <div id="input-Container-Style">    
-        <div id="first-last-NameContainer">
+    <div>
+      <div id="profilesettingStyle">
+        <div id="photo-style">{<ProfilePhoto user={user} />}</div>
+        <div id="input-Container-Style">
+          <div id="smallInputContainer">
+            <Input
+              inputStyle="inputStyle"
+              inputtype="text"
+              inputvalue="Magnus"
+              labelname="Förnamn"
+            />
+            <Input
+              inputStyle="inputStyle"
+              inputtype="text"
+              inputvalue="Persson"
+              labelname="Efternamn"
+            />
+          </div>
+
           <Input
-            inputStyle="firstname-style"
+            inputStyle="inputStyle"
             inputtype="text"
-            inputName="Peter"
-            inputvalue="Peter"
-            labelname="Förnamn"
+            inputvalue="19800505-5555"
+            labelname="Personnummer"
+          />
+
+          <Input
+            inputStyle="inputStyle"
+            inputtype="text"
+            inputvalue="Lantmilsgatan 7"
+            labelname="Adress"
+          />
+
+          <div id="smallInputContainer">
+            <Input
+              inputStyle="inputStyle"
+              inputtype="text"
+              inputvalue="Göteborg"
+              labelname="Postort"
+            />
+            <Input
+              inputStyle="inputStyle"
+              inputtype="text"
+              inputvalue="41501"
+              labelname="Postnummer"
+            />
+          </div>
+          <Input
+            inputStyle="inputStyle"
+            inputtype="text"
+            inputvalue="073-0546-0465"
+            labelname="Telefonnummer"
           />
           <Input
-          inputStyle="lastname-style"
+            inputStyle="inputStyle"
             inputtype="text"
-            inputName="Peter"
-            inputvalue="Peter"
-            labelname="Efternamn"
+            inputvalue="Magnus.persson@hotmail.com"
+            labelname="Email"
           />
         </div>
-
-        <Input
-          inputtype="text"
-          inputName="Peter"
-          inputvalue="Peter"
-          labelname="Personnummer"
-        />
-        <Input
-          inputtype="text"
-          inputName="Peter"
-          inputvalue="Peter"
-          labelname="Adress"
-        />
-        <Input
-          inputtype="text"
-          inputName="Peter"
-          inputvalue="Peter"
-          labelname="Postort"
-        />
-        <Input
-          inputtype="text"
-          inputName="Peter"
-          inputvalue="Peter"
-          labelname="Postnummer"
-        />
-        <Input
-          inputtype="text"
-          inputName="Peter"
-          inputvalue="Peter"
-          labelname="Telefonnummer"
-        />
-        <Input
-          inputtype="text"
-          inputName="Peter"
-          inputvalue="Peter"
-          labelname="Email"
-        />
       </div>
-      <Button btnText="Spara" />
-      
+      <div className="bottom-style">
+        <Button cssValue="btnSettingStyle" btnText="Spara" />
+      </div>
     </div>
   );
 }
