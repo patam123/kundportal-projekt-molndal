@@ -6,18 +6,7 @@ import Navigation from "../components/navigationcomponents/nav";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavCss from "../components/../design/navigation.css";
 import DashboardStyling from "../design/dashboard.css";
-import User from "../components/usercomponents/user";
-
-const user = new User(
-  "Example",
-  "Person",
-  "19800505-5555",
-  "example.person@gmail.com",
-  "0700000000",
-  "Landsvägen 1",
-  "40010",
-  "Göteborg"
-);
+import RoutePath from "../components/navigationcomponents/routepath";
 
 function Dashboard() {
   const arr = [
@@ -79,21 +68,18 @@ function Dashboard() {
             </div>
 
             <div id="sidebarfoot">
-              <div id="slash"></div>
-              <button id="logout">
-                <img src="/logout.svg" alt="img" /> Logga ut
-              </button>
-            </div>
+              <div id="slash"></div>            
+                <button id="logout"><img src="/logout.svg" alt="img"/> Logga ut</button>           
+            </div>  
           </div>
         </div>
         <div id="page-style">
           <Switch>
-            <Route exact path="/">
+            <Route path="/" exact>
               <Home />
             </Route>
-
             <Route path="/portfolio" exact>
-              <Portfolio user={user} />
+              <Portfolio />
             </Route>
             <Route path="/setting">
               <Setting />

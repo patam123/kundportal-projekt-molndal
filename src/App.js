@@ -7,9 +7,6 @@ import DashBoard from "./main/dashboard"
 
 import './App.css';
 
-
-
-
 function App() {
  
   return (
