@@ -6,7 +6,7 @@ function input({ inputtype, inputname, inputvalue, labelname,inputStyle }) {
       <div>
         <label style={{color: "#A1A8C3"}}>{labelname}</label>
         <br></br>
-        <input id={inputStyle} type={inputtype} name={inputname} value={inputvalue}></input>
+        <input id={inputStyle} type={inputtype} name={inputname} placeholder={inputvalue}></input>
       </div>
     </div>
   );
