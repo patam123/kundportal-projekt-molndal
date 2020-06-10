@@ -17,6 +17,7 @@ const user = new User("Example",
 "40010",
 "Göteborg")
 
+
 function Dashboard() {
   const arr = [
     {
@@ -84,9 +85,10 @@ function Dashboard() {
         </div>
         <div id="page-style">
           <Switch>
-            <Route path="/" exact>
+            <Route exact path="/">
               <Home />
             </Route>
+
             <Route path="/portfolio" exact>
               <Portfolio user={user}/>
             </Route>
