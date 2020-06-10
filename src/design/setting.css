@@ -1,12 +1,19 @@
 #settingStyle {
-  background-color: white;
-  border: 1px solid red;
-  min-height: 100vh;
+  width: 95%;
+  margin-left: 20px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 1px 15px #45414E14;
+  border-radius: 4px;
+  opacity: 1;
+
 }
 
 #container {
   border-bottom: #45414e14 1px solid;
   display: flex;
+  margin-bottom: 10px;
+  
+
 }
 
 
