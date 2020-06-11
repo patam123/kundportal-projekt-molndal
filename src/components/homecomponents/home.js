@@ -3,7 +3,6 @@ import Card from "../reusedcomponents/card";
 import Profile from "./profilecomponents/profile";
 import Possession from "./possessioncomponent/possession";
 import HomeStyle from "../../design/home.css";
-import Welcome from "../../design/welcome.css"
 import HeadTitle from "../reusedcomponents/headtitle";
 
 // Home station var min profil och mitt innehav ska anropas här

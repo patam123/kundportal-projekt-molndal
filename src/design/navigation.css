@@ -63,6 +63,9 @@
   margin: auto;
   opacity: 0.5;
 }
+#logout-img{
+  margin-right: 6px;
+}
 
 #logout {
   background-color: #3c3c3b;

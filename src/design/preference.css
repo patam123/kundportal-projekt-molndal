@@ -18,6 +18,7 @@
 }
 #text-style{
     padding: 40px 0px;
+    margin-bottom: 100px;
 }
 #tips-style{
     width: 600px;
@@ -29,7 +30,7 @@
 }
 #integrate-style{
     color: #FDCC6B;
-    border-bottom: 1px solid #FDCC6B;
+    border-bottom: 0.5px solid #FDCC6B;
     cursor: pointer;
 }
 
