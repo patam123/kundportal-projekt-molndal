@@ -1,23 +1,11 @@
-
-import React from 'react';
+import React from "react";
 import Home from "./components/homecomponents/home";
-import Setting from "./components/settingcomponents/setting"
-import DashBoard from "./main/dashboard"
-
-
-import './App.css';
-
-
-
+import Setting from "./components/settingcomponents/setting";
+import DashBoard from "./main/dashboard";
+import "./App.css";
 
 function App() {
- 
-  return (
-    <div>
-      <DashBoard/>
-      
-    </div>
-  );
+  return <DashBoard />;
 }
 
 export default App;
