@@ -3,7 +3,7 @@ import ProfileSetting from "./profilesetting";
 import ChangePassword from "./changepassword";
 import SettingPreferenser from "./settingpreferenser";
 import Navigation from "../navigationcomponents/nav";
-import {BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HeadTitl from "../reusedcomponents/headtitle";
 import SettingCSS from "../../design/setting.css";
 
@@ -42,30 +42,32 @@ const Setting = () => {
   }
   return (
     <Router>
-      <div id="settingStyle">
+      <div id="setting-container">
         <HeadTitl title="Inställningar" />
-        <div id="container">
-          {obj.map((element, index) => (
-            <Navigation
-              path={element.path}
-              name={element.name}
-              navstyle={element.style}
-              handleClick={makeClick}
-              keyId={index}
-            />
-          ))}
+        <div id="settingStyle">
+          <div id="container">
+            {obj.map((element, index) => (
+              <Navigation
+                path={element.path}
+                name={element.name}
+                navstyle={element.style}
+                handleClick={makeClick}
+                keyId={index}
+              />
+            ))}
+          </div>
+          <Switch>
+            <Route exact path="/setting">
+              <ProfileSetting />
+            </Route>
+            <Route path="/changepassword">
+              <ChangePassword />
+            </Route>
+            <Route path="/settingpreferenser">
+              <SettingPreferenser />
+            </Route>
+          </Switch>
         </div>
-        <Switch>
-          <Route exact path="/setting">
-            <ProfileSetting />
-          </Route>
-          <Route path="/changepassword">
-            <ChangePassword />
-          </Route>
-          <Route path="/settingpreferenser">
-            <SettingPreferenser />
-          </Route>
-        </Switch>
       </div>
     </Router>
   );

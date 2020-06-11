@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
-function checkBox()
-{
-    return(
-
-        <input type="checkbox"/>
-    )
-    
+function CheckBox(inputtype,checkBoxName) {
+  return (
+    <div>
+      <input type={inputtype} />
+      <label>{checkBoxName}</label>
+    </div>
+  );
 }
 
-return {checkBox}
+export default CheckBox;
