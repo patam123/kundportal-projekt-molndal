@@ -5,23 +5,25 @@ import ButtonCSS from "../../design/settingbutton.css";
 
 const ChangePassword = () => {
   return (
-    <div id="profilesettingStyle">
-      <div id="input-Container-Style">
-        <Input
-          inputStyle="inputStyle"
-          inputtype="text"
-          labelname="Nuvarande lösenord"
-        />
-        <Input
-          inputStyle="inputStyle"
-          inputtype="text"
-          labelname="Nytt lösenord"
-        />
-        <Input
-          inputStyle="inputStyle"
-          inputtype="text"
-          labelname="Bekräfta nytt lösenord"
-        />
+    <div>
+      <div id="profilesettingStyle">
+        <div id="input-Container-Style">
+          <Input
+            inputStyle="inputStyle"
+            inputtype="text"
+            labelname="Nuvarande lösenord"
+          />
+          <Input
+            inputStyle="inputStyle"
+            inputtype="text"
+            labelname="Nytt lösenord"
+          />
+          <Input
+            inputStyle="inputStyle"
+            inputtype="text"
+            labelname="Bekräfta nytt lösenord"
+          />
+        </div>
       </div>
 
       <div className="bottom-style">

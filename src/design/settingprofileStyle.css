@@ -1,4 +1,3 @@
-
 #profilesettingStyle {
   margin-left: 20px;
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -11,7 +10,6 @@
   width: 30vw;
 }
 #photo-style {
-  padding: 10px;
   min-height: 9vw;
 }
 
@@ -29,7 +27,7 @@
   padding: 12px 0px;
   margin-bottom: 5px;
   display: flex;
-  box-shadow: 0px 1px 15px #45414E14;
+  box-shadow: 0px 1px 15px #45414e14;
   justify-content: flex-end;
   border-radius: 4px;
   opacity: 1;

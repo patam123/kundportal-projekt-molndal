@@ -1,10 +1,8 @@
 #setting-container{
   display: block;
-  margin-left: 50px;
   width: 100%;
 }
 #settingStyle {
-  width: 95%;
   margin-bottom: 20px;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 1px 15px #45414E14;
@@ -35,7 +33,5 @@
   color: #a1a8c3;
   margin-right: 15px;
   padding: 10px;
-
- 
   
 }
