@@ -20,7 +20,7 @@ function profileSetting() {
   return (
     <div>
       <div id="profilesettingStyle">
-        <div id="photo-style">{<ProfilePhoto user={user} />}</div>
+        <div id="photo-style"> <div id="circle"></div>{<ProfilePhoto user={user} />}</div>
         <div id="input-Container-Style">
           <div id="smallInputContainer">
             <Input

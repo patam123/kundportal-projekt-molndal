@@ -9,7 +9,21 @@
   width: 30vw;
 }
 #photo-style {
-  min-height: 9vw;
+  min-height: 10vw;
+  width: 110px;
+  position: relative;
+}
+#circle {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  border-radius: 50%;
+  background: transparent url("../images/edit\ \(2\).svg") 0% 0% no-repeat padding-box;
+  background-position: center center;
+  background-color: #FDCC6B;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .inputStyle {
@@ -26,7 +40,7 @@
   padding: 12px 0px;
   margin-bottom: 5px;
   display: flex;
-  box-shadow: 0px 1px 15px #45414e14;
+  border-top: #45414E14 1px solid;
   justify-content: flex-end;
   border-radius: 4px;
   opacity: 1;

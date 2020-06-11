@@ -81,7 +81,7 @@ function Dashboard() {
             <div id="sidebarfoot">
               <div id="slash"></div>
               <button id="logout">
-                <img src="/logout.svg" alt="img" /> Logga ut
+                <img id="logout-img" src="/logout.svg" alt="img" /> Logga ut
               </button>
             </div>
           </div>
