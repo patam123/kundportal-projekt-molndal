@@ -1,20 +1,85 @@
-import React from 'react';
-import Input from '../reusedcomponents/input.js';
-import Button from '../reusedcomponents/button';
+import React from "react";
+import Input from "../reusedcomponents/input";
+import Button from "../reusedcomponents/button";
+import PreferenceCss from "../../design/preference.css";
+import profileCss from "../../design/settingprofileStyle.css";
 
 function settingPreferenser() {
-    return (
-        <div>
-        <Input inputtype="checkbox" inputName="Peter" inputvalue="Peter" labelname="industry1"/>
-        <Input inputtype="checkbox" inputName="Peter" inputvalue="Peter" labelname="industry1"/>
-        <Input inputtype="checkbox" inputName="Peter" inputvalue="Peter" labelname="industry1"/>
-        <Input inputtype="checkbox" inputName="Peter" inputvalue="Peter" labelname="industry1"/>
-        <p>Tips! ifall du väljer integerera din bank så kan vi anpassa  dina investeringar utefter din ekonomi och preferenser</p>
-        <span></span><p>Integerera din bank!<span>Detta kommer att skicka dig vidare.</span></p>  
-        <Button btnText="Spara"/>  
-        </div>
-    );
-    
+  return (
+    <div id="profilesettingStyle">
+      <div className="checkBox-style">
+        <Input
+          inputtype="checkbox"
+          container="divContainer"
+          inputStyle="checkBoxStyle"
+          labelTwo="Bygg"
+        />
+        <Input
+          inputtype="checkbox"
+          container="divContainer"
+          inputStyle="checkBoxStyle"
+          labelTwo="Industrix"
+        />
+      </div>
+      <div className="checkBox-style">
+        <Input
+          inputtype="checkbox"
+          container="divContainer"
+          inputStyle="checkBoxStyle"
+          labelTwo="Industrix"
+        />
+        <Input
+          inputtype="checkbox"
+          container="divContainer"
+          inputStyle="checkBoxStyle"
+          labelTwo="Industrix"
+        />
+      </div>
+      <div className="checkBox-style">
+        <Input
+          inputtype="checkbox"
+          container="divContainer"
+          inputStyle="checkBoxStyle"
+          labelTwo="Industrix"
+        />
+        <Input
+          inputtype="checkbox"
+          container="divContainer"
+          inputStyle="checkBoxStyle"
+          labelTwo="Industrix"
+        />
+      </div>
+      <div className="checkBox-style">
+        <Input
+          inputtype="checkbox"
+          container="divContainer"
+          inputStyle="checkBoxStyle"
+          labelTwo="Industrix"
+        />
+        <Input
+          inputtype="checkbox"
+          container="divContainer"
+          inputStyle="checkBoxStyle"
+          labelTwo="Industrix"
+        />
+      </div>
+      <div id="text-style">
+        
+        <p id="tips-style">
+          Tips! ifall du väljer integerera din bank så kan vi anpassa dina
+          investeringar utefter din ekonomi och preferenser
+        </p>
+        <p>
+          <span id="integrate-style">Integerera din bank!</span>
+          <span id="message">(Detta kommer att skicka dig vidare.)</span>
+        </p>
+      </div>
+
+      <div className="bottom-style">
+        <Button cssValue="btnSettingStyle" btnText="Spara" />
+      </div>
+    </div>
+  );
 }
 
 export default settingPreferenser;

@@ -2,7 +2,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  
 }
 #dashboard-style {
   display: grid;
@@ -21,8 +20,8 @@
 #page-style {
   grid-column: 2 / span 6;
   grid-row: 1 / span 7;
-  background: #ffffff 0% 0% no-repeat padding-box;
-  box-shadow: 0px 1px 15px #45414e14;
+  background: #f6fafb 0% 0% no-repeat padding-box;
+  opacity: 1;
   border-radius: 4px;
   opacity: 1;
   display: flex;

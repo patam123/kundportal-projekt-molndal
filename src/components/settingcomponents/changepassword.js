@@ -5,8 +5,7 @@ import ButtonCSS from "../../design/settingbutton.css";
 
 const ChangePassword = () => {
   return (
-      <div>
-    <div id="settingStyle">
+    <div id="profilesettingStyle">
       <div id="input-Container-Style">
         <Input
           inputStyle="inputStyle"
@@ -24,11 +23,10 @@ const ChangePassword = () => {
           labelname="Bekräfta nytt lösenord"
         />
       </div>
-     
-    </div>
-    <div className="bottom-style">
-    <Button cssValue="btnSettingStyle" btnText="Spara" />
-  </div>
+
+      <div className="bottom-style">
+        <Button cssValue="btnSettingStyle" btnText="Spara" />
+      </div>
     </div>
   );
 };

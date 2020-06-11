@@ -1,0 +1,35 @@
+#divContainer {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.checkBoxStyle {
+  margin-right: 20px;
+  width: 18px;
+  height: 18px;
+  padding: 10px;
+}
+
+.checkBox-style {
+  display: flex;
+  width: 20vw;
+  justify-content: space-between;
+  align-items: center;
+}
+#text-style{
+    padding: 40px 0px;
+}
+#tips-style{
+    width: 600px;
+    margin-bottom: 20px;
+}
+#message{
+    opacity: 0.5;
+    font-size: 12px;
+}
+#integrate-style{
+    color: #FDCC6B;
+    border-bottom: 1px solid #FDCC6B;
+    cursor: pointer;
+}
+
