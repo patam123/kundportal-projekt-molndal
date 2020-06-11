@@ -51,7 +51,7 @@ const Portfolio = ({ user }) => {
       for (let i = 0; i < Math.ceil(user.shares.length / size); i++) {
         buttonArray.push(
           <ButtonComponent
-          className="portfolio-button"
+          className={pageIndex === i ? "portfolio-button-active" : "portfolio-button"}
             cssValue={i + 1}
             key={i + 1}
             btnText={i + 1}
@@ -100,15 +100,15 @@ const Portfolio = ({ user }) => {
   };
 
   return (
-    <div>
-      <div>
-        <HeadTitle title="Min Portfölj" />
-        <span className="portfolio-head">{getDate()}</span>
+    <div className="portfolio-container">
+      <div className="headrow">
+        <HeadTitle title={`Min Portfölj`  } />
+        <p className="portfolio-head">{getDate()}</p>
       </div>
     <div id="portfolio">
       <table key="portfolioTable">
         <thead key="tableheadelement">
-          <tr className="portfolio-head" key="tablehead">
+          <tr className="portfolio-tablehead" key="tablehead">
             <th key="tableheadCo">Företag</th>
             <th key="tableheadAmount">Innehav</th>
             <th key="tableheadType">Aktietyp</th>

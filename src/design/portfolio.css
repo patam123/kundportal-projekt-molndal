@@ -4,11 +4,24 @@
 
 } */
 
+.portfolio-container{
+  margin-left: 50px;
+  width: 100%;
+  margin-right: 50px;
+ 
+
+}
+.headrow{
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+
+}
+
 #portfolio {
-  top: 50px;
-  left: 26px;
-  width: 1010px;
-  /* height: 570px; */
+  top: 10px;
+  left: 0px;
+  width: 100%;
   min-height: 75vh;
   background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: 0px 1px 15px #45414e14;
@@ -23,7 +36,17 @@
   font-size: 13px;
   letter-spacing: 0px;
   color: #a1a8c3;
+  margin-left: 10px;
+  
 }
+.portfolio-tablehead {
+  text-align: left;
+  font: Medium 14px/20px Poppins;
+  font-size: 13px;
+  letter-spacing: 0px;
+  color: #a1a8c3;
+}
+
 tbody{
     text-align: left;
 }
@@ -32,8 +55,14 @@ table{
     align-content: center;
     align-items: center;
     margin: 0 auto;
-    border-collapse: separate;
-    border-spacing: 70px 20px;
+    border-collapse: collapse; /* behöver vara collapse för att få border, men får då inte samma layout */
+    /* border-spacing: 70px 20px; */
+  }
+  tr{
+    border-bottom:#ebedf2 1px solid;
+  }
+  th, td{
+    padding: 20px 60px;
   }
 
 .portfolio-div{
@@ -75,6 +104,18 @@ table{
     margin: 2px;
     border: none;
 }
-.portfolio-button:active{
+.portfolio-button-active{
+  font-size: 13px;
+  width: 26px;
+  height: 24px;
+  background: #FDCC6B 0% 0% no-repeat padding-box;
+  text-align: center;
+  letter-spacing: 0px;
+  color: #3c3c3b;
+  opacity: 1;
+  margin: 2px;
+  border: none;
+}
+.portfolio-button:active, .portfolio-button:hover{
     background-color: #FDCC6B;
 }
