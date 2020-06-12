@@ -1,10 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   list-style: none;
+  overflow-x: hidden;
   font-family: 'Poppins', sans-serif;
+
   
 }
 #dashboard-style {
@@ -15,7 +17,7 @@
 
 #sidebar{
   grid-row: 1 / span 7;
-  grid-column: 1 / span ;
+ 
   background: #3c3c3b 0% 0% no-repeat padding-box;
   height: 100vh;
   position: fixed;

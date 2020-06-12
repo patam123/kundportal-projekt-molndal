@@ -2,7 +2,7 @@ import React from "react";
 // import "../App.css";
 import "../../App.css";
 import ButtonComponent from "./button";
-import HomeCSS from "../../design/home.css";
+import HomeCSS from "../../design/homestyle/home.css";
 
 //verkar funka
 const Header = ({headText, handleBtnClick, btnText}) => {
