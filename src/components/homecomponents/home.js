@@ -5,6 +5,7 @@ import Possession from "./possessioncomponent/possession";
 import HomeStyle from "../../design/homestyle/home.css";
 import HeadTitle from "../reusedcomponents/headtitle";
 
+
 // Home station var min profil och mitt innehav ska anropas här
 const Home = () => {
   return (
@@ -30,6 +31,7 @@ const Home = () => {
             btnText="Min Portfölj"
             firstSection={<Possession />}
           />
+          
         </div>
       </div>
     </div>
