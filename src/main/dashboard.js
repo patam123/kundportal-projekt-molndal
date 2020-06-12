@@ -86,12 +86,12 @@ function Dashboard() {
             </div>
           </div>
         </div>
+        
         <div id="page-style">
           <Switch>
             <Route exact path="/">
               <Home />
             </Route>
-
             <Route path="/portfolio" exact>
               <Portfolio user={user} />
             </Route>
