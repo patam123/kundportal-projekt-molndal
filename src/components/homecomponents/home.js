@@ -11,8 +11,9 @@ const Home = () => {
     <div id="homeContainer">
       <HeadTitle title="Hem" />
       <p id="welcome-style">
-        Välkommen Magnus! du har inte något innehav tillagt ännu. Du får ett
-        mail såfort det är uppdaterad!
+        Välkommen <span style={{ fontWeight: "bold" }}>Magnus</span>! du har
+        inte något innehav tillagt ännu. Du får ett mail såfort det är
+        uppdaterad!
       </p>
       <div id="profileContainer">
         <div id="profile-style">

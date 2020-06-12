@@ -4,9 +4,6 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  overflow-x: hidden;
-  font-family: 'Poppins', sans-serif;
-
   
 }
 #dashboard-style {
@@ -17,7 +14,6 @@
 
 #sidebar{
   grid-row: 1 / span 7;
- 
   background: #3c3c3b 0% 0% no-repeat padding-box;
   height: 100vh;
   position: fixed;
