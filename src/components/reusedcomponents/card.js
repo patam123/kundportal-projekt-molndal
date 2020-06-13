@@ -10,6 +10,7 @@ const Card = ({ headText, btnText, handleBtnClick, firstSection }) => {
         btnText={btnText}
         handleBtnClick={handleBtnClick}
       />
+
       <CardSection content={firstSection} />
     </div>
   );
