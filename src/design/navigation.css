@@ -9,7 +9,9 @@
 #img-link-container {
   margin-top: 3vw;
 }
-
+.loginSubcontainer{
+  display: flex;
+}
 
 #home-Logo,
 #port-Logo,
