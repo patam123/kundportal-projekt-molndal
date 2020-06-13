@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ProfileSetting from "./profilesetting";
 import ChangePassword from "./changepassword";
 import SettingPreferenser from "./settingpreferenser";
-import Navigation from "../navigationcomponents/nav";
+import Links from "../navigationcomponents/links";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HeadTitl from "../reusedcomponents/headtitle";
 import SettingCSS from "../../design/setting.css";
@@ -47,7 +47,7 @@ const Setting = () => {
         <div id="settingStyle">
           <div id="container">
             {obj.map((element, index) => (
-              <Navigation
+              <Links
                 path={element.path}
                 name={element.name}
                 navstyle={element.style}
