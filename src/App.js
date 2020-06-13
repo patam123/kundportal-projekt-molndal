@@ -1,11 +1,11 @@
 import React from "react";
-import Home from "./components/homecomponents/home";
-import Setting from "./components/settingcomponents/setting";
 import DashBoard from "./main/dashboard";
+import Login from "./components/login/login";
 import "./App.css";
 
 function App() {
-  return <DashBoard />;
+
+  return <Login/>;
 }
 
 export default App;
