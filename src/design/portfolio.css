@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap");
 
 
+
 .headrow{
   flex-direction: row;
   display: flex;
@@ -52,6 +53,7 @@ table{
     border-bottom:#ebedf2 1px solid;
   }
   th, td{
+
     padding: 10px 40px;
   }
 

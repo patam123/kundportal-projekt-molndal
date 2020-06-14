@@ -7,7 +7,7 @@ const Customer = function (customer) {
 };
 
 Customer.getAll = (result) => {
-  sql.query("SELECT * FROM customers", (err, res) => {
+  sql.query("SELECT Email, FirstName, LastName, PersonNumber, Address, PostCode, PostAddress, PhoneNumber FROM Customer WHERE Id=2", (err, res) => {
     if (err) {
       console.log("Error", err);
       result(null, err);
