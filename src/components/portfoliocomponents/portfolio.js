@@ -49,8 +49,9 @@ const Portfolio = ({ user }) => {
       for (let i = 0; i < Math.ceil(user.shares.length / size); i++) {
         buttonArray.push(
           <ButtonComponent
-           
-            cssValue={pageIndex === i ? "portfolio-button-active" : "portfolio-button"}
+            cssValue={
+              pageIndex === i ? "portfolio-button-active" : "portfolio-button"
+            }
             key={i + 1}
             btnText={i + 1}
             isClicked={() => setIndex(i)}
@@ -95,66 +96,70 @@ const Portfolio = ({ user }) => {
   };
 
   return (
-    <div className="portfolio-container">
+    <div id="portfolio-container">
       <div className="headrow">
         <HeadTitle title={`Min Portfölj`} />
         <p className="portfolio-head">{getDate()}</p>
       </div>
-      <div id="portfolio">
-        <table key="portfolioTable">
-          <thead key="tableheadelement">
-            <tr className="portfolio-tablehead" key="tablehead">
-              <th key="tableheadCo">Företag</th>
-              <th key="tableheadAmount">Innehav</th>
-              <th key="tableheadType">Aktietyp</th>
-              <th key="tableheadNrOfShare">Antal aktier</th>
-              <th key="tableheadShareNr">Aktienummer</th>
-              <th key="tableheadSharePct">Ägarandel</th>
-              <th key="tableheadVotePwr">Röstvärde</th>
-            </tr>
-          </thead>
-          <tbody key="tablebody">
-            {content.map((share) => {
-              return (
-                <Portfoliorow
-                  key={`${share.companyName}PortfolioRow`}
-                  companyName={share.companyName}
-                  amount={share.amount}
-                  type={share.type}
-                  nrOfShares={share.nrOfShares}
-                  shareNr={share.shareNr}
-                  sharePct={share.sharePct}
-                  votePwr={share.votePwr}
-                />
-              );
-            })}
-          </tbody>
-        </table>
-        <div className="portfolio-buttons">{generateButtons()}</div>
-        <div className="portfolio-div">
-          <select
-            className="portfolio-select"
-            onChange={(e) => setTableSize(parseInt(e.target.value))}
-          >
-            <option value="1" selected={size === 1}>
-              1
-            </option>
-            <option value="50" selected={size === 50}>
-              50
-            </option>
-            <option value="100" selected={size === 100}>
-              100
-            </option>
-          </select>
-          <p>
-            {user.shares.length > size
-              ? size > 1
-                ? `Visar ${pageIndex * size + 1} - ${
-                    (pageIndex + 1) * size
-                  } av ${user.shares.length}`
-                : `Visar ${pageIndex * size + 1} av ${user.shares.length}`
-              : `Visar ${user.shares.length} av ${user.shares.length}`}
-          </p>
+      <div id="main-div">
+        <div id="portfolio">
+          <table key="portfolioTable">
+            <thead key="tableheadelement">
+              <tr className="portfolio-tablehead" key="tablehead">
+                <td className="td-title" key="tableheadCo">Företag</td>
+                <td className="td-title" key="tableheadAmount">Innehav</td>
+                <td className="td-title" key="tableheadType">Aktietyp</td>
+                <td className="td-title" key="tableheadNrOfShare">Antal aktier</td>
+                <td className="td-title" key="tableheadShareNr">Aktienummer</td>
+                <td className="td-title" key="tableheadSharePct">Ägarandel</td>
+                <td className="td-title" key="tableheadVotePwr">Röstvärde</td>
+              </tr>
+            </thead>
+            <tbody key="tablebody">
+              {content.map((share) => {
+                return (
+                  <Portfoliorow
+                    key={`${share.companyName}PortfolioRow`}
+                    companyName={share.companyName}
+                    amount={share.amount}
+                    type={share.type}
+                    nrOfShares={share.nrOfShares}
+                    shareNr={share.shareNr}
+                    sharePct={share.sharePct}
+                    votePwr={share.votePwr}
+                  />
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+        <div id="bottom-container">
+          <div className="portfolio-buttons">{generateButtons()}</div>
+          <div className="portfolio-div">
+            <select
+              className="portfolio-select"
+              onChange={(e) => setTableSize(parseInt(e.target.value))}
+            >
+              <option value="1" selected={size === 1}>
+                1
+              </option>
+              <option value="50" selected={size === 50}>
+                50
+              </option>
+              <option value="100" selected={size === 100}>
+                100
+              </option>
+            </select>
+            <p>
+              {user.shares.length > size
+                ? size > 1
+                  ? `Visar ${pageIndex * size + 1} - ${
+                      (pageIndex + 1) * size
+                    } av ${user.shares.length}`
+                  : `Visar ${pageIndex * size + 1} av ${user.shares.length}`
+                : `Visar ${user.shares.length} av ${user.shares.length}`}
+            </p>
+          </div>
         </div>
       </div>
     </div>
