@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Home from "../components/homecomponents/home";
 import Portfolio from "../components/portfoliocomponents/portfolio";
 import Setting from "../components/settingcomponents/setting";
-import Navigation from "../components/navigationcomponents/nav";
+import Links from "../components/navigationcomponents/links";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavCss from "../components/../design/navigation.css";
 import DashboardStyling from "../design/dashboard.css";
@@ -66,7 +66,7 @@ function Dashboard() {
             <div id="link-Container">
               {items.map((element, index) => {
                 return (
-                  <Navigation
+                  <Links
                     path={element.path}
                     name={element.name}
                     icon={element.icon}
@@ -87,10 +87,10 @@ function Dashboard() {
           </div>
         </div>
         
-        <div id="page-style">
+        <div id="page-style">         
           <Switch>
             <Route exact path="/">
-              <Home />
+              <Home redigera={doClick} minport={doClick}/>
             </Route>
             <Route path="/portfolio" exact>
               <Portfolio user={user} />

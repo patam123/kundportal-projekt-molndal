@@ -57,7 +57,8 @@ const Possession = () => {
   );
   const shares = [share1, share2, share3, share4, share5];
   
-  let sum = shares.reduce((tot, share) => tot + share.amount, 0);
+  let sum = shares.reduce((tot, share) =>
+   tot + share.amount, 0);
   const getDate = () => {
     const date = new Date();
 
@@ -77,7 +78,7 @@ const Possession = () => {
   return (
     <div className="possession">
       <div>
-        <span className="possession-amount">{`${sum} SEK`}</span>
+        <span className="possession-amount">{`${sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} SEK`}</span>
         <span className="label-text">{getDate()}</span>
       </div>
       <div id="statistic-style">
@@ -95,7 +96,7 @@ const Possession = () => {
               <li key={index}>{element.industry}</li>
               <p style={{ opacity: "0.5" }}>{element.companyName}</p>
             </div>
-            <p style={{ opacity: "0.5" }}>{element.amount} SEK</p>
+            <p style={{ opacity: "0.5" }}>{element.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} SEK</p>
           </div>
         ))}
       </div>
