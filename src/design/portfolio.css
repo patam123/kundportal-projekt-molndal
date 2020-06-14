@@ -5,9 +5,9 @@
 } */
 
 .portfolio-container{
-  margin-left: 50px;
   width: 100%;
-  margin-right: 50px;
+  margin-right: 20px;
+  display: block;
  
 
 }
@@ -62,7 +62,8 @@ table{
     border-bottom:#ebedf2 1px solid;
   }
   th, td{
-    padding: 20px 60px;
+    box-sizing: border-box;
+    padding: 20px 40px;
   }
 
 .portfolio-div{

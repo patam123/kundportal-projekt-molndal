@@ -1,8 +1,8 @@
-const mssql = require("mssql");
+const mysql = require("mysql");
 const dbConfig = require("../config/db.config");
 
-var connection = mssql.ConnectionPool({
-  server: dbConfig.server,
+var connection = mysql.createPool({
+  host: dbConfig.host,
   user: dbConfig.user,
   password: dbConfig.password,
   database: dbConfig.database,
