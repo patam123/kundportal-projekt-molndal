@@ -6,30 +6,13 @@ import HomeStyle from "../../design/homestyle/home.css";
 import HeadTitle from "../reusedcomponents/headtitle";
 
 // Home station var min profil och mitt innehav ska anropas här
-const Home = ({ redigera, minport, id, user }) => {
-  const linkArr = [
-    {
-      path: "/portfolio",
-      icon: "port-Logo",
-      name: "Min Portfölj",
-      style: "inactive",
-    },
-    {
-      path: "/setting",
-      icon: "setting-Logo",
-      name: "Inställningar",
-      style: "inactive",
-    },
-  ];
-
+const Home = ({ id, user }) => {
   return (
     <div id="homeContainer">
       <HeadTitle title="Hem" />
       <p id="welcome-style">
         Välkommen{" "}
-        <span style={{ fontWeight: "bold" }}>
-          {user ? user.FirstName : ""}
-        </span>
+        <span style={{ fontWeight: "bold" }}>{user ? user.FirstName : ""}</span>
         ! du har inte något innehav tillagt ännu. Du får ett mail såfort det är
         uppdaterad!
       </p>
@@ -38,9 +21,7 @@ const Home = ({ redigera, minport, id, user }) => {
           <Card
             path="/setting"
             headText="Min profil"
-            btnText="Redigera"
-            handleBtnClick={redigera}
-            keyId="2"
+            linkText="Redigera"
             firstSection={
               <Profile
                 fname={user && user.FirstName}
@@ -60,9 +41,7 @@ const Home = ({ redigera, minport, id, user }) => {
           <Card
             path="/portfolio"
             headText="Mitt innehav"
-            btnText="Min Portfölj"
-            handleBtnClick={minport}
-            keyId="1"
+            linkText="Min Portfölj"
             firstSection={<Possession />}
           />
         </div>

@@ -13,51 +13,41 @@ const Setting = () => {
       path: "/setting",
       name: "Profil",
       style: "active-setting",
+      isexact: true,
     },
     {
       path: "/changepassword",
       name: "Byt Lösenord",
-      style: "inactive-setting",
+      style: "active-setting",
+      isexact: false,
     },
     {
       path: "/settingpreferenser",
       name: "Preferenser",
-      style: "inactive-setting",
+      style: "active-setting",
+      isexact: false,
     },
   ];
 
-  const indexobj = { index: 0 };
-  let [prevIndex, setIndex] = useState(indexobj.index);
-  const [obj, setStyle] = useState(arrsetting);
-
-  function makeClick(e) {
-    const index = e.target.id;
-    if (prevIndex !== index) {
-      obj[index].style = "active-setting";
-      obj[prevIndex].style = "inactive-setting";
-      prevIndex = index;
-    }
-    setIndex(prevIndex);
-    setStyle([...obj]);
-  }
   return (
     <Router>
       <div id="setting-container">
         <HeadTitl title="Inställningar" />
         <div id="settingStyle">
           <div id="container">
-            {obj.map((element, index) => (
+            {arrsetting.map((element, index) => (
               <Links
                 path={element.path}
                 name={element.name}
-                navstyle={element.style}
-                handleClick={makeClick}
                 keyId={index}
+                isExact={element.isexact}
+                isActive={element.style}
+                inActive="inactive-setting"
               />
             ))}
           </div>
           <Switch>
-            <Route exact path="/setting">
+            <Route exact={true} path="/setting">
               <ProfileSetting />
             </Route>
             <Route path="/changepassword">

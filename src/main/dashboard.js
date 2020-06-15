@@ -20,52 +20,36 @@ const user = new User(
   "Göteborg"
 );
 
-
-
 function Dashboard() {
   const arr = [
     {
       path: "/",
       icon: "home-Logo",
       name: "Home",
-      style: "active",
+      isexact: true,
     },
     {
       path: "/portfolio",
       icon: "port-Logo",
       name: "Min Portfölj",
-      style: "inactive",
+      isexact: false,
     },
     {
       path: "/setting",
       icon: "setting-Logo",
       name: "Inställningar",
-      style: "inactive",
+      isexact: false,
     },
   ];
 
   useEffect(() => {
-    fetch("http://localhost:3300/customers").then(response => response.json()).then(data => setData(data));
-  }, [])
+    fetch("http://localhost:3300/customers")
+      .then((response) => response.json())
+      .then((data) => setData(data));
+  }, []);
 
   const [myData, setData] = useState();
-  console.log(myData && myData[0])
-
-  const indexobj = { index: 0 };
-  let [prevIndex, setIndex] = useState(indexobj.index);
-
-  const [items, setStyle] = useState(arr);
-
-  function doClick(e) {
-    const index = e.target.id;
-    if (prevIndex !== index) {
-      items[index].style = "active";
-      items[prevIndex].style = "inactive";
-      prevIndex = index;
-    }
-    setIndex(prevIndex);
-    setStyle([...items]);
-  }
+  console.log(myData && myData[0]);
 
   return (
     <Router>
@@ -74,15 +58,15 @@ function Dashboard() {
           <div id="img-link-container">
             <div id="logo"></div>
             <div id="link-Container">
-              {items.map((element, index) => {
+              {arr.map((element, index) => {
                 return (
                   <Links
                     path={element.path}
                     name={element.name}
                     icon={element.icon}
-                    handleClick={doClick}
                     keyId={index}
-                    navstyle={element.style}
+                    isExact={element.isexact}
+                    inActive="inactive"
                   />
                 );
               })}
@@ -96,13 +80,13 @@ function Dashboard() {
             </div>
           </div>
         </div>
-        
-        <div id="page-style">         
+
+        <div id="page-style">
           <Switch>
-            <Route exact path="/">
-              <Home user={myData && myData[0]} redigera={doClick} minport={doClick}/>
+            <Route path="/" exact={true}>
+              <Home user={myData && myData[0]} />
             </Route>
-            <Route path="/portfolio" exact>
+            <Route path="/portfolio">
               <Portfolio user={user} />
             </Route>
             <Route path="/setting">
