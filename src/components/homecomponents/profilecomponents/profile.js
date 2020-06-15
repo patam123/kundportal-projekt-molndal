@@ -4,7 +4,7 @@ import Userdata from "../../usercomponents/userdata";
 import Photo from "../../reusedcomponents/profile-photo";
 import HomeProfileCss from "../../../design/homestyle/homeprofilestyle.css";
 
-const Profile = () => {
+const Profile = ({fname, lname, perNum, telNum, email, address, postCode, postArea, photo}) => {
   const user = new User(
     "Magnus",
     "Person",
@@ -21,15 +21,15 @@ const Profile = () => {
       <div id="pic-info-style">
         <Photo user={user} />
         <div>
-          <p id="userNamestyle">{`${user.fname} ${user.lname}`}</p>
+          <p id="userNamestyle">{`${fname} ${lname}`}</p>
           <p className="label-text">Person Nr/Organisations Nr</p>
-          <p>{`${user.perNum}`}</p>
+          <p>{`${perNum}`}</p>
         </div>
       </div>
       <p className="title" >Föredragna Industrier</p>
       <div id="contact">
       <p className="title">Kontaktuppgifter</p>
-      <Userdata user={user} />
+      <Userdata fname={fname} lname={lname} telNum={telNum} email={email} address={address} postCode={postCode} postArea={postArea} />
       </div>
      
     </div>

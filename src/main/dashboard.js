@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Home from "../components/homecomponents/home";
 import Portfolio from "../components/portfoliocomponents/portfolio";
 import Setting from "../components/settingcomponents/setting";
@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavCss from "../components/../design/navigation.css";
 import DashboardStyling from "../design/dashboard.css";
 import User from "../components/usercomponents/user";
+import Userdata from "../components/usercomponents/userdata";
 
 const user = new User(
   "Example",
@@ -18,6 +19,8 @@ const user = new User(
   "40010",
   "Göteborg"
 );
+
+
 
 function Dashboard() {
   const arr = [
@@ -40,6 +43,13 @@ function Dashboard() {
       style: "inactive",
     },
   ];
+
+  useEffect(() => {
+    fetch("http://localhost:3300/customers").then(response => response.json()).then(data => setData(data));
+  }, [])
+
+  const [myData, setData] = useState();
+  console.log(myData && myData[0])
 
   const indexobj = { index: 0 };
   let [prevIndex, setIndex] = useState(indexobj.index);
@@ -90,7 +100,7 @@ function Dashboard() {
         <div id="page-style">         
           <Switch>
             <Route exact path="/">
-              <Home redigera={doClick} minport={doClick}/>
+              <Home user={myData && myData[0]} redigera={doClick} minport={doClick}/>
             </Route>
             <Route path="/portfolio" exact>
               <Portfolio user={user} />

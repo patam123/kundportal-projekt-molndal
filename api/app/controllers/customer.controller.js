@@ -11,3 +11,9 @@ exports.findAll = (req, res) => {
     }
   });
 };
+
+// exports.insert = (req, res) => {
+
+//   console.log(req.body)
+
+// };

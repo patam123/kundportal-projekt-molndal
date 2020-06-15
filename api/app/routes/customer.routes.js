@@ -3,4 +3,6 @@ module.exports = (app) => {
     const customers = require("../controllers/customer.controller");
   
     app.get("/customers", customers.findAll);
+    // app.post("/customers", customers.insert);
+
   };
