@@ -6,7 +6,7 @@ import HomeStyle from "../../design/homestyle/home.css";
 import HeadTitle from "../reusedcomponents/headtitle";
 
 // Home station var min profil och mitt innehav ska anropas här
-const Home = ({ redigera, minport, id }) => {
+const Home = ({ redigera, minport, id, user }) => {
   const linkArr = [
     {
       path: "/portfolio",
@@ -26,8 +26,11 @@ const Home = ({ redigera, minport, id }) => {
     <div id="homeContainer">
       <HeadTitle title="Hem" />
       <p id="welcome-style">
-        Välkommen <span style={{ fontWeight: "bold" }}>Magnus</span>! du har
-        inte något innehav tillagt ännu. Du får ett mail såfort det är
+        Välkommen{" "}
+        <span style={{ fontWeight: "bold" }}>
+          {user ? user.FirstName : ""}
+        </span>
+        ! du har inte något innehav tillagt ännu. Du får ett mail såfort det är
         uppdaterad!
       </p>
       <div id="profileContainer">
@@ -38,7 +41,18 @@ const Home = ({ redigera, minport, id }) => {
             btnText="Redigera"
             handleBtnClick={redigera}
             keyId="2"
-            firstSection={<Profile />}
+            firstSection={
+              <Profile
+                fname={user && user.FirstName}
+                lname={user && user.LastName}
+                perNum={user && user.PersonNumber}
+                telNum={user && user.PhoneNumber}
+                postArea={user && user.PostAddress}
+                postCode={user && user.PostCode}
+                address={user && user.Address}
+                email={user && user.Email}
+              />
+            }
           />
         </div>
 
