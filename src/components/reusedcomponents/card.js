@@ -2,17 +2,15 @@ import React from "react";
 import Header from "./header";
 import CardSection from "./cardsection";
 
-const Card = ({ headText, btnText, handleBtnClick, firstSection,keyId,path }) => {
+const Card = ({ headText, linkText ,firstSection,keyId,path }) => {
   return (
     <div>
       <Header
         headText={headText}
-        btnText={btnText}
-        handleBtnClick={handleBtnClick}
+        linkText={linkText}
         id={keyId}
         path={path}
       />
-
       <CardSection content={firstSection}  />
     </div>
   );

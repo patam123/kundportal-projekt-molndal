@@ -16,19 +16,19 @@ function Dashboard() {
       path: "/",
       icon: "home-Logo",
       name: "Home",
-      style: "active",
+      isexact: true,
     },
     {
       path: "/portfolio",
       icon: "port-Logo",
       name: "Min Portfölj",
-      style: "inactive",
+      isexact: false,
     },
     {
       path: "/setting",
       icon: "setting-Logo",
       name: "Inställningar",
-      style: "inactive",
+      isexact: false,
     },
   ];
 
@@ -43,22 +43,6 @@ function Dashboard() {
 
   console.log(shareData);
 
-  const indexobj = { index: 0 };
-  let [prevIndex, setIndex] = useState(indexobj.index);
-
-  const [items, setStyle] = useState(arr);
-
-  function doClick(e) {
-    const index = e.target.id;
-    if (prevIndex !== index) {
-      items[index].style = "active";
-      items[prevIndex].style = "inactive";
-      prevIndex = index;
-    }
-    setIndex(prevIndex);
-    setStyle([...items]);
-  }
-
   return (
     <Router>
       <div id="dashboard-style">
@@ -66,15 +50,15 @@ function Dashboard() {
           <div id="img-link-container">
             <div id="logo"></div>
             <div id="link-Container">
-              {items.map((element, index) => {
+              {arr.map((element, index) => {
                 return (
                   <Links
                     path={element.path}
                     name={element.name}
                     icon={element.icon}
-                    handleClick={doClick}
                     keyId={index}
-                    navstyle={element.style}
+                    isExact={element.isexact}
+                    inActive="inactive"
                   />
                 );
               })}
@@ -88,13 +72,13 @@ function Dashboard() {
             </div>
           </div>
         </div>
-        
-        <div id="page-style">         
+
+        <div id="page-style">
           <Switch>
-            <Route exact path="/">
-              <Home user={userData && userData[0]} redigera={doClick} minport={doClick}/>
+            <Route exact={true} path="/">
+              <Home user={userData && userData[0]}/>
             </Route>
-            <Route path="/portfolio" exact>
+            <Route path="/portfolio">
               <Portfolio share={shareData && shareData} />
             </Route>
             <Route path="/setting">

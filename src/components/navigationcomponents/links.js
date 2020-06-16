@@ -1,30 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-function navigation({
-  path,
-  name,
-  navstyle,
-  icon,
-  handleClick,
-  keyId,
-}) {
+function navigation({ path, name, isActive, inActive, icon, keyId, isExact }) {
   const linkStyle = {
     fontFamily: "Arial",
     textDecoration: "none",
   };
 
   return (
-    <Link
+    <NavLink
       style={linkStyle}
-      onClick={handleClick}
-      className={navstyle}
+      activeClassName={isActive}
+      className={inActive}
       id={keyId}
       to={path}
+      exact={isExact}
     >
       <div id={icon}></div>
       {name}
-    </Link>
+    </NavLink>
   );
 }
 

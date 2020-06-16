@@ -4,5 +4,4 @@ module.exports = (app) => {
   
     app.get("/customers", customers.findAll);
     // app.post("/customers", customers.insert);
-
   };
