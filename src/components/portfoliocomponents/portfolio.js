@@ -4,32 +4,36 @@ import HeadTitle from "../reusedcomponents/headtitle";
 import ButtonComponent from "../reusedcomponents/button";
 import "../../design/portfolio.css";
 
-const Portfolio = ({ user }) => {
+const Portfolio = ({ shares }) => {
   //använda localStorage.setItem för att spara undan size i useEffect.
   //localStorage.getItem för att hämta i useState.  (kanske lagra dessa värden i databas som någon slags config)
   const savedSize = localStorage.getItem("size");
   const [size, setTableSize] = useState(savedSize ? JSON.parse(savedSize) : 1);
   const [pageIndex, setIndex] = useState(0);
+  const [share, setShare] = useState()
 
-  const [content, setContent] = useState(user.shares);
+  const [content, setContent] = useState();
   useEffect(() => {
     //setTableSize funkar enligt loggen.
     setTableSize(size);
     setIndex(pageIndex);
+    setShare(shares);
     setContent(
-      pageIndex * size < user.shares.length
-        ? user.shares.slice(pageIndex, (pageIndex + 1) * size)
-        : user.shares.slice(pageIndex - 1, (pageIndex + 1) * size)
+      share?
+      pageIndex * size < share.length
+        ? share.slice(pageIndex, (pageIndex + 1) * size)
+        : share.slice(pageIndex - 1, (pageIndex + 1) * size)
+        :""
     );
 
     localStorage.setItem("size", JSON.stringify(size));
-  }, [pageIndex, size]);
+  }, [pageIndex, size, share, shares]);
 
   //funktionalitet för att lägga till ...-knappen behövs.
 
   const generateButtons = () => {
     const buttonArray = [];
-    if (user.shares.length / size > 1) {
+    if (share.length / size > 1) {
       buttonArray.push(
         <ButtonComponent
           cssValue="backAndFoward"
@@ -46,7 +50,7 @@ const Portfolio = ({ user }) => {
           isClicked={() => pageIndex > 0 && setIndex(pageIndex - 1)}
         />
       );
-      for (let i = 0; i < Math.ceil(user.shares.length / size); i++) {
+      for (let i = 0; i < Math.ceil(share.length / size); i++) {
         buttonArray.push(
           <ButtonComponent
             cssValue={
@@ -64,7 +68,7 @@ const Portfolio = ({ user }) => {
           key="forwardOnePage"
           btnText=">"
           isClicked={() =>
-            pageIndex * size < user.shares.length - 1 && setIndex(pageIndex + 1)
+            pageIndex * size < share.length - 1 && setIndex(pageIndex + 1)
           }
         />
       );
@@ -73,7 +77,7 @@ const Portfolio = ({ user }) => {
           cssValue="backAndFoward"
           key="forwardToEnd"
           btnText=">>"
-          isClicked={() => setIndex(Math.ceil(user.shares.length / size) - 1)}
+          isClicked={() => setIndex(Math.ceil(share.length / size) - 1)}
         />
       );
     }
@@ -116,17 +120,17 @@ const Portfolio = ({ user }) => {
               </tr>
             </thead>
             <tbody key="tablebody">
-              {content.map((share) => {
+              {shares && content.map((share) => {
                 return (
                   <Portfoliorow
-                    key={`${share.companyName}PortfolioRow`}
-                    companyName={share.companyName}
-                    amount={share.amount}
+                    key={`${share.name}PortfolioRow`}
+                    companyName={share.name}
+                    // amount={share.amount}
                     type={share.type}
-                    nrOfShares={share.nrOfShares}
-                    shareNr={share.shareNr}
-                    sharePct={share.sharePct}
-                    votePwr={share.votePwr}
+                    // nrOfShares={share.nrOfShares}
+                    shareNr={share.shareNumber}
+                    // sharePct={share.sharePct}
+                    // votePwr={share.votePwr}
                   />
                 );
               })}
@@ -134,30 +138,31 @@ const Portfolio = ({ user }) => {
           </table>
         </div>
         <div id="bottom-container">
-          <div className="portfolio-buttons">{generateButtons()}</div>
+          <div className="portfolio-buttons">{shares && generateButtons()}</div>
           <div className="portfolio-div">
             <select
+            value={size}
               className="portfolio-select"
               onChange={(e) => setTableSize(parseInt(e.target.value))}
             >
-              <option value="1" selected={size === 1}>
+              <option value="1">
                 1
               </option>
-              <option value="50" selected={size === 50}>
+              <option value="50">
                 50
               </option>
-              <option value="100" selected={size === 100}>
+              <option value="100">
                 100
               </option>
             </select>
             <p>
-              {user.shares.length > size
+              {share?share.length > size
                 ? size > 1
                   ? `Visar ${pageIndex * size + 1} - ${
                       (pageIndex + 1) * size
-                    } av ${user.shares.length}`
-                  : `Visar ${pageIndex * size + 1} av ${user.shares.length}`
-                : `Visar ${user.shares.length} av ${user.shares.length}`}
+                    } av ${share.length}`
+                  : `Visar ${pageIndex * size + 1} av ${share.length}`
+                : `Visar ${share.length} av ${share.length}`:""}
             </p>
           </div>
         </div>
