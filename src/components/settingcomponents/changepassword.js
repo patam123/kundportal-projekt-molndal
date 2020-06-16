@@ -3,34 +3,34 @@ import Input from "../reusedcomponents/input";
 import Button from "../reusedcomponents/button";
 import ButtonCSS from "../../design/settingbutton.css";
 
-
-
-const ChangePassword = () => {
+const ChangePassword = (handleSubmit) => {
   return (
     <div>
-      <div id="profilesettingStyle">
-        <div id="input-Container-Style">
-          <Input
-            inputStyle="inputStyle"
-            inputtype="text"
-            labelname="Nuvarande lösenord"
-          />
-          <Input
-            inputStyle="inputStyle"
-            inputtype="text"
-            labelname="Nytt lösenord"
-          />
-          <Input
-            inputStyle="inputStyle"
-            inputtype="text"
-            labelname="Bekräfta nytt lösenord"
-          />
+      <form onSubmit={handleSubmit}>
+        <div id="profilesettingStyle">
+          <div id="input-Container-Style">
+            <Input
+              inputStyle="inputStyle"
+              inputtype="text"
+              labelname="Nuvarande lösenord"
+            />
+            <Input
+              inputStyle="inputStyle"
+              inputtype="text"
+              labelname="Nytt lösenord"
+            />
+            <Input
+              inputStyle="inputStyle"
+              inputtype="text"
+              labelname="Bekräfta nytt lösenord"
+            />
+          </div>
         </div>
-      </div>
 
-      <div className="bottom-style">
-        <Button cssValue="btnSettingStyle" btnText="Spara" />
-      </div>
+        <div className="bottom-style">
+          <Button cssValue="btnSettingStyle" btnText="Spara" />
+        </div>
+      </form>
     </div>
   );
 };
