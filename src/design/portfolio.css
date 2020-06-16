@@ -123,3 +123,12 @@ td {
 .portfolio-button:hover {
   background-color: #fdcc6b;
 }
+
+#no-portfolio-text{
+  text-align: center;
+  font-size: 31px;
+  letter-spacing: 0.44px;
+  color: #3D4465;
+  opacity: 0.4;
+
+}

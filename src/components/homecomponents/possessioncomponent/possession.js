@@ -72,14 +72,14 @@ const Possession = () => {
       day = "0" + day;
     }
 
-    return `Uppdaterad: ${year}-${month}-${day}`;
+    return `Uppdaterat: ${year}-${month}-${day}`;
   };
 
   return (
     <div className="possession">
       <div>
-        <span className="possession-amount">{`${sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} SEK`}</span>
-        <span className="label-text">{getDate()}</span>
+        <span className="possession-amount">{`${sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} SEK `}</span>
+        <span className="label-text">{`${getDate()}`}</span>
       </div>
       <div id="statistic-style">
         <id id="sector1"></id>

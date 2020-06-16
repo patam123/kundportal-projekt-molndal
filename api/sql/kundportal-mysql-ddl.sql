@@ -40,11 +40,13 @@ Id INT auto_increment NOT NULL,
 
 Name NVARCHAR(100) NOT NULL,
 
-ShareWorth decimal NOT NULL,
+ShareWorth DECIMAL(16,4) NOT NULL,
 
 ShareNumber NVARCHAR(8) NOT NULL,
 
 Industry NVARCHAR(50) NOT NULL,
+
+TotalShares INT NOT NULL,
 
 PRIMARY KEY(Id)
 );
@@ -75,5 +77,5 @@ CREATE INDEX Share_Search ON Share(Owner, CompanyId, Type);
 
 
 
--- Kanske egen tabell för Industry?
+-- Kanske egen tabell fï¿½r Industry?
 

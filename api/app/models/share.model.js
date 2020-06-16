@@ -4,7 +4,18 @@ const Share = function (share) {
 };
 
 Share.getShares = (result) => {
-  sql.query("SELECT s.Type as type, co.Name as name, co.Industry as industry, co.ShareNumber as shareNumber, co.ShareWorth as shareWorth FROM Share s INNER JOIN Company co ON s.CompanyId = co.Id WHERE s.Owner = 1;", (err, res) => {
+  sql.query(`SELECT co.Name as companyName,
+  s.Type as type, SUM(co.ShareWorth) as shareValue,
+  Count(0) as amount,
+  co.Industry as industry,
+  co.ShareNumber as shareNumber,
+  ((SELECT COUNT(0) * 1.0 FROM Share WHERE Owner = c.Id AND CompanyId = s.CompanyId) / (SELECT COUNT(0) * 1.0 FROM Share WHERE CompanyId = s.CompanyId) * 100) as sharePct,
+  ((SELECT COUNT(0) * 1.0 FROM Share WHERE Owner = c.Id AND CompanyId = s.CompanyId) / (SELECT COUNT(0) * 1.0 FROM Share WHERE CompanyId = s.CompanyId) * 100) as votePct
+  FROM Share s 
+  INNER JOIN Company co ON co.Id = s.CompanyId
+  Inner JOIN Customer c ON s.Owner = c.Id 
+  WHERE c.Email = 'example.person@example.com'
+  Group by co.Name`, (err, res) => {
     if (err) {
       console.log("Error", err);
       result(null, err);

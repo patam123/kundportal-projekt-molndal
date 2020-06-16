@@ -41,8 +41,6 @@ function Dashboard() {
   const [userData, setData] = useState();
   const [shareData, setShareData] = useState();
 
-  console.log(shareData);
-
   return (
     <Router>
       <div id="dashboard-style">
@@ -76,10 +74,10 @@ function Dashboard() {
         <div id="page-style">
           <Switch>
             <Route exact={true} path="/">
-              <Home user={userData && userData[0]}/>
+              <Home user={userData && userData[0]} shares={shareData && shareData}/>
             </Route>
             <Route path="/portfolio">
-              <Portfolio share={shareData && shareData} />
+              {shareData && <Portfolio shares={shareData && shareData} />}
             </Route>
             <Route path="/setting">
               <Setting userData={userData && userData[0]}/>
