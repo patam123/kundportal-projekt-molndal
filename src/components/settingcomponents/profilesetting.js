@@ -6,7 +6,7 @@ import User from "../usercomponents/user";
 import SettingProfileStyle from "../../design/settingprofileStyle.css";
 import ButtonCSS from "../../design/settingbutton.css";
 
-function profileSetting({fname, lname, perNum, telNum, email, address, postCode, postArea, photo}) {
+function profileSetting({fname, lname, perNum, telNum, email, address, postCode, postArea, photo,handleSubmit}) {
   const user = new User(
     "Example",
     "Person",
@@ -19,6 +19,7 @@ function profileSetting({fname, lname, perNum, telNum, email, address, postCode,
   );
   return (
     <div>
+    <form onSubmit={handleSubmit}>
       <div id="profilesettingStyle">
         <div id="photo-style"> <div id="circle"></div>{<ProfilePhoto user={user} />}</div>
         <div id="input-Container-Style">
@@ -82,6 +83,7 @@ function profileSetting({fname, lname, perNum, telNum, email, address, postCode,
       <div className="bottom-style">
         <Button cssValue="btnSettingStyle" btnText="Spara" />
       </div>
+      </form>
     </div>
   );
 }

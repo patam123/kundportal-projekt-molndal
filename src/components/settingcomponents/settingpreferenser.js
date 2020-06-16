@@ -4,9 +4,10 @@ import Button from "../reusedcomponents/button";
 import PreferenceCss from "../../design/preference.css";
 import profileCss from "../../design/settingprofileStyle.css";
 
-function settingPreferenser() {
+function settingPreferenser(handleSubmit) {
   return (
     <div>
+    <form onSubmit={handleSubmit}>
       <div id="profilesettingStyle">
         <div id="input-Container-Style">
           <div className="checkBox-style">
@@ -80,6 +81,7 @@ function settingPreferenser() {
       <div className="bottom-style">
         <Button cssValue="btnSettingStyle" btnText="Spara" />
       </div>
+      </form>
     </div>
   );
 }
