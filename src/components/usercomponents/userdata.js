@@ -9,12 +9,13 @@ const Userdata = ({fname,lname,perNum,email,telNum,address,postCode,postArea}) =
       lastname: lname,
       personnumber: perNum,
       telefon: telNum,
+      email:email,
       addr: address,
       postcode: postCode,
       postarea: postArea
   }
   return (
-    <div>
+    <div id="titleAndContactContainer">
     <div id="contact-style">
     <p className="nameContact">Telefon:</p>
     <p className="nameContact">Mail:</p>
@@ -27,6 +28,7 @@ const Userdata = ({fname,lname,perNum,email,telNum,address,postCode,postArea}) =
     <p>{personObj.lastname}</p>
     <p>{personObj.personnumber}</p>
     <p>{personObj.telefon}</p>
+    <p>{personObj.email}</p>
     <p>{personObj.addr}</p>
     <p>{personObj.postcode}</p>
     <p>{personObj.postarea}</p>
