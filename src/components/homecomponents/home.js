@@ -28,12 +28,13 @@ const Home = ({ id, user, shares }) => {
               <Profile
                 fname={user && user.FirstName}
                 lname={user && user.LastName}
+                email={user && user.Email}
                 perNum={user && user.PersonNumber}
                 telNum={user && user.PhoneNumber}
                 postArea={user && user.PostAddress}
                 postCode={user && user.PostCode}
                 address={user && user.Address}
-                email={user && user.Email}
+                
               />
             }
           />

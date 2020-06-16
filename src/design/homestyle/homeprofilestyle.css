@@ -1,5 +1,6 @@
 #profileMainContainer {
   margin-left: 20px;
+
 }
 #pic-info-style {
   width: 75%;
@@ -29,7 +30,7 @@
 #contact {
   margin-top: 150px;
 }
-#contactContainer {
+#titleAndContactContainer{
   display: flex;
 }
 #contact-style {
@@ -37,6 +38,7 @@
   margin-right: 20px;
   text-align: left;
   font-size: 15px;
+ 
 }
 .nameContact{
     font-weight: bold;

@@ -4,7 +4,17 @@ import Userdata from "../../usercomponents/userdata";
 import Photo from "../../reusedcomponents/profile-photo";
 import HomeProfileCss from "../../../design/homestyle/homeprofilestyle.css";
 
-const Profile = ({fname, lname, perNum, telNum, email, address, postCode, postArea, photo}) => {
+const Profile = ({
+  fname,
+  lname,
+  perNum,
+  telNum,
+  email,
+  address,
+  postCode,
+  postArea,
+  photo,
+}) => {
   const user = new User(
     "Magnus",
     "Person",
@@ -26,12 +36,19 @@ const Profile = ({fname, lname, perNum, telNum, email, address, postCode, postAr
           <p>{`${perNum}`}</p>
         </div>
       </div>
-      <p className="title" >Föredragna Industrier</p>
+      <p className="title">Föredragna Industrier</p>
+
       <div id="contact">
-      <p className="title">Kontaktuppgifter</p>
-      <Userdata fname={fname} lname={lname} telNum={telNum} email={email} address={address} postCode={postCode} postArea={postArea} />
+        <p className="title">Kontaktuppgifter</p>
+
+        <Userdata
+          telNum={telNum}
+          email={email}
+          address={address}
+          postCode={postCode}
+          postArea={postArea}
+        />
       </div>
-     
     </div>
   );
 };
