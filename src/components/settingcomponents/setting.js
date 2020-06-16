@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HeadTitl from "../reusedcomponents/headtitle";
 import SettingCSS from "../../design/setting.css";
 
-const Setting = () => {
+const Setting = ({userData}) => {
   const arrsetting = [
     {
       path: "/setting",
@@ -48,7 +48,7 @@ const Setting = () => {
           </div>
           <Switch>
             <Route exact={true} path="/setting">
-              <ProfileSetting />
+              <ProfileSetting fname={userData && userData.FirstName} lname={userData && userData.LastName} perNum={userData && userData.PersonNumber} telNum={userData && userData.PhoneNumber} email={userData && userData.Email} address={userData && userData.Address} postCode={userData && userData.PostCode} postArea={userData && userData.PostAddress} />
             </Route>
             <Route path="/changepassword">
               <ChangePassword />

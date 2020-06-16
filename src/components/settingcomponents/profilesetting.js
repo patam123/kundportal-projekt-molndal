@@ -6,7 +6,7 @@ import User from "../usercomponents/user";
 import SettingProfileStyle from "../../design/settingprofileStyle.css";
 import ButtonCSS from "../../design/settingbutton.css";
 
-function profileSetting() {
+function profileSetting({fname, lname, perNum, telNum, email, address, postCode, postArea, photo}) {
   const user = new User(
     "Example",
     "Person",
@@ -26,13 +26,13 @@ function profileSetting() {
             <Input
               inputStyle="inputStyle"
               inputtype="text"
-              inputvalue="Magnus"
+              inputvalue={fname}
               labelname="Förnamn"
             />
             <Input
               inputStyle="inputStyle"
               inputtype="text"
-              inputvalue="Persson"
+              inputvalue={lname}
               labelname="Efternamn"
             />
           </div>
@@ -40,14 +40,14 @@ function profileSetting() {
           <Input
             inputStyle="inputStyle"
             inputtype="text"
-            inputvalue="19800505-5555"
+            inputvalue={perNum}
             labelname="Personnummer"
           />
 
           <Input
             inputStyle="inputStyle"
             inputtype="text"
-            inputvalue="Lantmilsgatan 7"
+            inputvalue={address}
             labelname="Adress"
           />
 
@@ -55,26 +55,26 @@ function profileSetting() {
             <Input
               inputStyle="inputStyle"
               inputtype="text"
-              inputvalue="Göteborg"
+              inputvalue={postArea}
               labelname="Postort"
             />
             <Input
               inputStyle="inputStyle"
               inputtype="text"
-              inputvalue="41501"
+              inputvalue={postCode}
               labelname="Postnummer"
             />
           </div>
           <Input
             inputStyle="inputStyle"
             inputtype="text"
-            inputvalue="073-0546-0465"
+            inputvalue={telNum}
             labelname="Telefonnummer"
           />
           <Input
             inputStyle="inputStyle"
             inputtype="text"
-            inputvalue="Magnus.persson@hotmail.com"
+            inputvalue={email}
             labelname="Email"
           />
         </div>

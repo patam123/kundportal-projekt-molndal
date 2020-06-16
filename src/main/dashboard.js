@@ -9,16 +9,6 @@ import DashboardStyling from "../design/dashboard.css";
 import User from "../components/usercomponents/user";
 import Userdata from "../components/usercomponents/userdata";
 
-const user = new User(
-  "Example",
-  "Person",
-  "19800505-5555",
-  "example.person@gmail.com",
-  "0700000000",
-  "Landsvägen 1",
-  "40010",
-  "Göteborg"
-);
 
 function Dashboard() {
   const arr = [
@@ -43,13 +33,15 @@ function Dashboard() {
   ];
 
   useEffect(() => {
-    fetch("http://localhost:3300/customers")
-      .then((response) => response.json())
-      .then((data) => setData(data));
-  }, []);
+    fetch("http://localhost:3300/customers").then(response => response.json()).then(data => setData(data));
+    fetch("http://localhost:3300/shares").then(response => response.json()).then(data => setShareData(data));
 
-  const [myData, setData] = useState();
-  console.log(myData && myData[0]);
+  }, [])
+
+  const [userData, setData] = useState();
+  const [shareData, setShareData] = useState();
+
+  console.log(shareData);
 
   return (
     <Router>
@@ -83,14 +75,14 @@ function Dashboard() {
 
         <div id="page-style">
           <Switch>
-            <Route path="/" exact={true}>
-              <Home user={myData && myData[0]} />
+            <Route exact={true} path="/">
+              <Home user={userData && userData[0]}/>
             </Route>
             <Route path="/portfolio">
-              <Portfolio user={user} />
+              <Portfolio share={shareData && shareData} />
             </Route>
             <Route path="/setting">
-              <Setting />
+              <Setting userData={userData && userData[0]}/>
             </Route>
           </Switch>
         </div>
