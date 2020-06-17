@@ -10,6 +10,7 @@
   display: flex;
   align-items: center;
   padding: 10px 0px;
+ 
 }
 
 #main-div {
@@ -21,6 +22,7 @@
 #portfolio {
   height: 75vh;
   background: #ffffff 0% 0% no-repeat padding-box;
+ 
 }
 
 .portfolio-head {
@@ -29,6 +31,7 @@
   letter-spacing: 0px;
   color: #a1a8c3;
   margin-left: 20px;
+  
 }
 .portfolio-tablehead {
   text-align: left;
@@ -36,15 +39,21 @@
   font-size: 13px;
   letter-spacing: 0px;
   color: #a1a8c3;
+ 
+
+
 }
 
 tbody {
   text-align: left;
+  
+
 }
 table {
   text-align: left;
   align-content: center;
   align-items: center;
+  width: 100%;
   border-collapse: collapse; /* behöver vara collapse för att få border, men får då inte samma layout */
   /* border-spacing: 70px 20px; */
 }
