@@ -48,7 +48,6 @@
 .rectangle{
     width: 10px;
     height: 10px;
-    background-color: black;
     position: absolute;
     left: 0;
     top: 50%;

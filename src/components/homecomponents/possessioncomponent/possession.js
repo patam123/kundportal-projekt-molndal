@@ -8,6 +8,7 @@ const Possession = () => {
   const share1 = new Share(
     "Skanska ",
     "Byggsektorn",
+    "#5B74FF",
     12500,
     "B",
     100,
@@ -18,6 +19,7 @@ const Possession = () => {
   const share2 = new Share(
     "Volvo",
     "Medtech",
+    "#FD397A",
     30000,
     "A",
     150,
@@ -28,6 +30,7 @@ const Possession = () => {
   const share3 = new Share(
     "Tesla ",
     "Fintech",
+    "#34BFA3",
     15000,
     "B",
     100,
@@ -38,6 +41,7 @@ const Possession = () => {
   const share4 = new Share(
     "AAK",
     "Industri X",
+    "#363636",
     30000,
     "A",
     150,
@@ -48,6 +52,7 @@ const Possession = () => {
   const share5 = new Share(
     "H&M",
     "Övrigt",
+    "#EDEFF3",
     20000,
     "A",
     150,
@@ -91,7 +96,7 @@ const Possession = () => {
       <div>
         {shares.map((element, index) => (
           <div id="sectorStyle">
-            <div className="rectangle"></div>
+            <div style={{backgroundColor:element.color}} className="rectangle"></div>
             <div id="sectorContainer">
               <li key={index}>{element.industry}</li>
               <p style={{ opacity: "0.5" }}>{element.companyName}</p>

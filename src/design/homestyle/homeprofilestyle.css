@@ -1,6 +1,5 @@
 #profileMainContainer {
   margin-left: 20px;
-
 }
 #pic-info-style {
   width: 75%;
@@ -26,11 +25,23 @@
   opacity: 0.5;
   margin-bottom: 10px;
 }
-
-#contact {
-  margin-top: 150px;
+#industriesStyle {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  padding-top: 10px;
 }
-#titleAndContactContainer{
+.industryList {
+  margin-bottom: 20px;
+  text-align: left;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  color: #3d4465;
+}
+#contact {
+  margin-top: 40px;
+}
+#titleAndContactContainer {
   display: flex;
 }
 #contact-style {
@@ -38,8 +49,8 @@
   margin-right: 20px;
   text-align: left;
   font-size: 15px;
- 
 }
-.nameContact{
-    font-weight: bold;
+.nameContact {
+  font-weight: bold;
+  font-size: 13px;
 }

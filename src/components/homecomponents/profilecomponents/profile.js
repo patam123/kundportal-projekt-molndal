@@ -37,6 +37,16 @@ const Profile = ({
         </div>
       </div>
       <p className="title">Föredragna Industrier</p>
+      <div id="industriesStyle">
+        <div>
+          <p className="industryList">Industri 1</p>
+          <p className="industryList">Industri 2</p>
+        </div>
+        <di>
+          <p className="industryList">Industri 3</p>
+          <p className="industryList">Industri 4</p>
+        </di>
+      </div>
 
       <div id="contact">
         <p className="title">Kontaktuppgifter</p>
