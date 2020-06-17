@@ -32,8 +32,12 @@
   display: flex;
   margin-bottom: 15px;
   border: 1px solid #ebedf2;
+  outline: none;
   border-radius: 4px;
-  opacity: 1;
+  opacity: 1;  
+}
+.labelCss{
+  color: #A1A8C3;
 }
 
 .bottom-style {

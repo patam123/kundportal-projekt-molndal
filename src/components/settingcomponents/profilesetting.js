@@ -3,10 +3,22 @@ import Input from "../reusedcomponents/input";
 import Button from "../reusedcomponents/button";
 import ProfilePhoto from "../reusedcomponents/profile-photo";
 import User from "../usercomponents/user";
+import FormInfo from "../reusedcomponents/forminfo";
 import SettingProfileStyle from "../../design/settingprofileStyle.css";
 import ButtonCSS from "../../design/settingbutton.css";
 
-function profileSetting({fname, lname, perNum, telNum, email, address, postCode, postArea, photo,handleSubmit}) {
+function profileSetting({
+  fname,
+  lname,
+  perNum,
+  telNum,
+  email,
+  address,
+  postCode,
+  postArea,
+  photo,
+  handleSubmit,
+}) {
   const user = new User(
     "Example",
     "Person",
@@ -19,70 +31,27 @@ function profileSetting({fname, lname, perNum, telNum, email, address, postCode,
   );
   return (
     <div>
-    <form onSubmit={handleSubmit}>
-      <div id="profilesettingStyle">
-        <div id="photo-style"> <div id="circle"></div>{<ProfilePhoto user={user} />}</div>
-        <div id="input-Container-Style">
-          <div id="smallInputContainer">
-            <Input
-              inputStyle="inputStyle"
-              inputtype="text"
-              inputvalue={fname}
-              labelname="Förnamn"
-            />
-            <Input
-              inputStyle="inputStyle"
-              inputtype="text"
-              inputvalue={lname}
-              labelname="Efternamn"
-            />
+      <form onSubmit={handleSubmit}>
+        <div id="profilesettingStyle">
+          <div id="photo-style">
+            {" "}
+            <div id="circle"></div>
+            {<ProfilePhoto user={user} />}
           </div>
-
-          <Input
-            inputStyle="inputStyle"
-            inputtype="text"
-            inputvalue={perNum}
-            labelname="Personnummer"
-          />
-
-          <Input
-            inputStyle="inputStyle"
-            inputtype="text"
-            inputvalue={address}
-            labelname="Adress"
-          />
-
-          <div id="smallInputContainer">
-            <Input
-              inputStyle="inputStyle"
-              inputtype="text"
-              inputvalue={postArea}
-              labelname="Postort"
-            />
-            <Input
-              inputStyle="inputStyle"
-              inputtype="text"
-              inputvalue={postCode}
-              labelname="Postnummer"
-            />
-          </div>
-          <Input
-            inputStyle="inputStyle"
-            inputtype="text"
-            inputvalue={telNum}
-            labelname="Telefonnummer"
-          />
-          <Input
-            inputStyle="inputStyle"
-            inputtype="text"
-            inputvalue={email}
-            labelname="Email"
+          <FormInfo
+            fname={fname}
+            lname={lname}
+            perNum={perNum}
+            telNum={telNum}
+            email={email}
+            address={address}
+            postCode={postCode}
+            postArea={postArea}
           />
         </div>
-      </div>
-      <div className="bottom-style">
-        <Button cssValue="btnSettingStyle" btnText="Spara" />
-      </div>
+        <div className="bottom-style">
+          <Button cssValue="btnSettingStyle" btnText="Spara" />
+        </div>
       </form>
     </div>
   );
