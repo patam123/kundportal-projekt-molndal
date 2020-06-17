@@ -78,9 +78,10 @@ function Dashboard() {
         <div id="page-style">
           <Switch>
             <Route exact={true} path="/">
-
-              <Home user={userData && userData[0]} shares={shareData && shareData}/>
-
+              <Home
+                user={userData && userData[0]}
+                shares={shareData && shareData}
+              />
             </Route>
             <Route path="/portfolio">
               {shareData && <Portfolio shares={shareData && shareData} />}
