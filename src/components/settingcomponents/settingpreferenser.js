@@ -2,7 +2,7 @@ import React from "react";
 import Input from "../reusedcomponents/input";
 import Button from "../reusedcomponents/button";
 import PreferenceCss from "../../design/preference.css";
-import profileCss from "../../design/settingprofileStyle.css";
+import ButtonCss from "../../design/buttonstyle.css";
 
 function settingPreferenser(handleSubmit) {
   return (
@@ -79,7 +79,7 @@ function settingPreferenser(handleSubmit) {
         </div>
       </div>
       <div className="bottom-style">
-        <Button cssValue="btnSettingStyle" btnText="Spara" />
+        <Button cssValue="btnStyle" btnText="Spara" />
       </div>
       </form>
     </div>

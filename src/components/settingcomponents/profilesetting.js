@@ -5,7 +5,7 @@ import ProfilePhoto from "../reusedcomponents/profile-photo";
 import User from "../usercomponents/user";
 import FormInfo from "../reusedcomponents/forminfo";
 import SettingProfileStyle from "../../design/settingprofileStyle.css";
-import ButtonCSS from "../../design/settingbutton.css";
+
 
 function profileSetting({
   fname,
@@ -50,7 +50,7 @@ function profileSetting({
           />
         </div>
         <div className="bottom-style">
-          <Button cssValue="btnSettingStyle" btnText="Spara" />
+          <Button cssValue="btnStyle" btnText="Spara" />
         </div>
       </form>
     </div>

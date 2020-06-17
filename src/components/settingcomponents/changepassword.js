@@ -1,7 +1,7 @@
 import React from "react";
 import Input from "../reusedcomponents/input";
 import Button from "../reusedcomponents/button";
-import ButtonCSS from "../../design/settingbutton.css";
+
 
 const ChangePassword = (handleSubmit) => {
   return (
@@ -28,7 +28,7 @@ const ChangePassword = (handleSubmit) => {
         </div>
 
         <div className="bottom-style">
-          <Button cssValue="btnSettingStyle" btnText="Spara" />
+          <Button cssValue="btnStyle" btnText="Spara" />
         </div>
       </form>
     </div>
