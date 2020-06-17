@@ -15,8 +15,12 @@ const Home = ({ id, user, shares }) => {
         <span style={{ fontWeight: "bold" }}>
           {`${user ? user.FirstName : ""}! `}
         </span>
-          {`${shares?`Ditt innehav blev senast uppdaterad INSERTDATUMHERE. Ta gärna en titt!` : `Du har inte något innehav tillagt ännu. Du får ett mail såfort det är
-        uppdaterad!`}`}
+        {`${
+          shares
+            ? `Ditt innehav blev senast uppdaterad INSERTDATUMHERE. Ta gärna en titt!`
+            : `Du har inte något innehav tillagt ännu. Du får ett mail såfort det är
+        uppdaterad!`
+        }`}
       </p>
       <div id="profileContainer">
         <div id="profile-style">
@@ -28,12 +32,12 @@ const Home = ({ id, user, shares }) => {
               <Profile
                 fname={user && user.FirstName}
                 lname={user && user.LastName}
+                email={user && user.Email}
                 perNum={user && user.PersonNumber}
                 telNum={user && user.PhoneNumber}
                 postArea={user && user.PostAddress}
                 postCode={user && user.PostCode}
                 address={user && user.Address}
-                email={user && user.Email}
               />
             }
           />

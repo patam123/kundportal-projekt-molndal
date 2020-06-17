@@ -1,13 +1,13 @@
 import React from "react";
 
-function input({ inputtype, inputvalue,inputText, labelname,labelTwo,inputStyle,container }) {
+function input({ inputtype, inputvalue,inputText, labelname,labelTwo,inputStyle,container,labelStyle }) {
   return (
     
       <div id={container}>
-        <label style={{color: "#A1A8C3"}}>{labelname}</label>
+        <label className={labelStyle}>{labelname}</label>
         <br></br>
         <input className={inputStyle} type={inputtype} placeholder={inputvalue} value={inputText}></input>
-        <label style={{color: "#A1A8C3"}}>{labelTwo}</label>
+        <label className={labelStyle}>{labelTwo}</label>
       </div>
     
   );
