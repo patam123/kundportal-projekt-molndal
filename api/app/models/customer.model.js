@@ -23,4 +23,43 @@ Customer.getAll = (result) => {
   });
 };
 
+Customer.register = (result) => {
+  sql.query("INSERT INTO Customer(Email, Password, FirstName, LastName, PersonNumber, Address, PostCode, PostAddress, PhoneNumber, ProfilePicture) VALUES('p.h@example.com', '123456789', 'Patrik', 'Hammarstrand', '188012010110', 'Väg 1', '41555', 'Göteborg', '0731525252', 'Value');", (err, res) => {
+    if (err) {
+      console.log("Error", err);
+      result(null, err);
+      return;
+    }
+    console.log("customers", res);
+    result(null, res);
+  });
+};
+
+Customer.login = (result) => {
+  sql.query("SELECT 1 FROM Customer WHERE Email = '' AND Password = ''", (err, res) => {
+    if (err) {
+      console.log("Error", err);
+      result(null, err);
+      return;
+    }
+    console.log("customers", res);
+    result(null, res);
+  })
+}
+
+Customer.update = (result) => {
+  sql.query(`UPDATE Customer SET Email = 'params', Password = 'params', 
+  FirstName = 'params', LastName = 'params', PersonNumber = 'params', 
+  Address = 'params', PostCode = 'params', PostAddress = 'params', 
+  PhoneNumber = 'params', ProfilePicture = 'params' `, (err, res) => {
+    if (err) {
+      console.log("Error", err);
+      result(null, err);
+      return;
+    }
+    console.log("customers", res);
+    result(null, res);
+  })
+}
+
 module.exports = Customer;

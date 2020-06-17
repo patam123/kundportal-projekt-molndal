@@ -15,3 +15,19 @@ SELECT * FROM Share;
 SELECT * FROM Company;
 
 SELECT Email, FirstName, LastName, PersonNumber, Address, PostCode, PostAddress, PhoneNumber FROM Customer WHERE Id=2;
+
+
+SELECT co.Name as companyName,
+  s.Type as type, SUM(co.ShareWorth) as shareValue,
+  Count(0) as amount,
+  co.Industry as industry,
+  co.ShareNumber as shareNumber,
+  ((SELECT COUNT(0) * 1.0 FROM Share WHERE Owner = c.Id AND CompanyId = s.CompanyId) / (SELECT COUNT(0) * 1.0 FROM Share WHERE CompanyId = s.CompanyId) * 100) as sharePct,
+  ((SELECT COUNT(0) * 1.0 FROM Share WHERE Owner = c.Id AND CompanyId = s.CompanyId) / (SELECT COUNT(0) * 1.0 FROM Share WHERE CompanyId = s.CompanyId) * 100) as votePct
+  FROM Share s 
+  INNER JOIN Company co ON co.Id = s.CompanyId
+  Inner JOIN Customer c ON s.Owner = c.Id 
+  WHERE c.Email = 'example.person@example.com'
+  Group by co.Name
+
+  -- Nämnaren i select count ska bytas mot co.TotalShares sen
