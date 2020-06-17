@@ -5,5 +5,7 @@ module.exports = (app) => {
   
     app.get("/customers", customers.findAll);
     app.post("/register", register.handleRegister)
+    app.put("/changepassword", customers.changePassword);
+    app.put("/update", customers.update);
     // app.post("/customers", customers.insert);
   };

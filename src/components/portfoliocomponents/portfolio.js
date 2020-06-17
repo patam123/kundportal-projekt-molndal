@@ -11,7 +11,6 @@ const Portfolio = ({ shares }) => {
   const [size, setTableSize] = useState(savedSize ? JSON.parse(savedSize) : 1);
   const [pageIndex, setIndex] = useState(0);
 
-console.log(shares);
 
   const [content, setContent] = useState(shares);
   useEffect(() => {

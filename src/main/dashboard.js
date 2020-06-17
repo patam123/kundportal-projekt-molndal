@@ -87,7 +87,7 @@ function Dashboard() {
               {shareData && <Portfolio shares={shareData && shareData} />}
             </Route>
             <Route path="/setting">
-              <Setting userData={userData && userData[0]} />
+              {userData && <Setting userData={userData && userData[0]} />}
             </Route>
             <Route>{<ErrorPage />}</Route>
           </Switch>
