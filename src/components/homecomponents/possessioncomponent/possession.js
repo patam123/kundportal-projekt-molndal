@@ -80,7 +80,12 @@ const Possession = ({suggestedIndustries, industries}) => {
 
     return `Uppdaterat: ${year}-${month}-${day}`;
   };
-  
+
+  const array = [{industry: "hej"}];
+
+  const index = array.map((e) => e.industry ).indexOf("hej");
+  console.log(index);
+
   return (
     <div className="possession">
       <div>
@@ -100,7 +105,9 @@ const Possession = ({suggestedIndustries, industries}) => {
             <div style={{backgroundColor:"#363636"}} className="rectangle"></div>
             <div id="sectorContainer">
               <li key={index}>{element.industry}</li>
-              <p style={{ opacity: "0.5" }}>{element.companyName}</p>
+              <p style={{ opacity: "0.5" }}>{industries.map(e => (
+                 `${e.industry === element.industry ? ` ${e.company},` : ""}`
+              ))}</p>
             </div>
             <p style={{ opacity: "0.5" }}>{element.shareValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} SEK</p>
           </div>
