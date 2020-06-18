@@ -6,7 +6,7 @@ import HomeStyle from "../../design/homestyle/home.css";
 import HeadTitle from "../reusedcomponents/headtitle";
 
 // Home station var min profil och mitt innehav ska anropas här
-const Home = ({ id, user, shares }) => {
+const Home = ({ id, user, shares, industries, suggestedIndustries }) => {
   return (
     <div id="homeContainer">
       <HeadTitle title="Hem" />
@@ -39,6 +39,8 @@ const Home = ({ id, user, shares }) => {
                 postCode={user && user.PostCode}
                 address={user && user.Address}
                 photo={user && user.ProfilePicture}
+                industries={industries && industries}
+                suggestedIndustries={suggestedIndustries && suggestedIndustries}
               />
             }
           />
@@ -49,7 +51,7 @@ const Home = ({ id, user, shares }) => {
             path="/portfolio"
             headText="Mitt innehav"
             linkText="Min Portfölj"
-            firstSection={<Possession />}
+            firstSection={<Possession industries={industries} suggestedIndustries={suggestedIndustries} />}
           />
         </div>
       </div>

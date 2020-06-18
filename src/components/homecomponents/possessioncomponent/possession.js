@@ -4,7 +4,7 @@ import Share from "./share";
 import PossessionStyle from "../../../design/homestyle/possessionstyle.css";
 
 
-const Possession = () => {
+const Possession = ({suggestedIndustries, industries}) => {
   const share1 = new Share(
     "Skanska ",
     "Byggsektorn",
@@ -61,9 +61,10 @@ const Possession = () => {
     1 + "%"
   );
   const shares = [share1, share2, share3, share4, share5];
+
+  const totalShareValue = suggestedIndustries.reduce((tot, share) =>
+  tot + share.shareValue, 0);
   
-  let sum = shares.reduce((tot, share) =>
-   tot + share.amount, 0);
   const getDate = () => {
     const date = new Date();
 
@@ -79,29 +80,29 @@ const Possession = () => {
 
     return `Uppdaterat: ${year}-${month}-${day}`;
   };
-
+  
   return (
     <div className="possession">
       <div>
-        <span className="possession-amount">{`${sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} SEK `}</span>
+        <span className="possession-amount">{`${Math.round(totalShareValue).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} SEK `}</span>
         <span className="label-text">{`${getDate()}`}</span>
       </div>
       <div id="statistic-style">
-        <id id="sector1"></id>
-        <div id="sector2"></div>
-        <div id="sector3"></div>
-        <div id="sector4"></div>
-        <div id="sector5"></div>
+      
+        {suggestedIndustries.map((element, index) => (
+          <div style={{backgroundColor:"#363636", width: ((element.shareValue / totalShareValue) * 100) + '%'}}></div>
+          ))}
+        
       </div>
       <div>
-        {shares.map((element, index) => (
+        {suggestedIndustries.map((element, index) => (
           <div id="sectorStyle">
-            <div style={{backgroundColor:element.color}} className="rectangle"></div>
+            <div style={{backgroundColor:"#363636"}} className="rectangle"></div>
             <div id="sectorContainer">
               <li key={index}>{element.industry}</li>
               <p style={{ opacity: "0.5" }}>{element.companyName}</p>
             </div>
-            <p style={{ opacity: "0.5" }}>{element.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} SEK</p>
+            <p style={{ opacity: "0.5" }}>{element.shareValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} SEK</p>
           </div>
         ))}
       </div>

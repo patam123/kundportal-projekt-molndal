@@ -14,6 +14,8 @@ const Profile = ({
   postCode,
   postArea,
   photo,
+  industries,
+  suggestedIndustries,
 }) => {
   const user = new User(
     "Magnus",
@@ -25,6 +27,11 @@ const Profile = ({
     "40010",
     "Göteborg"
   );
+
+    const sortedIndustries = suggestedIndustries.sort((a, b) =>
+      a.shareValue < b.shareValue ? 1 : b.shareValue < a.shareValue ? -1 : 0
+    );
+
 
   return (
     <div id="profileMainContainer">
@@ -39,12 +46,12 @@ const Profile = ({
       <p className="title">Föredragna Industrier</p>
       <div id="industriesStyle">
         <div>
-          <p className="industryList">Industri 1</p>
-          <p className="industryList">Industri 2</p>
+          <p className="industryList">{sortedIndustries.length > 0 ? sortedIndustries[0].industry : "Ej tillgängligt"}</p>
+          {sortedIndustries.length > 1 && <p className="industryList">{sortedIndustries[1].industry}</p>}
         </div>
         <di>
-          <p className="industryList">Industri 3</p>
-          <p className="industryList">Industri 4</p>
+          {sortedIndustries.length > 2 && <p className="industryList">{sortedIndustries[2].industry}</p>}
+          {sortedIndustries.length > 3 && <p className="industryList">{sortedIndustries[3].industry}</p>}
         </di>
       </div>
 
