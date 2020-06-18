@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Input from "../reusedcomponents/input";
 import Button from "../reusedcomponents/button";
-import ButtonCSS from "../../design/settingbutton.css";
+
 
 const ChangePassword = ({ handleSubmit, email, password }) => {
   const [oldPassword, setOldPassword] = useState();
@@ -59,7 +59,7 @@ const ChangePassword = ({ handleSubmit, email, password }) => {
         </div>
 
         <div className="bottom-style">
-          <Button isClicked={handleUpdate} cssValue="btnSettingStyle" btnText="Spara" />
+          <Button isClicked={handleUpdate} cssValue="btnStyle" btnText="Spara" />
         </div>
     </div>
   );
