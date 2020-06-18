@@ -29,7 +29,7 @@ const Profile = ({
   return (
     <div id="profileMainContainer">
       <div id="pic-info-style">
-        <Photo user={user} />
+        <Photo picture={photo} />
         <div>
           <p id="userNamestyle">{`${fname} ${lname}`}</p>
           <p className="label-text">Person Nr/Organisations Nr</p>

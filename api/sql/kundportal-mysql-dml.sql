@@ -2,7 +2,7 @@ INSERT INTO Company (Name, ShareWorth, ShareNumber, Industry) VALUES('Volvo', 5.
 
 INSERT INTO Company (Name, ShareWorth, ShareNumber, Industry) VALUES('Ericsson', 0.44, '00000000', 'Telekom');
 
-INSERT INTO Customer(Email, Password, FirstName, LastName, PersonNumber, Address, PostCode, PostAddress, PhoneNumber, ProfilePicture) VALUES('example.person@example.com', 'example123', 'Example', 'Person', '198005051633', 'V�gen 1', '41501', 'G�teborg', '0700000000', 'Insert pic here');
+INSERT INTO Customer(Email, Password, FirstName, LastName, PersonNumber, Address, PostCode, PostAddress, PhoneNumber, ProfilePicture) VALUES('example.person@example.com', 'example123', 'Example', 'Person', '198005051633', 'Vägen 1', '41501', 'Göteborg', '0700000000', '/profileimg.png');
 
 
 

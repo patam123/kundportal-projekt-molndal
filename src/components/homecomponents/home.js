@@ -38,6 +38,7 @@ const Home = ({ id, user, shares }) => {
                 postArea={user && user.PostAddress}
                 postCode={user && user.PostCode}
                 address={user && user.Address}
+                photo={user && user.ProfilePicture}
               />
             }
           />

@@ -69,8 +69,8 @@ function settingPreferenser(handleSubmit) {
         </div>
         <div id="text-style">
           <p id="tips-style">
-            Tips! ifall du väljer integerera din bank så kan vi anpassa dina
-            investeringar utefter din ekonomi och preferenser
+            Tips! Ifall du väljer att integrera din bank så kan vi anpassa dina
+            investeringar utefter din ekonomi och preferenser.
           </p>
           <p>
             <span id="integrate-style">Integerera din bank!</span>

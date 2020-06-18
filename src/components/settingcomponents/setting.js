@@ -17,13 +17,13 @@ const Setting = ({ userData }) => {
       isexact: true,
     },
     {
-      path: "/changepassword",
+      path: "/setting/changepassword",
       name: "Byt Lösenord",
       style: "active-setting",
       isexact: false,
     },
     {
-      path: "/settingpreferenser",
+      path: "/setting/preferenser",
       name: "Preferenser",
       style: "active-setting",
       isexact: false,
@@ -58,12 +58,13 @@ const Setting = ({ userData }) => {
                 address={userData && userData.Address}
                 postCode={userData && userData.PostCode}
                 postArea={userData && userData.PostAddress}
+                photo={userData && userData.ProfilePicture}
               />
             </Route>
-            <Route path="/changepassword">
-              <ChangePassword />
+            <Route path="/setting/changepassword">
+              <ChangePassword email={userData && userData.Email} password={userData && userData.Password} />
             </Route>
-            <Route path="/settingpreferenser">
+            <Route path="/setting/preferenser">
               <SettingPreferenser />
             </Route>
             <Route>{<ErrorPage />}</Route>
