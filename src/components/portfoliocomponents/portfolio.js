@@ -19,7 +19,7 @@ const Portfolio = ({ shares }) => {
     setContent(
       pageIndex * size < shares.length
         ? shares.slice(pageIndex * size, (pageIndex + 1) * size)
-        : shares.slice(pageIndex -1 , (pageIndex + 1) * size)
+        : shares.slice(0, shares.length)
     );
 
     localStorage.setItem("size", JSON.stringify(size));
