@@ -1,10 +1,9 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import User from "../../usercomponents/user";
 import Share from "./share";
 import PossessionStyle from "../../../design/homestyle/possessionstyle.css";
 
-
-const Possession = ({suggestedIndustries, industries}) => {
+const Possession = ({ suggestedIndustries, industries }) => {
   const share1 = new Share(
     "Skanska ",
     "Byggsektorn",
@@ -62,9 +61,11 @@ const Possession = ({suggestedIndustries, industries}) => {
   );
   const shares = [share1, share2, share3, share4, share5];
 
-  const totalShareValue = suggestedIndustries.reduce((tot, share) =>
-  tot + share.shareValue, 0);
-  
+  const totalShareValue = suggestedIndustries.reduce(
+    (tot, share) => tot + share.shareValue,
+    0
+  );
+
   const getDate = () => {
     const date = new Date();
 
@@ -80,36 +81,82 @@ const Possession = ({suggestedIndustries, industries}) => {
 
     return `Uppdaterat: ${year}-${month}-${day}`;
   };
+  const sortedSuggestedIndustries = suggestedIndustries.sort((a, b) =>
+    a.industry.localeCompare(b.industry)
+  );
+  const sortedIndustries = industries.sort((a, b) =>
+    a.industry.localeCompare(b.industry)
+  );
 
-  const array = [{industry: "hej"}];
+  const getCompanyIndustries = (e) => {
+    let text = "";
+    let firstCount = 0;
+    let secondCount = 0;
+    for (let i = 0; i < sortedIndustries.length; i++) {
+      if (sortedIndustries[i].industry === e.industry) {
+        firstCount++;
+        if (firstCount > 2) {
+          secondCount++;
+        } else {
+          text += `${sortedIndustries[i].company}, `;
+        }
+      } else {
+        text = text.trim();
+        text = text.replace(/,+$/, "");
+        if (secondCount > 0) {
+          text += ` +${secondCount}`;
+        }
+        secondCount = 0;
+        firstCount = 0;
 
-  const index = array.map((e) => e.industry ).indexOf("hej");
-  console.log(index);
+      }
+      if (i === sortedIndustries.length - 1) {
+        text = text.trim();
+        text = text.replace(/,+$/, "");
+        if (secondCount > 0) {
+          text += ` +${secondCount}`;
+        }
+      }
+    }
+
+    return text;
+  };
 
   return (
     <div className="possession">
       <div>
-        <span className="possession-amount">{`${Math.round(totalShareValue).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} SEK `}</span>
+        <span className="possession-amount">{`${Math.round(totalShareValue)
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")} SEK `}</span>
         <span className="label-text">{`${getDate()}`}</span>
       </div>
       <div id="statistic-style">
-      
-        {suggestedIndustries.map((element, index) => (
-          <div style={{backgroundColor:"#363636", width: ((element.shareValue / totalShareValue) * 100) + '%'}}></div>
-          ))}
-        
+        {sortedSuggestedIndustries.map((element, index) => (
+          <div
+            style={{
+              backgroundColor: "#363636",
+              width: (element.shareValue / totalShareValue) * 100 + "%",
+            }}
+          ></div>
+        ))}
       </div>
       <div>
-        {suggestedIndustries.map((element, index) => (
+        {sortedSuggestedIndustries.map((element, index) => (
           <div id="sectorStyle">
-            <div style={{backgroundColor:"#363636"}} className="rectangle"></div>
+            <div
+              style={{ backgroundColor: "#363636" }}
+              className="rectangle"
+            ></div>
             <div id="sectorContainer">
               <li key={index}>{element.industry}</li>
-              <p style={{ opacity: "0.5" }}>{industries.map(e => (
-                 `${e.industry === element.industry ? ` ${e.company},` : ""}`
-              ))}</p>
+              <p style={{ opacity: "0.5" }}>{getCompanyIndustries(element)}</p>
             </div>
-            <p style={{ opacity: "0.5" }}>{element.shareValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} SEK</p>
+            <p style={{ opacity: "0.5" }}>
+              {element.shareValue
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, " ")}{" "}
+              SEK
+            </p>
           </div>
         ))}
       </div>
