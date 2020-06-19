@@ -141,7 +141,7 @@ const Possession = ({ suggestedIndustries, industries }) => {
         ))}
       </div>
       <div>
-        {sortedSuggestedIndustries.map((element, index) => (
+        {industries.length > 0 ? sortedSuggestedIndustries.map((element, index) => (
           <div id="sectorStyle">
             <div
               style={{ backgroundColor: "#363636" }}
@@ -158,7 +158,7 @@ const Possession = ({ suggestedIndustries, industries }) => {
               SEK
             </p>
           </div>
-        ))}
+        )): "Inget innehav tillgänglig ännu"}
       </div>
     </div>
   );

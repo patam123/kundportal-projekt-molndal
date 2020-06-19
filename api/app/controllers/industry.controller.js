@@ -23,3 +23,15 @@ exports.getSuggestedIndustries = (req, res) => {
       }
     });
   };
+
+  exports.getAll = (req, res) => {
+    Industry.getAll((err, data) => {
+      if (err) {
+        res.status(500).send({
+          message: err.message,
+        });
+      } else {
+        res.send(data);
+      }
+    });
+  };

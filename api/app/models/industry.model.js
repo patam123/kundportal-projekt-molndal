@@ -47,5 +47,16 @@ Industry.getSuggestedIndustries = (result) => {
     });
   };
 
+  Industry.getAll = (result) => {
+    sql.query(`SELECT Name AS name From Industry`, (err, res) => {
+      if (err) {
+        console.log("Error", err);
+        result(null, err);
+        return;
+      }
+      console.log("industries", res);
+      result(null, res);
+    });
+  };
 
 module.exports = Industry;
