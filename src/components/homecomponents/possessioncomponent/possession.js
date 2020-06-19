@@ -134,7 +134,7 @@ const Possession = ({ suggestedIndustries, industries }) => {
         {sortedSuggestedIndustries.map((element, index) => (
           <div
             style={{
-              backgroundColor: "#363636",
+              backgroundColor: element.color,
               width: (element.shareValue / totalShareValue) * 100 + "%",
             }}
           ></div>
@@ -144,7 +144,7 @@ const Possession = ({ suggestedIndustries, industries }) => {
         {industries.length > 0 ? sortedSuggestedIndustries.map((element, index) => (
           <div id="sectorStyle">
             <div
-              style={{ backgroundColor: "#363636" }}
+              style={{ backgroundColor: `${element.color}` }}
               className="rectangle"
             ></div>
             <div id="sectorContainer">

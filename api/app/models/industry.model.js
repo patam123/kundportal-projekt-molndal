@@ -27,7 +27,8 @@ Industry.getContent = (result) => {
 };
 Industry.getSuggestedIndustries = (result) => {
     sql.query(`SELECT i.Name AS industry,  
-    SUM(co.ShareWorth) as shareValue 
+    SUM(co.ShareWorth) as shareValue,
+    i.Color as color 
     FROM Industry i
     INNER JOIN Company co
     ON i.Id = co.Industry
@@ -48,7 +49,7 @@ Industry.getSuggestedIndustries = (result) => {
   };
 
   Industry.getAll = (result) => {
-    sql.query(`SELECT Name AS name From Industry`, (err, res) => {
+    sql.query(`SELECT Name AS name, Color AS color From Industry`, (err, res) => {
       if (err) {
         console.log("Error", err);
         result(null, err);
