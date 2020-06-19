@@ -57,8 +57,6 @@ function Dashboard() {
   const [suggestedIndustries, setSuggestedIndustries] = useState();
   const [allindustries, setAllIndustries] = useState();
 
-  console.log(allindustries);
-
   return (
     <Router>
       <div id="dashboard-style">

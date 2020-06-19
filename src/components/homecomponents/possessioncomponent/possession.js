@@ -81,6 +81,13 @@ const Possession = ({ suggestedIndustries, industries }) => {
 
     return `Uppdaterat: ${year}-${month}-${day}`;
   };
+
+  //sorterat efter storlek på innehav
+  // const sortedSuggestedIndustries = suggestedIndustries.sort((a, b) =>
+  // a.shareValue < b.shareValue ? 1 : b.shareValue < a.shareValue ? -1 : 0
+  // );
+
+  //alfabetisk ordning
   const sortedSuggestedIndustries = suggestedIndustries.sort((a, b) =>
     a.industry.localeCompare(b.industry)
   );
