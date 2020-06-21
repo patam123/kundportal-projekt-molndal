@@ -40,10 +40,22 @@ function Dashboard() {
     fetch("http://localhost:3300/shares")
       .then((response) => response.json())
       .then((data) => setShareData(data));
+    fetch("http://localhost:3300/industries")
+      .then((response) => response.json())
+      .then((data) => setIndustryData(data));
+    fetch("http://localhost:3300/suggestedindustries")
+      .then((response) => response.json())
+      .then((data) => setSuggestedIndustries(data));
+    fetch("http://localhost:3300/allindustries")
+      .then((response) => response.json())
+      .then((data) => setAllIndustries(data));
   }, []);
 
   const [userData, setData] = useState();
   const [shareData, setShareData] = useState();
+  const [industryData, setIndustryData] = useState();
+  const [suggestedIndustries, setSuggestedIndustries] = useState();
+  const [allindustries, setAllIndustries] = useState();
 
   return (
     <Router>
@@ -78,16 +90,27 @@ function Dashboard() {
         <div id="page-style">
           <Switch>
             <Route exact={true} path="/">
-              <Home
-                user={userData && userData[0]}
-                shares={shareData && shareData}
-              />
+              {userData && shareData && industryData && suggestedIndustries && (
+                <Home
+                  user={userData && userData[0]}
+                  shares={shareData && shareData}
+                  industries={industryData && industryData}
+                  suggestedIndustries={
+                    suggestedIndustries && suggestedIndustries
+                  }
+                />
+              )}
             </Route>
             <Route path="/portfolio">
               {shareData && <Portfolio shares={shareData && shareData} />}
             </Route>
             <Route path="/setting">
-              {userData && <Setting userData={userData && userData[0]} />}
+              {userData && allindustries && (
+                <Setting
+                  userData={userData && userData[0]}
+                  industryData={allindustries}
+                />
+              )}
             </Route>
             <Route>{<ErrorPage />}</Route>
           </Switch>

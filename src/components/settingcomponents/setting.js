@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HeadTitl from "../reusedcomponents/headtitle";
 import SettingCSS from "../../design/setting.css";
 
-const Setting = ({ userData }) => {
+const Setting = ({ userData, industryData }) => {
   const arrsetting = [
     {
       path: "/setting",
@@ -65,7 +65,7 @@ const Setting = ({ userData }) => {
               <ChangePassword email={userData && userData.Email} password={userData && userData.Password} />
             </Route>
             <Route path="/setting/preferenser">
-              <SettingPreferenser />
+              <SettingPreferenser industryData={industryData} />
             </Route>
             <Route>{<ErrorPage />}</Route>
           </Switch>

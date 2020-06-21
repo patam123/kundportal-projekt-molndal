@@ -18,8 +18,8 @@ const Portfolio = ({ shares }) => {
     setIndex(pageIndex);
     setContent(
       pageIndex * size < shares.length
-        ? shares.slice(pageIndex, (pageIndex + 1) * size)
-        : shares.slice(pageIndex - 1, (pageIndex + 1) * size)
+        ? shares.slice(pageIndex * size, (pageIndex + 1) * size)
+        : shares.slice(0, shares.length)
     );
 
     localStorage.setItem("size", JSON.stringify(size));
@@ -154,9 +154,9 @@ const Portfolio = ({ shares }) => {
             {shares.length > 0 && <p>
               {shares.length > size
                 ? size > 1
-                  ? `Visar ${pageIndex * size + 1} - ${
+                  ? (pageIndex +1) * size < shares.length ? `Visar ${pageIndex * size + 1} - ${
                       (pageIndex + 1) * size
-                    } av ${shares.length}`
+                    } av ${shares.length}`: `Visar ${pageIndex * size + 1} - ${shares.length} av ${shares.length}`
                   : `Visar ${pageIndex * size + 1} av ${shares.length}`
                 : `Visar ${shares.length} av ${shares.length}`}
             </p>}

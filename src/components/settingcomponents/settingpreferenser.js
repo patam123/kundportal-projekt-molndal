@@ -4,69 +4,19 @@ import Button from "../reusedcomponents/button";
 import PreferenceCss from "../../design/preference.css";
 import ButtonCss from "../../design/buttonstyle.css";
 
-function settingPreferenser(handleSubmit) {
+function settingPreferenser({handleSubmit, industryData}) {
   return (
     <div>
     <form onSubmit={handleSubmit}>
       <div id="profilesettingStyle">
-        <div id="input-Container-Style">
-          <div className="checkBox-style">
-            <Input
-              inputtype="checkbox"
-              container="divContainer"
-              inputStyle="checkBoxStyle"
-              labelTwo="Bygg"
-            />
-            <Input
-              inputtype="checkbox"
-              container="divContainer"
-              inputStyle="checkBoxStyle"
-              labelTwo="Industrix"
-            />
-          </div>
-        </div>
-        <div className="checkBox-style">
+        {industryData.map((e) =>(
           <Input
             inputtype="checkbox"
             container="divContainer"
             inputStyle="checkBoxStyle"
-            labelTwo="Industrix"
+            labelTwo={e.name}
           />
-          <Input
-            inputtype="checkbox"
-            container="divContainer"
-            inputStyle="checkBoxStyle"
-            labelTwo="Industrix"
-          />
-        </div>
-        <div className="checkBox-style">
-          <Input
-            inputtype="checkbox"
-            container="divContainer"
-            inputStyle="checkBoxStyle"
-            labelTwo="Industrix"
-          />
-          <Input
-            inputtype="checkbox"
-            container="divContainer"
-            inputStyle="checkBoxStyle"
-            labelTwo="Industrix"
-          />
-        </div>
-        <div className="checkBox-style">
-          <Input
-            inputtype="checkbox"
-            container="divContainer"
-            inputStyle="checkBoxStyle"
-            labelTwo="Industrix"
-          />
-          <Input
-            inputtype="checkbox"
-            container="divContainer"
-            inputStyle="checkBoxStyle"
-            labelTwo="Industrix"
-          />
-        </div>
+        ))}
         <div id="text-style">
           <p id="tips-style">
             Tips! Ifall du väljer att integrera din bank så kan vi anpassa dina

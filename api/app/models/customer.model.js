@@ -13,7 +13,7 @@ const Customer = function (customer) {
 };
 
 Customer.getAll = (result) => {
-  sql.query("SELECT Email, Password, FirstName, LastName, PersonNumber, Address, PostCode, PostAddress, PhoneNumber, ProfilePicture FROM Customer WHERE id=1;", (err, res) => {
+  sql.query("SELECT Email, Hash, FirstName, LastName, PersonNumber, Address, PostCode, PostAddress, PhoneNumber, ProfilePicture FROM Customer WHERE id=1;", (err, res) => {
     if (err) {
       console.log("Error", err);
       result(null, err);
@@ -25,7 +25,7 @@ Customer.getAll = (result) => {
 };
 
 Customer.register = (result) => {
-  sql.query("INSERT INTO Customer(Email, Password, FirstName, LastName, PersonNumber, Address, PostCode, PostAddress, PhoneNumber, ProfilePicture) VALUES('p.h@example.com', '123456789', 'Patrik', 'Hammarstrand', '188012010110', 'Väg 1', '41555', 'Göteborg', '0731525252', 'Value');", (err, res) => {
+  sql.query("INSERT INTO Customer(Email, Hash, FirstName, LastName, PersonNumber, Address, PostCode, PostAddress, PhoneNumber, ProfilePicture) VALUES('p.h@example.com', '123456789', 'Patrik', 'Hammarstrand', '188012010110', 'Väg 1', '41555', 'Göteborg', '0731525252', 'Value');", (err, res) => {
     if (err) {
       console.log("Error", err);
       result(null, err);
@@ -37,7 +37,7 @@ Customer.register = (result) => {
 };
 
 Customer.login = (result) => {
-  sql.query("SELECT 1 FROM Customer WHERE Email = '' AND Password = ''", (err, res) => {
+  sql.query("SELECT 1 FROM Customer WHERE Email = '' AND Hash = ''", (err, res) => {
     if (err) {
       console.log("Error", err);
       result(null, err);

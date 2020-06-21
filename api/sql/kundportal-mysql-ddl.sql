@@ -1,3 +1,6 @@
+-- Om databasen redan finns:
+-- DROP DATABASE CustomerPortal
+
 Create database CustomerPortal;
 
 
@@ -10,7 +13,7 @@ Create table Customer (
 Id INT auto_increment NOT NULL,
 
 Email NVARCHAR(100) UNIQUE NOT NULL,
-Password NVARCHAR(25) NOT NULL,
+Hash NVARCHAR(255) NOT NULL,
 
 FirstName NVARCHAR(50) NOT NULL,
 LastName NVARCHAR(50) NOT NULL,
@@ -26,13 +29,15 @@ PostAddress NVARCHAR(50) NOT NULL,
 PhoneNumber NVARCHAR(12) NOT NULL,
 
 ProfilePicture NVARCHAR(255) NOT NULL,
+PRIMARY KEY(Id));
 
 
-PRIMARY KEY(Id),
+CREATE TABLE Industry(
+    Id INT auto_increment NOT NULL,
+    Name NVARCHAR(100) NOT NULL,
+    Color NVARCHAR(255) NOT NULL,
 
-CONSTRAINT Password_length CHECK (length(Password) > 8));
-
-
+    PRIMARY KEY(Id));
 
 CREATE TABLE Company(
 
@@ -42,14 +47,14 @@ Name NVARCHAR(100) NOT NULL,
 
 ShareWorth DECIMAL(16,4) NOT NULL,
 
-ShareNumber NVARCHAR(8) NOT NULL,
+ShareNumber NVARCHAR(9) NOT NULL,
 
-Industry NVARCHAR(50) NOT NULL,
+Industry INT NOT NULL,
 
 TotalShares INT NOT NULL,
 
-PRIMARY KEY(Id)
-);
+PRIMARY KEY(Id),
+FOREIGN KEY (Industry) REFERENCES Industry(Id));
 
 
 
@@ -75,7 +80,7 @@ CREATE INDEX Company_Search ON Company(Name, ShareWorth, Industry, ShareNumber);
 
 CREATE INDEX Share_Search ON Share(Owner, CompanyId, Type);
 
+CREATE INDEX Industry_Search ON Industry(Name);
 
 
--- Kanske egen tabell f�r Industry?
 

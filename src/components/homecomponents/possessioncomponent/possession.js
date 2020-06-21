@@ -1,10 +1,9 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import User from "../../usercomponents/user";
 import Share from "./share";
 import PossessionStyle from "../../../design/homestyle/possessionstyle.css";
 
-
-const Possession = () => {
+const Possession = ({ suggestedIndustries, industries }) => {
   const share1 = new Share(
     "Skanska ",
     "Byggsektorn",
@@ -61,9 +60,12 @@ const Possession = () => {
     1 + "%"
   );
   const shares = [share1, share2, share3, share4, share5];
-  
-  let sum = shares.reduce((tot, share) =>
-   tot + share.amount, 0);
+
+  const totalShareValue = suggestedIndustries.reduce(
+    (tot, share) => tot + share.shareValue,
+    0
+  );
+
   const getDate = () => {
     const date = new Date();
 
@@ -80,30 +82,90 @@ const Possession = () => {
     return `Uppdaterat: ${year}-${month}-${day}`;
   };
 
+  //sorterat efter storlek på innehav
+  // const sortedSuggestedIndustries = suggestedIndustries.sort((a, b) =>
+  // a.shareValue < b.shareValue ? 1 : b.shareValue < a.shareValue ? -1 : 0
+  // );
+
+  //alfabetisk ordning
+  const sortedSuggestedIndustries = suggestedIndustries.sort((a, b) =>
+    a.industry.localeCompare(b.industry)
+  );
+  const sortedIndustries = industries.sort((a, b) =>
+    a.industry.localeCompare(b.industry)
+  );
+
+  const getCompanyIndustries = (e) => {
+    let text = "";
+    let firstCount = 0;
+    let secondCount = 0;
+    for (let i = 0; i < sortedIndustries.length; i++) {
+      if (sortedIndustries[i].industry === e.industry) {
+        firstCount++;
+        if (firstCount > 2) {
+          secondCount++;
+        } else {
+          text += `${sortedIndustries[i].company}, `;
+        }
+      } else {
+        text = text.trim();
+        text = text.replace(/,+$/, "");
+        if (secondCount > 0) {
+          text += ` +${secondCount}`;
+        }
+        secondCount = 0;
+        firstCount = 0;
+
+      }
+      if (i === sortedIndustries.length - 1) {
+        text = text.trim();
+        text = text.replace(/,+$/, "");
+        if (secondCount > 0) {
+          text += ` +${secondCount}`;
+        }
+      }
+    }
+
+    return text;
+  };
+
   return (
     <div className="possession">
       <div>
-        <span className="possession-amount">{`${sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} SEK `}</span>
+        <span className="possession-amount">{`${Math.round(totalShareValue)
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")} SEK `}</span>
         <span className="label-text">{`${getDate()}`}</span>
       </div>
       <div id="statistic-style">
-        <id id="sector1"></id>
-        <div id="sector2"></div>
-        <div id="sector3"></div>
-        <div id="sector4"></div>
-        <div id="sector5"></div>
+        {sortedSuggestedIndustries.map((element, index) => (
+          <div
+            style={{
+              backgroundColor: element.color,
+              width: (element.shareValue / totalShareValue) * 100 + "%",
+            }}
+          ></div>
+        ))}
       </div>
       <div>
-        {shares.map((element, index) => (
+        {industries.length > 0 ? sortedSuggestedIndustries.map((element, index) => (
           <div id="sectorStyle">
-            <div style={{backgroundColor:element.color}} className="rectangle"></div>
+            <div
+              style={{ backgroundColor: `${element.color}` }}
+              className="rectangle"
+            ></div>
             <div id="sectorContainer">
               <li key={index}>{element.industry}</li>
-              <p style={{ opacity: "0.5" }}>{element.companyName}</p>
+              <p style={{ opacity: "0.5" }}>{getCompanyIndustries(element)}</p>
             </div>
-            <p style={{ opacity: "0.5" }}>{element.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} SEK</p>
+            <p style={{ opacity: "0.5" }}>
+              {element.shareValue
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, " ")}{" "}
+              SEK
+            </p>
           </div>
-        ))}
+        )): "Inget innehav tillgänglig ännu"}
       </div>
     </div>
   );

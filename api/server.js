@@ -9,6 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 require("./app/routes/customer.routes")(app);
 require("./app/routes/share.routes")(app);
+require("./app/routes/industry.routes")(app);
 
 app.listen(PORT, () => {
   console.log("Server is running on port " + PORT);
