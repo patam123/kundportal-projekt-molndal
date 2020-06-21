@@ -14,7 +14,7 @@ import errorPage from "../components/errorpage/errorpage";
 function Dashboard() {
   const arr = [
     {
-      path: "/",
+      path: "/home",
       icon: "home-Logo",
       name: "Home",
       isexact: true,
@@ -89,7 +89,7 @@ function Dashboard() {
 
         <div id="page-style">
           <Switch>
-            <Route exact={true} path="/">
+            <Route path="/home">
               {userData && shareData && industryData && suggestedIndustries && (
                 <Home
                   user={userData && userData[0]}
