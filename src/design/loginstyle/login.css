@@ -1,9 +1,5 @@
 #loginContainer {
-  background: linear-gradient(
-    #d4c0ae,
-    rgba(82, 70, 34, 0.5),
-    #d4c0ae
-  ),
+  background: 
   url("../../images/paper.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -19,7 +15,7 @@
   flex-direction: column;
   background-color: rgb(43, 40, 40);
   opacity: 0.8;
-  padding: 80px 40px;
+  padding: 25px 40px;
   border-radius: 4px;
 }
 #inputContainer {
@@ -73,18 +69,23 @@
   font-size: 15px;
 }
 
-#forgetStyle {
+#regisResetContainer{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0px;
+}
+#regisReset {
   color: rgb(214, 207, 189);
   cursor: pointer;
-  font-size: 13px;
+  font-size: 12px;
 }
-#forgetStyle:hover {
+#regisReset:hover {
   color: rgb(197, 180, 29);
 }
 
 .btnlogIn {
-  margin-top: 10px;
   font-size: 16px; 
+  margin-top: 10px;
 }
 
 .btnlogIn:hover {
