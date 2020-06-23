@@ -12,6 +12,43 @@ exports.findAll = (req, res) => {
   });
 };
 
+exports.register = (req, res) => {
+  if (!req.body) {
+    res.status(400).send({
+      message: "Content can not be empty!",
+    });
+  }
+
+  Customer.register(req.body, (err, data) => {
+    if (err) {
+      res.status(500).send({
+        message: err.message || "Some occur while creating a user",
+      });
+    } else {
+      res.send(data);
+    }
+  });
+};
+
+exports.login = (req, res) => {
+
+  Customer.login(req.body, (err, data) => {
+    if (err) {
+      if (err.type === "not_found" || err.type === "incorrect_password") {
+        res.status(404).send({
+          message: "Wrong email or password",
+        });
+      } else {
+        res.status(500).send({
+          message: "Error when fething user...",
+        });
+      }
+    } else {
+      res.send(data);
+    }
+  });
+};
+
 exports.changePassword = (req, res) => {
   
   Customer.changePassword(req.body, (err, data) => {
@@ -35,15 +72,9 @@ exports.update = (req, res) => {
   
   Customer.update(req.body, (err, data) => {
     if (err) {
-      if (err.type === "not_found" || err.type === "incorrect_password") {
-        res.status(404).send({
-          message: "Wrong email or password",
-        });
-      } else {
-        res.status(500).send({
-          message: "Error when fething user...",
-        });
-      }
+      res.status(500).send({
+        message: err.message,
+      });
     } else {
       res.send(data);
     }

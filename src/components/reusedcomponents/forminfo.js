@@ -10,7 +10,18 @@ function formInfo({
   address,
   postCode,
   postArea,
-  onChange,
+  fnameOnChange,
+  lnameOnChange,
+  perNumOnChange,
+  addressOnChange,
+  telNumOnChange,
+  postAreaOnChange,
+  postCodeOnChange,
+  emailOnChange,
+  passwordOnChange,
+  repeatPasswordOnChange,
+  register,
+  required
 }) {
   return (
     <div>
@@ -22,7 +33,8 @@ function formInfo({
             inputtype="text"
             inputvalue={fname}
             labelname="Förnamn"
-            onChange={onChange}
+            onChange={fnameOnChange}
+            required={required}
           />
           <Input
             inputStyle="inputStyle"
@@ -30,7 +42,8 @@ function formInfo({
             inputtype="text"
             inputvalue={lname}
             labelname="Efternamn"
-            onChange={onChange}
+            onChange={lnameOnChange}
+            required={required}
           />
         </div>
 
@@ -40,7 +53,8 @@ function formInfo({
           inputtype="text"
           inputvalue={perNum}
           labelname="Personnummer"
-          onChange={onChange}
+          onChange={perNumOnChange}
+          required={required}
         />
 
         <Input
@@ -49,7 +63,8 @@ function formInfo({
           inputtype="text"
           inputvalue={address}
           labelname="Adress"
-          onChange={onChange}
+          onChange={addressOnChange}
+          required={required}
         />
 
         <div id="smallInputContainer">
@@ -59,7 +74,8 @@ function formInfo({
             inputtype="text"
             inputvalue={postArea}
             labelname="Postort"
-            onChange={onChange}
+            onChange={postAreaOnChange}
+            required={required}
           />
           <Input
             inputStyle="inputStyle"
@@ -67,7 +83,8 @@ function formInfo({
             inputtype="text"
             inputvalue={postCode}
             labelname="Postnummer"
-            onChange={onChange}
+            onChange={postCodeOnChange}
+            required={required}
           />
         </div>
         <Input
@@ -76,7 +93,8 @@ function formInfo({
           inputtype="text"
           inputvalue={telNum}
           labelname="Telefonnummer"
-          onChange={onChange}
+          onChange={telNumOnChange}
+          required={required}
         />
         <Input
           inputStyle="inputStyle"
@@ -84,8 +102,29 @@ function formInfo({
           inputtype="text"
           inputvalue={email}
           labelname="Email"
-          onChange={onChange}
+          onChange={emailOnChange}
+          required={required}
         />
+        {register && (
+          <Input
+            inputStyle="inputStyle"
+            labelStyle="labelCss"
+            inputtype="password"
+            labelname="Lösenord"
+            onChange={passwordOnChange}
+            required={required}
+          />
+        )}
+        {register && (
+          <Input
+            inputStyle="inputStyle"
+            labelStyle="labelCss"
+            inputtype="password"
+            labelname="Upprepa lösenord"
+            onChange={repeatPasswordOnChange}
+            required={required}
+          />
+        )}
       </div>
     </div>
   );

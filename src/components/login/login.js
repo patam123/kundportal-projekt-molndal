@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Input from "../reusedcomponents/input";
 import LoginCSS from "../../design/loginstyle/login.css";
 import Button from "../reusedcomponents/button";
 import ButtonCss from "../../design/loginstyle/buttonlogin.css";
 import { useHistory } from "react-router-dom";
 
-function Login(props) {
+const Login = (props) => {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
   const history = useHistory();
 
   function navigateRegister() {
@@ -17,8 +19,22 @@ function Login(props) {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (email && password) {
+      fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      })
+        .then((response) => console.log(response))
+        .then((data) => console.log(data));
+    }
     
-    history.push("/dashboard");
+    history.push("/home");
   };
   return (
     <div id="loginContainer">
@@ -35,6 +51,7 @@ function Login(props) {
               inputStyle="input-style"
               inputtype="text"
               inputvalue="E-post"
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <br></br>
@@ -43,8 +60,9 @@ function Login(props) {
             <Input
               container="inputContainer"
               inputStyle="input-style"
-              inputtype="text"
+              inputtype="password"
               inputvalue="Lösenord"
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <br></br>
