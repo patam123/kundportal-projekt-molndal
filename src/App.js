@@ -21,7 +21,7 @@ function App() {
         <Route path="/resetpassword">
           <Reset />
         </Route>
-        <Route path="/dashboard">
+        <Route path="/home">
         <DashBoard />
       </Route>
       </div>

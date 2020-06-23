@@ -18,7 +18,7 @@ function Login(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    history.push("/dashboard");
+    history.push("/home");
   };
   return (
     <div id="loginContainer">
