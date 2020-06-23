@@ -37,8 +37,8 @@ Customer.register = (newUser, result) => {
     const objUser = {
       email: newUser.email,
       hash: hash,
-      fname: newUser.firstName,
-      lname: newUser.lastName,
+      fname: newUser.fname,
+      lname: newUser.lname,
       perNum: newUser.perNum,
       address: newUser.address,
       postArea: newUser.postArea,
@@ -46,7 +46,7 @@ Customer.register = (newUser, result) => {
       telNum: newUser.telNum,
     };
     sql.query(
-      `INSERT INTO Customer(Email, Hash, FirstName, LastName, PersonNumber, Address, PostCode, PostAddress, PhoneNumber) VALUES('${objUser.email}', '${objUser.hash}', '${objUser.fname}', '${objUser.lname}', '${objUser.perNum}', '${objUser.address}', '${objUser.postCode}', '${objUser.postArea}', '${objUser.telNum}');`,
+      `INSERT INTO Customer(Email, Hash, FirstName, LastName, PersonNumber, Address, PostCode, PostAddress, PhoneNumber, ProfilePicture) VALUES('${objUser.email}', '${objUser.hash}', '${objUser.fname}', '${objUser.lname}', '${objUser.perNum}', '${objUser.address}', '${objUser.postCode}', '${objUser.postArea}', '${objUser.telNum}', 'hej');`,
       (err, res) => {
         if (err) {
           console.log("Error", err);
@@ -63,15 +63,15 @@ Customer.register = (newUser, result) => {
 Customer.login = (user, result) => {
   const { email, password } = user;
 
-  sql.query(`SELECT * from Customer WHERE email = '${email}'`, (err, res) => {
+  sql.query(`SELECT * from Customer WHERE Email = '${email}'`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
       return;
     }
-
+    console.log(res);
     if (res.length) {
-      bcrypt.compare(password, res[0].hash, (err, isCorrect) => {
+      bcrypt.compare(password, res[0].Hash, (err, isCorrect) => {
         if (isCorrect) {
           console.log("Found user", res[0]);
           result(null, res[0]);

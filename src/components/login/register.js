@@ -18,30 +18,32 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:3300/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-        fname: fname,
-        lname: lname,
-        address: address,
-        postArea: postArea,
-        postCode: postCode,
-        perNum: perNum,
-        telNum: telNum,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data));
+    if (password === repeatPassword) {
+      fetch("http://localhost:3300/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+          fname: fname,
+          lname: lname,
+          address: address,
+          postArea: postArea,
+          postCode: postCode,
+          perNum: perNum,
+          telNum: telNum,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => console.log(data));
+    } else {
+      alert("Lösenorden stämmer inte överens.");
+    }
   };
 
-  useEffect(() => {
-
-  }, []);
+  useEffect(() => {}, []);
   return (
     <div id="registerContainer">
       <h2>Registrera ditt konto</h2> <br></br>

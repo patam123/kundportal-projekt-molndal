@@ -28,7 +28,7 @@ PostAddress NVARCHAR(50) NOT NULL,
 
 PhoneNumber NVARCHAR(12) NOT NULL,
 
-ProfilePicture NVARCHAR(255) NOT NULL,
+ProfilePicture NVARCHAR(255),
 PRIMARY KEY(Id));
 
 
