@@ -7,5 +7,7 @@ module.exports = (app) => {
     app.put("/changepassword", customers.changePassword);
     app.put("/update", customers.update);
     app.post("/login", customers.login);
+    app.post("/gethash", customers.getHash);
+    app.put("/resetpassword", customers.resetPassword);
     // app.post("/customers", customers.insert);
   };

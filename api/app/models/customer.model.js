@@ -102,7 +102,7 @@ Customer.update = (user, result) => {
         result(null, err);
         return;
       }
-      console.log("customers", res);
+      console.log("update customer", res);
       result(null, res);
     }
   );
@@ -123,7 +123,7 @@ Customer.changePassword = (user, result) => {
               result(null, err);
               return;
             } else {
-              console.log("customers", res);
+              console.log("change password", res);
               result(null, res);
             }
           }
@@ -131,6 +131,39 @@ Customer.changePassword = (user, result) => {
       });
     }
   });
+};
+
+Customer.resetPassword = (user, result) =>{
+  bcrypt.hash(user.password, SALT_ROUNDS, (err, hash) => {
+    console.log(hash);
+    sql.query(
+      `UPDATE Customer SET Hash = '${hash}' WHERE Email = '${user.email}'`,
+      (err, res) => {
+        if (err) {
+          console.log("Error", err);
+          result(null, err);
+          return;
+        } else {
+          console.log("reset password", res);
+          result(null, res);
+        }
+      }
+    );
+  });
+};
+
+Customer.getHash = (user, result) => {
+  sql.query(`SELECT Hash as hash FROM Customer WHERE Email = '${user.email}'`,
+  (err, res) => {
+    if (err) {
+      console.log("Error", err);
+      result(null, err);
+      return;
+    }
+    console.log("hash", res);
+    result(null, res);
+  });
+  
 };
 
 module.exports = Customer;

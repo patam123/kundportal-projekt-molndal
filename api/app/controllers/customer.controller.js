@@ -75,6 +75,32 @@ exports.update = (req, res) => {
   });
 };
 
+exports.resetPassword = (req, res) => {
+  
+  Customer.resetPassword(req.body, (err, data) => {
+    if (err) {
+      res.status(500).send({
+        message: err.message,
+      });
+    } else {
+      res.send(data);
+    }
+  });
+};
+
+exports.getHash = (req, res) => {
+  
+  Customer.getHash(req.body, (err, data) => {
+    if (err) {
+      res.status(500).send({
+        message: err.message,
+      });
+    } else {
+      res.send(data);
+    }
+  });
+};
+
 // exports.insert = (req, res) => {
 
 //   console.log(req.body)
