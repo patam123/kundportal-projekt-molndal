@@ -11,19 +11,19 @@ import SettingCSS from "../../design/setting.css";
 const Setting = ({ userData, industryData }) => {
   const arrsetting = [
     {
-      path: "/setting",
+      path: "/home/setting",
       name: "Profil",
       style: "active-setting",
       isexact: true,
     },
     {
-      path: "/setting/changepassword",
+      path: "/home/setting/changepassword",
       name: "Byt Lösenord",
       style: "active-setting",
       isexact: false,
     },
     {
-      path: "/setting/preferenser",
+      path: "/home/setting/preferenser",
       name: "Preferenser",
       style: "active-setting",
       isexact: false,
@@ -49,7 +49,7 @@ const Setting = ({ userData, industryData }) => {
             ))}
           </div>
           <Switch>
-            <Route exact={true} path="/setting">
+            <Route exact={true} path="/home/setting">
               <ProfileSetting
                 fname={userData && userData.FirstName}
                 lname={userData && userData.LastName}
@@ -62,10 +62,10 @@ const Setting = ({ userData, industryData }) => {
                 photo={userData && userData.ProfilePicture}
               />
             </Route>
-            <Route path="/setting/changepassword">
+            <Route path="/home/setting/changepassword">
               <ChangePassword email={userData && userData.Email} hash={userData.hash} />
             </Route>
-            <Route path="/setting/preferenser">
+            <Route path="/home/setting/preferenser">
               <SettingPreferenser industryData={industryData} />
             </Route>
             <Route>{<ErrorPage />}</Route>
