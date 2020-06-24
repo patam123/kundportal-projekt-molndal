@@ -25,7 +25,8 @@ const ResetPassword = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Ditt nya lösenord är: ${newPassword[0].hash.slice(0,10)}`);
+    newPassword && newPassword.length > 0 ?
+    
     fetch("http://localhost:3300/resetpassword", {
         method: "PUT",
         headers: {
@@ -37,8 +38,7 @@ const ResetPassword = () => {
         }),
       })
         .then((response) => response.json())
-        .then((data) => console.log(data));
-        setEmail();
+        .then((data) => alert(`Ditt nya lösenord är: ${newPassword[0].hash.slice(0,10)}`)) : alert("Det finns ingen med den här mailaddressen")
   };
   return (
     <div id="resetContainer">
