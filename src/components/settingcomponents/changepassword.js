@@ -7,12 +7,7 @@ const ChangePassword = ({ handleSubmit, email, hash }) => {
   const [oldPassword, setOldPassword] = useState();
   const [newPassword, setNewPassword] = useState();
   const [confirmNewPassword, setConfirmNewPassword] = useState();
-  useEffect(() => {
-    console.log(oldPassword);
-    console.log(newPassword);
-    console.log(confirmNewPassword);
-
-  }, [oldPassword, newPassword, confirmNewPassword] )
+ 
   const handleUpdate = () => {
     console.log(hash)
     if (newPassword === confirmNewPassword) {
