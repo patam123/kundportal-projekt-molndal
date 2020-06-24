@@ -14,11 +14,9 @@ const Customer = function (customer) {
   //   (this.phoneNumber = customer.PhoneNumber);
 };
 
-
-
-Customer.getAll = (result) => {
+Customer.getAll = (user, result) => {
   sql.query(
-    "SELECT Email, Hash, FirstName, LastName, PersonNumber, Address, PostCode, PostAddress, PhoneNumber, ProfilePicture FROM Customer WHERE id=1;",
+    `SELECT Email, FirstName, LastName, PersonNumber, Address, PostCode, PostAddress, PhoneNumber, ProfilePicture FROM Customer WHERE Email = '${user.email}';`,
     (err, res) => {
       if (err) {
         console.log("Error", err);
@@ -63,29 +61,33 @@ Customer.register = (newUser, result) => {
 Customer.login = (user, result) => {
   const { email, password } = user;
 
-  sql.query(`SELECT * from Customer WHERE Email = '${email}'`, (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(err, null);
-      return;
+  sql.query(
+    `SELECT Email, Hash as hash From Customer
+  WHERE Email = '${email}';`,
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+      console.log(res);
+      if (res.length) {
+        bcrypt.compare(password, res[0].hash, (err, isCorrect) => {
+          if (isCorrect) {
+            console.log("Found user", res);
+            result(null, res);
+            return;
+          } else {
+            console.log("Incorrect password");
+            result({ type: "incorrect_password" }, null);
+            return;
+          }
+        });
+      } else {
+        result({ type: "not_found" }, null);
+      }
     }
-    console.log(res);
-    if (res.length) {
-      bcrypt.compare(password, res[0].Hash, (err, isCorrect) => {
-        if (isCorrect) {
-          console.log("Found user", res[0]);
-          result(null, res[0]);
-          return;
-        } else {
-          console.log("Incorrect password");
-          result({ type: "incorrect_password" }, null);
-          return;
-        }
-      });
-    } else {
-      result({ type: "not_found" }, null);
-    }
-  });
+  );
 };
 
 Customer.update = (user, result) => {

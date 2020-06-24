@@ -3,7 +3,7 @@ const sql = require("./db");
 const Share = function (share) {
 };
 
-Share.getShares = (result) => {
+Share.getShares = (user, result) => {
   sql.query(`SELECT co.Name as companyName,
   s.Type as type, SUM(co.ShareWorth) as shareValue,
   Count(0) as amount,
@@ -15,7 +15,7 @@ Share.getShares = (result) => {
   INNER JOIN Company co ON co.Id = s.CompanyId
   Inner JOIN Customer c ON s.Owner = c.Id
   Inner JOIN Industry i ON i.Id = co.Industry
-  WHERE c.Email = 'example.person@example.com'
+  WHERE c.Email = '${user.email}'
   Group by co.Name;`, (err, res) => {
     if (err) {
       console.log("Error", err);

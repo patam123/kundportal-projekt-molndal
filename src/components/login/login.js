@@ -20,7 +20,7 @@ const Login = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (email && password) {
-      fetch("http://localhost:3000/login", {
+      fetch("http://localhost:3300/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -30,11 +30,11 @@ const Login = (props) => {
           password: password,
         }),
       })
-        .then((response) => console.log(response))
-        .then((data) => console.log(data));
+        .then((response) => response.json())
+        .then((data) => sessionStorage.setItem("userData", JSON.stringify(data)));
     }
-    
-    history.push("/home");
+    history.push(`/home`);
+    window.location.reload();
   };
   return (
     <div id="loginContainer">

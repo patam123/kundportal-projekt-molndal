@@ -32,26 +32,61 @@ function Dashboard() {
       isexact: false,
     },
   ];
-
+  const user = JSON.parse(sessionStorage.getItem("userData"));
   useEffect(() => {
-    fetch("http://localhost:3300/customers")
+
+    fetch("http://localhost:3300/customers", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: user[0].Email,
+      }),
+    })
       .then((response) => response.json())
-      .then((data) => setData(data));
-    fetch("http://localhost:3300/shares")
+      .then((data) => setUserData(data));
+
+    fetch("http://localhost:3300/shares", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: user[0].Email,
+      }),
+    })
       .then((response) => response.json())
       .then((data) => setShareData(data));
-    fetch("http://localhost:3300/industries")
+
+    fetch("http://localhost:3300/industries", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: user[0].Email,
+      }),
+    })
       .then((response) => response.json())
       .then((data) => setIndustryData(data));
-    fetch("http://localhost:3300/suggestedindustries")
+
+    fetch("http://localhost:3300/suggestedindustries", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: user[0].Email,
+      }),
+    })
       .then((response) => response.json())
       .then((data) => setSuggestedIndustries(data));
     fetch("http://localhost:3300/allindustries")
       .then((response) => response.json())
       .then((data) => setAllIndustries(data));
   }, []);
-
-  const [userData, setData] = useState();
+  const [userData, setUserData] = useState();
   const [shareData, setShareData] = useState();
   const [industryData, setIndustryData] = useState();
   const [suggestedIndustries, setSuggestedIndustries] = useState();
@@ -67,6 +102,7 @@ function Dashboard() {
               {arr.map((element, index) => {
                 return (
                   <Links
+                    key={`link${index}`}
                     path={element.path}
                     name={element.name}
                     icon={element.icon}
@@ -105,7 +141,7 @@ function Dashboard() {
               {shareData && <Portfolio shares={shareData && shareData} />}
             </Route>
             <Route path="/setting">
-              {userData && allindustries && (
+              {user && allindustries && (
                 <Setting
                   userData={userData && userData[0]}
                   industryData={allindustries}

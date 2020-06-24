@@ -3,7 +3,7 @@ import User from "../../usercomponents/user";
 import Share from "./share";
 import PossessionStyle from "../../../design/homestyle/possessionstyle.css";
 
-const Possession = ({ suggestedIndustries, industries }) => {
+const Possession = ({ suggestedIndustries, industries, date }) => {
   const share1 = new Share(
     "Skanska ",
     "Byggsektorn",
@@ -66,22 +66,6 @@ const Possession = ({ suggestedIndustries, industries }) => {
     0
   );
 
-  const getDate = () => {
-    const date = new Date();
-
-    const year = date.getFullYear();
-    let month = date.getMonth() + 1;
-    if (month < 9) {
-      month = "0" + month;
-    }
-    let day = date.getDate();
-    if (day < 10) {
-      day = "0" + day;
-    }
-
-    return `Uppdaterat: ${year}-${month}-${day}`;
-  };
-
   //sorterat efter storlek på innehav
   // const sortedSuggestedIndustries = suggestedIndustries.sort((a, b) =>
   // a.shareValue < b.shareValue ? 1 : b.shareValue < a.shareValue ? -1 : 0
@@ -135,11 +119,12 @@ const Possession = ({ suggestedIndustries, industries }) => {
         <span className="possession-amount">{`${Math.round(totalShareValue)
           .toString()
           .replace(/\B(?=(\d{3})+(?!\d))/g, ",")} SEK `}</span>
-        <span className="label-text">{`${getDate()}`}</span>
+        <span className="label-text">{`Uppdaterat: ${date}`}</span>
       </div>
       <div id="statistic-style">
         {sortedSuggestedIndustries.map((element, index) => (
           <div
+          key={`bar${index}`}
             style={{
               backgroundColor: element.color,
               width: (element.shareValue / totalShareValue) * 100 + "%",
@@ -149,7 +134,7 @@ const Possession = ({ suggestedIndustries, industries }) => {
       </div>
       <div>
         {industries.length > 0 ? sortedSuggestedIndustries.map((element, index) => (
-          <div id="sectorStyle">
+          <div key={`industry${index}`} id="sectorStyle">
             <div
               style={{ backgroundColor: `${element.color}` }}
               className="rectangle"
