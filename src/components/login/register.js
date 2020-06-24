@@ -3,6 +3,7 @@ import FormInfo from "../reusedcomponents/forminfo";
 import Button from "../reusedcomponents/button";
 import RegisterCss from "../../design/loginstyle/registerstyle.css";
 import ButtonLoginCss from "../../design/loginstyle/buttonlogin.css";
+import { useHistory } from "react-router-dom";
 
 const Register = () => {
   const [email, setNewEmail] = useState();
@@ -16,9 +17,18 @@ const Register = () => {
   const [postCode, setNewPostCode] = useState();
   const [postArea, setNewPostArea] = useState();
 
+  const [submitState,setSubmitState]=useState(false);
+  const [StyleState,setStyleState]=useState(false);
+  
+  const history = useHistory();
+  function navigateToLogin() {
+    history.push("/");
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
+    setSubmitState(true)
+    setStyleState(true);
+    if (password === repeatPassword) {     
       fetch("http://localhost:3300/register", {
         method: "POST",
         headers: {
@@ -42,12 +52,14 @@ const Register = () => {
       alert("Lösenorden stämmer inte överens.");
     }
   };
-
+  
+  let isHidden=StyleState?"hide":"show";
   useEffect(() => {}, []);
   return (
     <div id="registerContainer">
       <h2>Registrera ditt konto</h2> <br></br>
-      <form onSubmit={handleSubmit}>
+      {submitState?<div id="succeededStyle"><p>Konto har skapats!</p><Button isClicked={navigateToLogin} cssValue="backBtnStyle" btnText="Inlogningsida"/></div>:null}
+      <form className={isHidden} onSubmit={handleSubmit}>     
         <FormInfo
           register={true}
           required={true}
@@ -62,6 +74,7 @@ const Register = () => {
           passwordOnChange={(e) => setNewPassword(e.target.value)}
           repeatPasswordOnChange={(e) => setRepeatPassword(e.target.value)}
         />
+        
         <Button cssValue="btnlogIn" btnText="Registrera" />
       </form>
     </div>
