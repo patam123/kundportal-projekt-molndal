@@ -49,10 +49,10 @@ const Profile = ({
           <p className="industryList">{sortedIndustries.length > 0 ? sortedIndustries[0].industry : "Ej tillgängligt"}</p>
           {sortedIndustries.length > 1 && <p className="industryList">{sortedIndustries[1].industry}</p>}
         </div>
-        <di>
+        <div>
           {sortedIndustries.length > 2 && <p className="industryList">{sortedIndustries[2].industry}</p>}
           {sortedIndustries.length > 3 && <p className="industryList">{sortedIndustries[3].industry}</p>}
-        </di>
+        </div>
       </div>
 
       <div id="contact">

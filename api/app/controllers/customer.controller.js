@@ -1,7 +1,7 @@
 const Customer = require("../models/customer.model");
 
 exports.findAll = (req, res) => {
-  Customer.getAll((err, data) => {
+  Customer.getAll(req.body, (err, data) => {
     if (err) {
       res.status(500).send({
         message: err.message,

@@ -1,7 +1,7 @@
 const Industry = require("../models/industry.model");
 
 exports.getContent = (req, res) => {
-  Industry.getContent((err, data) => {
+  Industry.getContent(req.body, (err, data) => {
     if (err) {
       res.status(500).send({
         message: err.message,
@@ -13,7 +13,7 @@ exports.getContent = (req, res) => {
 };
 
 exports.getSuggestedIndustries = (req, res) => {
-    Industry.getSuggestedIndustries((err, data) => {
+    Industry.getSuggestedIndustries(req.body, (err, data) => {
       if (err) {
         res.status(500).send({
           message: err.message,

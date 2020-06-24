@@ -7,6 +7,21 @@ import HeadTitle from "../reusedcomponents/headtitle";
 
 // Home station var min profil och mitt innehav ska anropas här
 const Home = ({ id, user, shares, industries, suggestedIndustries }) => {
+  const getDate = () => {
+    const date = new Date();
+
+    const year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    if (month < 9) {
+      month = "0" + month;
+    }
+    let day = date.getDate();
+    if (day < 10) {
+      day = "0" + day;
+    }
+
+    return `${year}-${month}-${day}`;
+  };
   return (
     <div id="homeContainer">
       <HeadTitle title="Hem" />
@@ -17,7 +32,7 @@ const Home = ({ id, user, shares, industries, suggestedIndustries }) => {
         </span>
         {`${
           shares
-            ? `Ditt innehav blev senast uppdaterad INSERTDATUMHERE. Ta gärna en titt!`
+            ? `Ditt innehav blev senast uppdaterad ${getDate()}. Ta gärna en titt!`
             : `Du har inte något innehav tillagt ännu. Du får ett mail såfort det är
         uppdaterad!`
         }`}
@@ -51,7 +66,7 @@ const Home = ({ id, user, shares, industries, suggestedIndustries }) => {
             path="/portfolio"
             headText="Mitt innehav"
             linkText="Min Portfölj"
-            firstSection={<Possession industries={industries} suggestedIndustries={suggestedIndustries} />}
+            firstSection={<Possession date={getDate()} industries={industries} suggestedIndustries={suggestedIndustries} />}
           />
         </div>
       </div>
