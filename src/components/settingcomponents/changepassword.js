@@ -3,29 +3,29 @@ import Input from "../reusedcomponents/input";
 import Button from "../reusedcomponents/button";
 
 
-const ChangePassword = ({ handleSubmit, email, password }) => {
+const ChangePassword = ({ handleSubmit, email, hash }) => {
   const [oldPassword, setOldPassword] = useState();
   const [newPassword, setNewPassword] = useState();
   const [confirmNewPassword, setConfirmNewPassword] = useState();
-  console.log(email);
-  console.log(password);
   useEffect(() => {
     console.log(oldPassword);
     console.log(newPassword);
     console.log(confirmNewPassword);
 
   }, [oldPassword, newPassword, confirmNewPassword] )
-
   const handleUpdate = () => {
-    if (oldPassword === password && newPassword === confirmNewPassword) {
+    console.log(hash)
+    if (newPassword === confirmNewPassword) {
       fetch("http://localhost:3300/changepassword", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email,
-          newPassword,
+          email: email,
+          newPassword: newPassword,
+          oldPassword: oldPassword,
+          hash: hash
         }),
       })
         .then((response) => response.json())

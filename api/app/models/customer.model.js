@@ -16,7 +16,7 @@ const Customer = function (customer) {
 
 Customer.getAll = (user, result) => {
   sql.query(
-    `SELECT Email, FirstName, LastName, PersonNumber, Address, PostCode, PostAddress, PhoneNumber, ProfilePicture FROM Customer WHERE Email = '${user.email}';`,
+    `SELECT Email, Hash as hash, FirstName, LastName, PersonNumber, Address, PostCode, PostAddress, PhoneNumber, ProfilePicture FROM Customer WHERE Email = '${user.email}';`,
     (err, res) => {
       if (err) {
         console.log("Error", err);
@@ -109,19 +109,28 @@ Customer.update = (user, result) => {
 };
 
 Customer.changePassword = (user, result) => {
-  const { email, newPassword } = user;
-  sql.query(
-    `UPDATE Customer SET Password = '${newPassword}' WHERE Email = '${email}'`,
-    (err, res) => {
-      if (err) {
-        console.log("Error", err);
-        result(null, err);
-        return;
-      }
-      console.log("customers", res);
-      result(null, res);
+  console.log(user.hash);
+  bcrypt.compare(user.oldPassword, user.hash, (err, isCorrect) => {
+    console.log(isCorrect);
+    if (isCorrect) {
+      bcrypt.hash(user.newPassword, SALT_ROUNDS, (err, hash) => {
+        console.log(hash);
+        sql.query(
+          `UPDATE Customer SET Hash = '${hash}' WHERE Email = '${user.email}'`,
+          (err, res) => {
+            if (err) {
+              console.log("Error", err);
+              result(null, err);
+              return;
+            } else {
+              console.log("customers", res);
+              result(null, res);
+            }
+          }
+        );
+      });
     }
-  );
+  });
 };
 
 module.exports = Customer;

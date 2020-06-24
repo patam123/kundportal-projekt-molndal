@@ -53,15 +53,9 @@ exports.changePassword = (req, res) => {
   
   Customer.changePassword(req.body, (err, data) => {
     if (err) {
-      if (err.type === "not_found" || err.type === "incorrect_password") {
-        res.status(404).send({
-          message: "Wrong email or password",
-        });
-      } else {
-        res.status(500).send({
-          message: "Error when fething user...",
-        });
-      }
+      res.status(500).send({
+        message: err.message,
+      });
     } else {
       res.send(data);
     }

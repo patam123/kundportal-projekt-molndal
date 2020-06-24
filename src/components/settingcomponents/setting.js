@@ -38,9 +38,10 @@ const Setting = ({ userData, industryData }) => {
           <div id="container">
             {arrsetting.map((element, index) => (
               <Links
+                key={`${index}link`}
                 path={element.path}
                 name={element.name}
-                keyId={index}
+                keyId={`${index}setting`}
                 isExact={element.isexact}
                 isActive={element.style}
                 inActive="inactive-setting"
@@ -62,7 +63,7 @@ const Setting = ({ userData, industryData }) => {
               />
             </Route>
             <Route path="/setting/changepassword">
-              <ChangePassword email={userData && userData.Email} password={userData && userData.Password} />
+              <ChangePassword email={userData && userData.Email} hash={userData.hash} />
             </Route>
             <Route path="/setting/preferenser">
               <SettingPreferenser industryData={industryData} />
