@@ -9,8 +9,9 @@ function settingPreferenser({handleSubmit, industryData}) {
     <div>
     <form onSubmit={handleSubmit}>
       <div id="profilesettingStyle">
-        {industryData.map((e) =>(
+        {industryData.map((e, index) =>(
           <Input
+            key={`input${index}`}
             inputtype="checkbox"
             container="divContainer"
             inputStyle="checkBoxStyle"

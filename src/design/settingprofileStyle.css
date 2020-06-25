@@ -26,6 +26,14 @@
   top: 0;
 }
 
+#file-dialogue, #file-upload-button{
+  opacity: 0;
+  width: 32px;
+  height: 32px;
+}
+
+
+
 .inputStyle {
   width: 100%;
   height: 39px;

@@ -21,13 +21,13 @@ function Dashboard() {
       isexact: true,
     },
     {
-      path: "/portfolio",
+      path: "/home/portfolio",
       icon: "port-Logo",
       name: "Min Portfölj",
       isexact: false,
     },
     {
-      path: "/setting",
+      path: "/home/setting",
       icon: "setting-Logo",
       name: "Inställningar",
       isexact: false,
@@ -132,7 +132,7 @@ function Dashboard() {
 
         <div id="page-style">
           <Switch>
-            <Route path="/home">
+            <Route exact={true} path="/home">
               {userData && shareData && industryData && suggestedIndustries && (
                 <Home
                   user={userData && userData[0]}
@@ -144,10 +144,10 @@ function Dashboard() {
                 />
               )}
             </Route>
-            <Route path="/portfolio">
+            <Route path="/home/portfolio">
               {shareData && <Portfolio shares={shareData && shareData} />}
             </Route>
-            <Route path="/setting">
+            <Route path="/home/setting">
               {user && allindustries && (
                 <Setting
                   userData={userData && userData[0]}

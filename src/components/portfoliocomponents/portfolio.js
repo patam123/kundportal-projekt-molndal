@@ -116,10 +116,10 @@ const Portfolio = ({ shares }) => {
               </tr>
             </thead>
             <tbody key="tablebody">
-              {shares.length > 0 ?content.map((share) => {
+              {shares.length > 0 ?content.map((share, index) => {
                 return (
                   <Portfoliorow
-                    key={`${share.name}PortfolioRow`}
+                    key={`${index}PortfolioRow`}
                     companyName={share.companyName}
                     shareValue={share.shareValue}
                     type={share.type}
