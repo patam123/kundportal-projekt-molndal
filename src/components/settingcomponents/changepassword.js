@@ -24,6 +24,8 @@ const ChangePassword = ({ email, hash }) => {
       })
         .then((response) => response.json())
         .then((data) => alert("Your password has been changed!"));
+    } else {
+      alert("Your new passwords does not match")
     }
   };
 
