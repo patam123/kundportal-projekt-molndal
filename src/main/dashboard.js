@@ -10,6 +10,7 @@ import DashboardStyling from "../design/dashboard.css";
 import User from "../components/usercomponents/user";
 import Userdata from "../components/usercomponents/userdata";
 import errorPage from "../components/errorpage/errorpage";
+import { useHistory } from "react-router-dom";
 
 function Dashboard() {
   const arr = [
@@ -92,6 +93,12 @@ function Dashboard() {
   const [suggestedIndustries, setSuggestedIndustries] = useState();
   const [allindustries, setAllIndustries] = useState();
 
+  const history = useHistory();
+  const handleLogout=()=>{
+    sessionStorage.clear()
+    history.push("/")
+  }
+  
   return (
     <Router>
       <div id="dashboard-style">
@@ -116,7 +123,7 @@ function Dashboard() {
 
             <div id="sidebarfoot">
               <div id="slash"></div>
-              <button id="logout">
+              <button onClick={handleLogout} id="logout">
                 <img id="logout-img" src="/logout.svg" alt="img" /> Logga ut
               </button>
             </div>
