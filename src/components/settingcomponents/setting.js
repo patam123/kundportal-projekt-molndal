@@ -63,7 +63,7 @@ const Setting = ({ userData, industryData }) => {
               />
             </Route>
             <Route path="/home/setting/changepassword">
-              <ChangePassword email={userData && userData.Email} hash={userData.hash} />
+              <ChangePassword email={userData && userData.Email} hash={userData && userData.hash} />
             </Route>
             <Route path="/home/setting/preferenser">
               <SettingPreferenser industryData={industryData} />

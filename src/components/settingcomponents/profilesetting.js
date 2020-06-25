@@ -37,7 +37,7 @@ const ProfileSetting = ({
   const [newPostCode, setNewPostCode] = useState();
   const [newPostArea, setNewPostArea] = useState();
   const [newPhoto, setNewPhoto] = useState();
-
+  
   const handleUpdate = () => {
     fetch("http://localhost:3300/update", {
       method: "PUT",
@@ -66,7 +66,9 @@ const ProfileSetting = ({
       <div id="profilesettingStyle">
         <div id="photo-style">
           {" "}
-          <div id="circle"></div>
+          <div id="circle">
+          <input id="file-dialogue" type="file" onChange={(e) => setNewPhoto(e.target.value)} accept="image/x-png,image/gif,image/jpeg"/>
+          </div>
           {<ProfilePhoto picture={photo} />}
         </div>
         <div>
