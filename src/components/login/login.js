@@ -30,24 +30,13 @@ const Login = (props) => {
           password: password,
         }),
       })
-        .then((response) =>{ if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error('Something went wrong');
-        }
-      }).then((responseJson) => {
-        history.push(`/home`);
-        window.location.reload();
-        
-      })
-        .then((data) => sessionStorage.setItem("userData", JSON.stringify(data))).
-        catch((error) => {
-          console.log(error)
-        });
+        .then((response) => response.json())
+        .then((data) => sessionStorage.setItem("userData", JSON.stringify(data)));
     }
-    
+    history.push(`/home`);
+    window.location.reload();
   };
-
+  
   return (
     <div id="loginContainer">
       <div id="title">
