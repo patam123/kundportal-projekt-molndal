@@ -1,5 +1,4 @@
 module.exports = (app) => {
-    //Retrieve all customers
     const customers = require("../controllers/customer.controller");
   
     app.post("/customers", customers.findAll);
@@ -9,5 +8,4 @@ module.exports = (app) => {
     app.post("/login", customers.login);
     app.post("/gethash", customers.getHash);
     app.put("/resetpassword", customers.resetPassword);
-    // app.post("/customers", customers.insert);
   };

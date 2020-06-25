@@ -22,7 +22,7 @@ exports.register = (req, res) => {
   Customer.register(req.body, (err, data) => {
     if (err) {
       res.status(500).send({
-        message: err.message || "Some occur while creating a user",
+        message: err.message || "Something occured while creating a user",
       });
     } else {
       res.send(data);
@@ -100,9 +100,3 @@ exports.getHash = (req, res) => {
     }
   });
 };
-
-// exports.insert = (req, res) => {
-
-//   console.log(req.body)
-
-// };

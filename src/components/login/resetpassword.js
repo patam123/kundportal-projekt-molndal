@@ -45,8 +45,9 @@ const ResetPassword = () => {
       <h1 id="resetTitle">Återställa Ditt lösenord</h1>
       <form id="resetForm" onSubmit={handleSubmit}>
         <Input
+          required={true}
           container="textAndLable"
-          inputtype="text"
+          inputtype="email"
           inputStyle="input-Style"
           labelname=" Din email-adress:"
           onChange={(e) => setEmail(e.target.value)}

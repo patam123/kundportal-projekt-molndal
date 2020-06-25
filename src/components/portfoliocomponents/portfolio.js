@@ -5,10 +5,8 @@ import ButtonComponent from "../reusedcomponents/button";
 import "../../design/portfolio.css";
 
 const Portfolio = ({ shares }) => {
-  //använda localStorage.setItem för att spara undan size i useEffect.
-  //localStorage.getItem för att hämta i useState.  (kanske lagra dessa värden i databas som någon slags config)
   const savedSize = localStorage.getItem("size");
-  const [size, setTableSize] = useState(savedSize ? JSON.parse(savedSize) : 1);
+  const [size, setTableSize] = useState(savedSize ? JSON.parse(savedSize) : 10);
   const [pageIndex, setIndex] = useState(0);
 
 
@@ -25,7 +23,6 @@ const Portfolio = ({ shares }) => {
     localStorage.setItem("size", JSON.stringify(size));
   }, [pageIndex, size, shares]);
 
-  //funktionalitet för att lägga till ...-knappen behövs.
 
   const generateButtons = () => {
     const buttonArray = [];
@@ -135,7 +132,7 @@ const Portfolio = ({ shares }) => {
         </div>
         <div id="bottom-container">
           <div className="portfolio-buttons">{generateButtons()}</div>
-          <div className="portfolio-div">
+          <div className="portfolio-select-container">
             <select
             value={size}
               className="portfolio-select"

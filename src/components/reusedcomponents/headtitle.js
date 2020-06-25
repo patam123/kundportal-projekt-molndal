@@ -1,7 +1,7 @@
 import React from "react";
 
 function HeadTitle({ title }) {
-  const divStyle = {
+  const titleStyle = {
     textAlign: "left",
     lettersSacing: " 0px",
     color: "#656565",
@@ -11,7 +11,7 @@ function HeadTitle({ title }) {
   };
   return (
     <div>
-      <p style={divStyle}>{title}</p>
+      <p style={titleStyle}>{title}</p>
     </div>
   );
 }

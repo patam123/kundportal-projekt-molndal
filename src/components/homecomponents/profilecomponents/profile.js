@@ -1,5 +1,4 @@
 import React from "react";
-import User from "../../usercomponents/user";
 import Userdata from "../../usercomponents/userdata";
 import Photo from "../../reusedcomponents/profile-photo";
 import HomeProfileCss from "../../../design/homestyle/homeprofilestyle.css";
@@ -17,16 +16,7 @@ const Profile = ({
   industries,
   suggestedIndustries,
 }) => {
-  const user = new User(
-    "Magnus",
-    "Person",
-    "19800505-5555",
-    "example.person@gmail.com",
-    "0700000000",
-    "Landsvägen 1",
-    "40010",
-    "Göteborg"
-  );
+
 
     const sortedIndustries = suggestedIndustries.sort((a, b) =>
       a.shareValue < b.shareValue ? 1 : b.shareValue < a.shareValue ? -1 : 0
@@ -55,7 +45,7 @@ const Profile = ({
         </div>
       </div>
 
-      <div id="contact">
+      <div id="contactStyle">
         <p className="title">Kontaktuppgifter</p>
 
         <Userdata

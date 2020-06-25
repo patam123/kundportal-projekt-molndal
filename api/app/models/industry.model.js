@@ -60,34 +60,4 @@ Industry.getSuggestedIndustries = (user, result) => {
     });
   };
 
-  // Industry.getSuggestedIndustries = (user, result) => {
-  
-  //   sql.query(`SELECT i.Name AS industry,  
-  //   SUM(co.ShareWorth) as shareValue,
-  //   i.Color as color 
-  //   FROM Industry i
-  //   INNER JOIN Company co
-  //   ON i.Id = co.Industry
-  //   INNER JOIN Share s
-  //   ON s.CompanyId = co.Id
-  //   INNER JOIN Customer c
-  //   ON c.Id = s.Owner
-  //   WHERE c.Email = ${user.email}
-  //   group by i.Name`, (err, res) => {
-  //     if (err) {
-  //       console.log("error: ", err);
-  //       result(err, null);
-  //       return;
-  //     }
-  //     console.log(res);
-  //     if (res.length) {
-  //           console.log("Found user", res);
-  //           result(null, res);
-  //           return;
-  //     } else {
-  //       result({ type: "not_found" }, null);
-  //     }
-  //   });
-  // };
-
 module.exports = Industry;

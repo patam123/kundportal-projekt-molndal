@@ -3,15 +3,7 @@ const SALT_ROUNDS = 10;
 const bcrypt = require("bcrypt");
 
 const Customer = function (customer) {
-  // (this.email = customer.Email),
-  // (this.password = customer.Password),
-  //   (this.firstName = customer.FirstName),
-  //   (this.lastName = customer.LastName),
-  //   (this.personNumber = customer.PersonNumber),
-  //   (this.address = customer.Address),
-  //   (this.postCode = customer.PostCode),
-  //   (this.postAddress = customer.PostAddress),
-  //   (this.phoneNumber = customer.PhoneNumber);
+  
 };
 
 Customer.getAll = (user, result) => {

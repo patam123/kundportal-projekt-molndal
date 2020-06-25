@@ -1,75 +1,13 @@
-import React, { useState } from "react";
-import User from "../../usercomponents/user";
-import Share from "./share";
+import React from "react";
 import PossessionStyle from "../../../design/homestyle/possessionstyle.css";
 
 const Possession = ({ suggestedIndustries, industries, date }) => {
-  const share1 = new Share(
-    "Skanska ",
-    "Byggsektorn",
-    "#5B74FF",
-    12500,
-    "B",
-    100,
-    "00001-111",
-    1 + "%",
-    1 + "%"
-  );
-  const share2 = new Share(
-    "Volvo",
-    "Medtech",
-    "#FD397A",
-    30000,
-    "A",
-    150,
-    "0000-0000",
-    1 + "%",
-    1 + "%"
-  );
-  const share3 = new Share(
-    "Tesla ",
-    "Fintech",
-    "#34BFA3",
-    15000,
-    "B",
-    100,
-    "00001-111",
-    1 + "%",
-    1 + "%"
-  );
-  const share4 = new Share(
-    "AAK",
-    "Industri X",
-    "#363636",
-    30000,
-    "A",
-    150,
-    "0000-0000",
-    1 + "%",
-    1 + "%"
-  );
-  const share5 = new Share(
-    "H&M",
-    "Övrigt",
-    "#EDEFF3",
-    20000,
-    "A",
-    150,
-    "0000-0000",
-    1 + "%",
-    1 + "%"
-  );
-  const shares = [share1, share2, share3, share4, share5];
 
   const totalShareValue = suggestedIndustries.reduce(
     (tot, share) => tot + share.shareValue,
     0
   );
 
-  //sorterat efter storlek på innehav
-  // const sortedSuggestedIndustries = suggestedIndustries.sort((a, b) =>
-  // a.shareValue < b.shareValue ? 1 : b.shareValue < a.shareValue ? -1 : 0
-  // );
 
   //alfabetisk ordning
   const sortedSuggestedIndustries = suggestedIndustries.sort((a, b) =>

@@ -2,7 +2,7 @@ import React from "react";
 import Input from "../reusedcomponents/input";
 import ColorStyle from "../../design/loginstyle/formlablestyle.css"
 
-function formInfo({
+function FormInfo({
   fname,
   lname,
   perNum,
@@ -141,4 +141,4 @@ function formInfo({
   );
 }
 
-export default formInfo;
+export default FormInfo;

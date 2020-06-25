@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Input from "../reusedcomponents/input";
 import Button from "../reusedcomponents/button";
 import ProfilePhoto from "../reusedcomponents/profile-photo";
-import User from "../usercomponents/user";
 import FormInfo from "../reusedcomponents/forminfo";
 import SettingProfileStyle from "../../design/settingprofileStyle.css";
 
@@ -18,16 +17,7 @@ const ProfileSetting = ({
   photo,
   handleSubmit,
 }) => {
-  const user = new User(
-    "Example",
-    "Person",
-    "19800505-5555",
-    "example.person@gmail.com",
-    "0700000000",
-    "Landsvägen 1",
-    "40010",
-    "Göteborg"
-  );
+
   const [newEmail, setNewEmail] = useState();
   const [newLname, setNewLname] = useState();
   const [newFname, setNewFname] = useState();
@@ -58,14 +48,13 @@ const ProfileSetting = ({
       }),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => alert("Your profile has been updated!"));
   };
 
   return (
     <div>
       <div id="profilesettingStyle">
-        <div id="photo-style">
-          {" "}
+        <div id="photo-style">        
           <div id="circle">
           <input id="file-dialogue" type="file" onChange={(e) => setNewPhoto(e.target.value)} accept="image/x-png,image/gif,image/jpeg"/>
           </div>

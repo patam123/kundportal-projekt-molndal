@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Input from "../reusedcomponents/input";
 import Button from "../reusedcomponents/button";
 
 
-const ChangePassword = ({ handleSubmit, email, hash }) => {
+const ChangePassword = ({ email, hash }) => {
   const [oldPassword, setOldPassword] = useState();
   const [newPassword, setNewPassword] = useState();
   const [confirmNewPassword, setConfirmNewPassword] = useState();
  
   const handleUpdate = () => {
-    console.log(hash)
     if (newPassword === confirmNewPassword) {
       fetch("http://localhost:3300/changepassword", {
         method: "PUT",
@@ -24,7 +23,7 @@ const ChangePassword = ({ handleSubmit, email, hash }) => {
         }),
       })
         .then((response) => response.json())
-        .then((data) => console.log(data));
+        .then((data) => alert("Your password has been changed!"));
     }
   };
 

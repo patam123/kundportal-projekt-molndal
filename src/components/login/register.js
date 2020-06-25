@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import FormInfo from "../reusedcomponents/forminfo";
 import Button from "../reusedcomponents/button";
 import RegisterCss from "../../design/loginstyle/registerstyle.css";
@@ -16,7 +16,6 @@ const Register = () => {
   const [address, setNewAddress] = useState();
   const [postCode, setNewPostCode] = useState();
   const [postArea, setNewPostArea] = useState();
-
   const [submitState,setSubmitState]=useState(false);
   const [StyleState,setStyleState]=useState(false);
   
@@ -54,7 +53,6 @@ const Register = () => {
   };
   
   let isHidden=StyleState?"hide":"show";
-  useEffect(() => {}, []);
   return (
     <div id="registerContainer">
       <h2>Registrera ditt konto</h2> <br></br>

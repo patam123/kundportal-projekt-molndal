@@ -7,9 +7,6 @@ import Links from "../components/navigationcomponents/links";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavCss from "../components/../design/navigation.css";
 import DashboardStyling from "../design/dashboard.css";
-import User from "../components/usercomponents/user";
-import Userdata from "../components/usercomponents/userdata";
-import errorPage from "../components/errorpage/errorpage";
 import { useHistory } from "react-router-dom";
 
 function Dashboard() {

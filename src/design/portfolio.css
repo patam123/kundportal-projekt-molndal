@@ -52,8 +52,7 @@ table {
   align-content: center;
   align-items: center;
   width: 100%;
-  border-collapse: collapse; /* behöver vara collapse för att få border, men får då inte samma layout */
-  /* border-spacing: 70px 20px; */
+  border-collapse: collapse;
 }
 tr {
   border-bottom: #ebedf2 1px solid;
@@ -75,7 +74,7 @@ td {
   background: #ffffff 0% 0% no-repeat padding-box;
 }
 
-.portfolio-div {
+.portfolio-select-container {
   font-size: 13px;
   margin-right: 3%;
   display: flex;

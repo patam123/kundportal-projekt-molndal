@@ -52,6 +52,7 @@ const Login = (props) => {
               inputtype="text"
               inputvalue="E-post"
               onChange={(e) => setEmail(e.target.value)}
+              required={true}
             />
           </div>
           <br></br>
@@ -63,6 +64,7 @@ const Login = (props) => {
               inputtype="password"
               inputvalue="Lösenord"
               onChange={(e) => setPassword(e.target.value)}
+              required={true}
             />
           </div>
           <br></br>

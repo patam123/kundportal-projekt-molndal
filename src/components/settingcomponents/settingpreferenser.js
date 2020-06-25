@@ -4,7 +4,7 @@ import Button from "../reusedcomponents/button";
 import PreferenceCss from "../../design/preference.css";
 import ButtonCss from "../../design/buttonstyle.css";
 
-function settingPreferenser({handleSubmit, industryData}) {
+function SettingPreferenser({handleSubmit, industryData}) {
   return (
     <div>
     <form onSubmit={handleSubmit}>
@@ -37,4 +37,4 @@ function settingPreferenser({handleSubmit, industryData}) {
   );
 }
 
-export default settingPreferenser;
+export default SettingPreferenser;

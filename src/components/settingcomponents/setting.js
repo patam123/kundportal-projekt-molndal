@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ProfileSetting from "./profilesetting";
 import ChangePassword from "./changepassword";
 import SettingPreferenser from "./settingpreferenser";
 import ErrorPage from "../errorpage/errorpage";
 import Links from "../navigationcomponents/links";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import HeadTitl from "../reusedcomponents/headtitle";
+import HeadTitle from "../reusedcomponents/headtitle";
 import SettingCSS from "../../design/setting.css";
 
 const Setting = ({ userData, industryData }) => {
@@ -33,7 +33,7 @@ const Setting = ({ userData, industryData }) => {
   return (
     <Router>
       <div id="setting-container">
-        <HeadTitl title="Inställningar" />
+        <HeadTitle title="Inställningar" />
         <div id="settingStyle">
           <div id="container">
             {arrsetting.map((element, index) => (

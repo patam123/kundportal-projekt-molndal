@@ -5,7 +5,6 @@ import Possession from "./possessioncomponent/possession";
 import HomeStyle from "../../design/homestyle/home.css";
 import HeadTitle from "../reusedcomponents/headtitle";
 
-// Home station var min profil och mitt innehav ska anropas här
 const Home = ({ id, user, shares, industries, suggestedIndustries }) => {
   const getDate = () => {
     const date = new Date();
@@ -40,7 +39,7 @@ const Home = ({ id, user, shares, industries, suggestedIndustries }) => {
       <div id="profileContainer">
         <div id="profile-style">
           <Card
-            path="/setting"
+            path="/home/setting"
             headText="Min profil"
             linkText="Redigera"
             firstSection={
@@ -63,7 +62,7 @@ const Home = ({ id, user, shares, industries, suggestedIndustries }) => {
 
         <div id="possession-style">
           <Card
-            path="/portfolio"
+            path="/home/portfolio"
             headText="Mitt innehav"
             linkText="Min Portfölj"
             firstSection={<Possession date={getDate()} industries={industries} suggestedIndustries={suggestedIndustries} />}
