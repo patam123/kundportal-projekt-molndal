@@ -36,7 +36,7 @@ Customer.register = (newUser, result) => {
       telNum: newUser.telNum,
     };
     sql.query(
-      `INSERT INTO Customer(Email, Hash, FirstName, LastName, PersonNumber, Address, PostCode, PostAddress, PhoneNumber, ProfilePicture) VALUES('${objUser.email}', '${objUser.hash}', '${objUser.fname}', '${objUser.lname}', '${objUser.perNum}', '${objUser.address}', '${objUser.postCode}', '${objUser.postArea}', '${objUser.telNum}', 'hej');`,
+      `INSERT INTO Customer(Email, Hash, FirstName, LastName, PersonNumber, Address, PostCode, PostAddress, PhoneNumber, ProfilePicture) VALUES('${objUser.email}', '${objUser.hash}', '${objUser.fname}', '${objUser.lname}', '${objUser.perNum}', '${objUser.address}', '${objUser.postCode}', '${objUser.postArea}', '${objUser.telNum}', '/profilepic.png');`,
       (err, res) => {
         if (err) {
           console.log("Error", err);
