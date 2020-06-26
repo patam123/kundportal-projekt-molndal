@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom";
 const Login = (props) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [errorMessage, setErrorMessage] = useState(false);
   const history = useHistory();
 
   function navigateRegister() {
@@ -30,13 +31,25 @@ const Login = (props) => {
           password: password,
         }),
       })
-        .then((response) => response.json())
-        .then((data) => sessionStorage.setItem("userData", JSON.stringify(data)));
+        .then((response) => {
+          if (!response.ok) {
+            throw Error("Fel email eller lösenord");
+          } else {
+            return response.json();
+          }
+        })
+        .then((data) => {
+          if (data) {
+            sessionStorage.setItem("userData", JSON.stringify(data));
+            history.push(`/home`);
+          }
+        })
+        .catch(() => {
+          setErrorMessage(true);
+        });
     }
-    history.push(`/home`);
-    window.location.reload();
   };
-  
+
   return (
     <div id="loginContainer">
       <div id="title">
@@ -68,6 +81,7 @@ const Login = (props) => {
               required={true}
             />
           </div>
+
           <br></br>
           <div id="regisResetContainer">
             <p onClick={navigateResetPass} id="regisReset">
@@ -79,10 +93,26 @@ const Login = (props) => {
           </div>
 
           <Button btnText="Logga in" cssValue="btnlogIn" />
+          {errorMessage ? (
+            <p
+              style={{
+                color: "white",
+                padding: "3px",
+                width: "100%",
+                textAlign: "center",
+                marginTop: "20px",
+                fontSize: "15px",
+                background: "red",
+                borderRadius: "4px",
+              }}
+            >
+              Fel email eller lösenord, försök igen!
+            </p>
+          ) : null}
         </form>
       </div>
     </div>
   );
-}
+};
 
 export default Login;
