@@ -30,7 +30,7 @@ const Home = ({ id, user, shares, industries, suggestedIndustries }) => {
           {`${user ? user.FirstName : ""}! `}
         </span>
         {`${
-          shares
+          shares && shares.length > 0
             ? `Ditt innehav blev senast uppdaterad ${getDate()}. Ta gärna en titt!`
             : `Du har inte något innehav tillagt ännu. Du får ett mail såfort det är
         uppdaterad!`
